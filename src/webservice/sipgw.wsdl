@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="sipgw"
+  targetNamespace="urn:sipgw"
+  xmlns:tns="urn:sipgw"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns2="urn:sipgw"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="urn:sipgw"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="urn:sipgw"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <!-- operation request element -->
+    <element name="login">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__login::user_id -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__login::password -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="loginResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__login::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="logout">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__logout::user_id -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__logout::password -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="logoutResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__logout::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="keepalive">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__keepalive::user_id -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__keepalive::password -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="keepaliveResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__keepalive::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="get-directory-info">
+      <complexType>
+          <sequence>
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__get_directory_info::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__get_directory_info::target_realm -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="get-directory-infoResponse">
+      <complexType>
+          <sequence>
+            <element name="directory-info-buf-out" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__get_directory_info::directory_info_buf_out -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="ptz-control">
+      <complexType>
+          <sequence>
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__ptz_control::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__ptz_control::target_realm -->
+            <element name="ptz" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::ptz -->
+            <element name="ptz-speed" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::ptz_speed -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="ptz-controlResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="start-real-play">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_real_play::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="start-real-playResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_real_play::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="stop-real-play">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="stop-real-playResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="start-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_play_back::media_recv_port -->
+            <element name="start-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::start_time -->
+            <element name="end-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::end_time -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="start-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="stop-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_port -->
+            <element name="start-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::start_time -->
+            <element name="end-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::end_time -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="stop-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="pause-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="pause-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="restart-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="restart-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+
+</types>
+
+<message name="loginRequest">
+  <part name="Body" element="ns2:login"/><!-- ns2__login::ns2__login -->
+</message>
+
+<message name="loginResponse">
+  <part name="Body" element="ns2:loginResponse"/>
+</message>
+
+<message name="logoutRequest">
+  <part name="Body" element="ns2:logout"/><!-- ns2__logout::ns2__logout -->
+</message>
+
+<message name="logoutResponse">
+  <part name="Body" element="ns2:logoutResponse"/>
+</message>
+
+<message name="keepaliveRequest">
+  <part name="Body" element="ns2:keepalive"/><!-- ns2__keepalive::ns2__keepalive -->
+</message>
+
+<message name="keepaliveResponse">
+  <part name="Body" element="ns2:keepaliveResponse"/>
+</message>
+
+<message name="get-directory-infoRequest">
+  <part name="Body" element="ns2:get-directory-info"/><!-- ns2__get_directory_info::ns2__get_directory_info -->
+</message>
+
+<message name="get-directory-infoResponse">
+  <part name="Body" element="ns2:get-directory-infoResponse"/>
+</message>
+
+<message name="ptz-controlRequest">
+  <part name="Body" element="ns2:ptz-control"/><!-- ns2__ptz_control::ns2__ptz_control -->
+</message>
+
+<message name="ptz-controlResponse">
+  <part name="Body" element="ns2:ptz-controlResponse"/>
+</message>
+
+<message name="start-real-playRequest">
+  <part name="Body" element="ns2:start-real-play"/><!-- ns2__start_real_play::ns2__start_real_play -->
+</message>
+
+<message name="start-real-playResponse">
+  <part name="Body" element="ns2:start-real-playResponse"/>
+</message>
+
+<message name="stop-real-playRequest">
+  <part name="Body" element="ns2:stop-real-play"/><!-- ns2__stop_real_play::ns2__stop_real_play -->
+</message>
+
+<message name="stop-real-playResponse">
+  <part name="Body" element="ns2:stop-real-playResponse"/>
+</message>
+
+<message name="start-play-backRequest">
+  <part name="Body" element="ns2:start-play-back"/><!-- ns2__start_play_back::ns2__start_play_back -->
+</message>
+
+<message name="start-play-backResponse">
+  <part name="Body" element="ns2:start-play-backResponse"/>
+</message>
+
+<message name="stop-play-backRequest">
+  <part name="Body" element="ns2:stop-play-back"/><!-- ns2__stop_play_back::ns2__stop_play_back -->
+</message>
+
+<message name="stop-play-backResponse">
+  <part name="Body" element="ns2:stop-play-backResponse"/>
+</message>
+
+<message name="pause-play-backRequest">
+  <part name="Body" element="ns2:pause-play-back"/><!-- ns2__pause_play_back::ns2__pause_play_back -->
+</message>
+
+<message name="pause-play-backResponse">
+  <part name="Body" element="ns2:pause-play-backResponse"/>
+</message>
+
+<message name="restart-play-backRequest">
+  <part name="Body" element="ns2:restart-play-back"/><!-- ns2__restart_play_back::ns2__restart_play_back -->
+</message>
+
+<message name="restart-play-backResponse">
+  <part name="Body" element="ns2:restart-play-backResponse"/>
+</message>
+
+<portType name="sipgwPortType">
+  <operation name="login">
+    <documentation>Service definition of function ns2__login</documentation>
+    <input message="tns:loginRequest"/>
+    <output message="tns:loginResponse"/>
+  </operation>
+  <operation name="logout">
+    <documentation>Service definition of function ns2__logout</documentation>
+    <input message="tns:logoutRequest"/>
+    <output message="tns:logoutResponse"/>
+  </operation>
+  <operation name="keepalive">
+    <documentation>Service definition of function ns2__keepalive</documentation>
+    <input message="tns:keepaliveRequest"/>
+    <output message="tns:keepaliveResponse"/>
+  </operation>
+  <operation name="get-directory-info">
+    <documentation>Service definition of function ns2__get_directory_info</documentation>
+    <input message="tns:get-directory-infoRequest"/>
+    <output message="tns:get-directory-infoResponse"/>
+  </operation>
+  <operation name="ptz-control">
+    <documentation>Service definition of function ns2__ptz_control</documentation>
+    <input message="tns:ptz-controlRequest"/>
+    <output message="tns:ptz-controlResponse"/>
+  </operation>
+  <operation name="start-real-play">
+    <documentation>Service definition of function ns2__start_real_play</documentation>
+    <input message="tns:start-real-playRequest"/>
+    <output message="tns:start-real-playResponse"/>
+  </operation>
+  <operation name="stop-real-play">
+    <documentation>Service definition of function ns2__stop_real_play</documentation>
+    <input message="tns:stop-real-playRequest"/>
+    <output message="tns:stop-real-playResponse"/>
+  </operation>
+  <operation name="start-play-back">
+    <documentation>Service definition of function ns2__start_play_back</documentation>
+    <input message="tns:start-play-backRequest"/>
+    <output message="tns:start-play-backResponse"/>
+  </operation>
+  <operation name="stop-play-back">
+    <documentation>Service definition of function ns2__stop_play_back</documentation>
+    <input message="tns:stop-play-backRequest"/>
+    <output message="tns:stop-play-backResponse"/>
+  </operation>
+  <operation name="pause-play-back">
+    <documentation>Service definition of function ns2__pause_play_back</documentation>
+    <input message="tns:pause-play-backRequest"/>
+    <output message="tns:pause-play-backResponse"/>
+  </operation>
+  <operation name="restart-play-back">
+    <documentation>Service definition of function ns2__restart_play_back</documentation>
+    <input message="tns:restart-play-backRequest"/>
+    <output message="tns:restart-play-backResponse"/>
+  </operation>
+</portType>
+
+<binding name="sipgw" type="tns:sipgwPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="login">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="logout">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="keepalive">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="get-directory-info">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="ptz-control">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="start-real-play">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="stop-real-play">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="start-play-back">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="stop-play-back">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="pause-play-back">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+  <operation name="restart-play-back">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body use="literal" parts="Body"/>
+    </input>
+    <output>
+          <SOAP:body use="literal" parts="Body"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="sipgw">
+  <documentation>gSOAP 2.8.70 generated service definition</documentation>
+  <port name="sipgw" binding="tns:sipgw">
+    <SOAP:address location="http://192.168.2.128:9800/SipGwSvr"/>
+  </port>
+</service>
+
+</definitions>
