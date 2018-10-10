@@ -19,22 +19,25 @@ typedef struct PLAY_MESSAGE
 {
     PLAY_MESSAGE()
     {
-
+		memset(user_id, 0x00, 20);
+		memset(device_id, 0x00, 20);
+		memset(realm, 0x00, 20);
+		memset(receive_ip, 0x00, 16);
+        play_action = real_time_paly;
     }
     PLAY_MESSAGE(int)
     {
-        user_id = NULL;
-        device_id = NULL;
-        realm = NULL;
-        receive_ip = NULL;
-        receive_port = 0;
+		memset(user_id, 0x00, 20);
+		memset(device_id, 0x00, 20);
+		memset(realm, 0x00, 20);
+		memset(receive_ip, 0x00, 16);
         play_action = real_time_paly;
     }
 
-    char* user_id;
-    char* device_id;
-    char* realm;
-    char* receive_ip;
+    char user_id[20];
+    char device_id[20];
+    char realm[20];
+    char receive_ip[16];
     int receive_port;
     REAL_TIME_ACTION_E play_action;
 } PLAY_MESSAGE_T;

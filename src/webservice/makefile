@@ -8,6 +8,7 @@ OBJS = $(patsubst %.cpp, %.o, $(CPP_SRCS)) $(patsubst %.c, %.o, $(C_SRCS)) $(pat
 CFLAGS := -g -c -D_POSIX_THREADS
 
 INCLUDE_DIR = -I. \
+	-I../sipgw
 #	-I/usr/local/gsoap \
 	-I/usr/local/gsoap/share/gsoap/ \
 

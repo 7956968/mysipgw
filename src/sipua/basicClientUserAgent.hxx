@@ -180,11 +180,11 @@ namespace resip
         *       mediaRecvIp     [in]: specify host, which recv media stream
         *       mediaRecvPort   [in]: specify port, which revc media stream
         *   功能：
-        *       请求加入对话，其中参数tartget需是标准 sip URI，如：
-        *       "sip:34020000001320000201@3402000000", 即：
-        *       sip[s]: + target id + @ + realm
+        *       
+        *       
+        *       
         */
-        int doInvite(char* callid, char* target, char* mediaRecvIp, int mediaRecvPort);
+        int doInvite(char* callid, char* deviceId, char* realm, char* mediaRecvIp, int mediaRecvPort, bool securityFlag = false);
 
         /**
         *   function:

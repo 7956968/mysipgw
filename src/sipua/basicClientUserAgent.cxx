@@ -143,7 +143,7 @@ BasicClientUserAgent::BasicClientUserAgent() :
 
     mLogType = "file";
     mLogLevel = "Stack";
-    m_LogFileName = "log/basicClient.log";
+    m_LogFileName = "d://basicClient.log";
 
     //sip client info
     //mTlsDomain = 0;
@@ -1064,7 +1064,7 @@ int BasicClientUserAgent::doRegister(int expire)
     return 0;
 }
 
-int BasicClientUserAgent::doInvite(char* callid, char* target, char* mediaRecvIp, int mediaRecvPort)
+int BasicClientUserAgent::doInvite(char* callid, char* deviceId, char* realm, char* mediaRecvIp, int mediaRecvPort, bool securityFlag)
 {
     /* Check if we should try to form a test call*/
     //     if (!mCallTarget.host().empty())
@@ -1079,20 +1079,30 @@ int BasicClientUserAgent::doInvite(char* callid, char* target, char* mediaRecvIp
         return -1;
     }
 
+    std::map<std::string, BasicClientCall *>::iterator i = mCallMap.find(callid);
+
+    if (mCallMap.end() != i)
+    {
+        // already call
+		return 0;
+    }
+
     Data mediaRecv_Ip(mediaRecvIp);
     Data mediaRecv_Port(mediaRecvPort);
 
-    Uri callTarget(target);
+    Data callTarget_buf = Data("sip:") + Data(deviceId) + Data("@") + Data(realm);
+    if (securityFlag)
+    {
+        callTarget_buf.replace("sip", "sips");
+    }
+
+    Uri callTarget(callTarget_buf);
     if (callTarget.isWellFormed())
     {
         BasicClientCall *newCall = new BasicClientCall(*this);
         newCall->initiateCall(mCallTarget, mProfile, mediaRecv_Ip, mediaRecv_Port);
 
         mCallMap.insert(make_pair(callid, newCall));
-
-        //Sleep(10 * 1000);
-
-        //newCall->terminateCall();
     }
     return 0;
 }
@@ -1104,6 +1114,7 @@ int BasicClientUserAgent::doBye(char* callid)
     if (mCallMap.end() != i)
     {
         (i->second)->terminateCall();
+		mCallMap.erase(i);
     }
 
     return 0;

@@ -28,6 +28,7 @@ bool FALSE=false;
 
 #include "myfifo.h"
 #include "messageDefine.h"
+#include "taskSchedual.h"
 
 using namespace resip;
 using namespace std;
@@ -106,6 +107,10 @@ int main(int argc, char* argv[])
 		setup_signal();
 		//create message fifo;
 		CMyFifo<PLAY_MESSAGE_T>::get_instance()->set_capacity(500);
+
+		//start taskSchedual
+		CTaskSchedual tastSchedual;
+		tastSchedual.start();
 
         //start sipua
         BasicClientUserAgent* pUa = BasicClientUserAgent::getInstance();
