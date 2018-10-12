@@ -6,6 +6,7 @@ OBJS = $(patsubst %.cpp, %.o, $(CPP_SRCS)) $(patsubst %.c, %.o, $(C_SRCS)) $(pat
 
 INCLUDE_DIR = -I. \
 	-I/usr/local/resip/include \
+	-I../tinyxml \
 
 
 SO_LIB_DIR = -L/usr/local/resip/lib\

@@ -56,11 +56,15 @@ public:
     int m_sipSvrUdpPort;
     int m_sipSvrTlsPort;
 
+    //sipgw info
+    char m_sipgwScheme[20 + 1];
     char m_sipgwIp[20+1];
     char m_sipgwId[20+1];
     char m_sipgwRealm[20+1];
     char m_sipgwPassword[20+1];
-    int m_sipgwPort;
+    int m_sipgwTcpPort;
+    int m_sipgwUdpPort;
+    int m_sipgwTlsPort;
     int m_registerDuation;
 
 private:

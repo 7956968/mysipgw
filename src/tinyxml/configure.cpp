@@ -128,6 +128,12 @@ bool CConfigure::parese(char* file_name)
     pSipGw = DocHdl.FirstChild("root").FirstChild("sipgw").ToElement();
 	if (NULL != pSipGw)
 	{
+        pElement = pSipGw->FirstChild("sipscheme")->ToElement();
+        if (NULL != pElement)
+        {
+            sprintf(m_sipgwScheme, "%s", pElement->GetText());
+        }
+
         pElement = pSipGw->FirstChild("ip")->ToElement();
         if(NULL != pElement)
         {
@@ -150,13 +156,25 @@ bool CConfigure::parese(char* file_name)
         if(NULL != pElement)
         {
             sprintf(m_sipgwPassword, "%s", pElement->GetText());
-        }   
+        }
 
-        pElement = pSipGw->FirstChild("port")->ToElement();
+        pElement = pSipGw->FirstChild("tcpport")->ToElement();
         if(NULL != pElement)
         {
-            m_sipgwPort = atoi(pElement->GetText());
-        }      
+            m_sipgwTcpPort = atoi(pElement->GetText());
+        }
+
+        pElement = pSipGw->FirstChild("udpport")->ToElement();
+        if (NULL != pElement)
+        {
+            m_sipgwUdpPort = atoi(pElement->GetText());
+        }
+
+        pElement = pSipGw->FirstChild("tlsport")->ToElement();
+        if (NULL != pElement)
+        {
+            m_sipgwTlsPort = atoi(pElement->GetText());
+        }
 
         pElement = pSipGw->FirstChild("registerDuration")->ToElement();
         if(NULL != pElement)
@@ -193,6 +211,6 @@ void CConfigure::printConfig()
     printf("m_sipgwId : %s\n", m_sipgwId);
     printf("m_sipgwRealm : %s\n", m_sipgwRealm);
     printf("m_sipgwPassword : %s\n", m_sipgwPassword);
-    printf("m_sipgwPort : %d\n", m_sipgwPort);
+    printf("m_sipgwTcpPort : %d\n", m_sipgwTcpPort);
     printf("m_registerDuation : %d\n", m_registerDuation);
 }

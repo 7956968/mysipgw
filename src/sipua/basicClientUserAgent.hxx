@@ -228,6 +228,8 @@ namespace resip
         */
         int doUnSubscribe();
 
+        void printfConfigureInfo();
+
     protected:
         void addTransport(TransportType type, int port);
         friend class NotifyTimer;

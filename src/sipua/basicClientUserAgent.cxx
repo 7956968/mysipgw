@@ -32,6 +32,7 @@
 
 #include "basicClientUserAgent.hxx"
 #include "basicClientCall.hxx"
+#include "configure.h"
 
 using namespace resip;
 using namespace std;
@@ -141,39 +142,68 @@ BasicClientUserAgent::BasicClientUserAgent() :
     mRegisterDuration = 3600;   //one hour
     Data basePath(getenv("HOME"));
 
-    mLogType = "file";
-    mLogLevel = "Stack";
-    m_LogFileName = "d://basicClient.log";
+    //mLogType = "file";
+    CConfigure *pConfigureManager = CConfigure::getInstance();
+    if (NULL != pConfigureManager)
+    {
+        mLogType = Data(pConfigureManager->m_logType);
+        mLogLevel = Data(pConfigureManager->m_logLevel);
+
+        mUdpPort = pConfigureManager->m_sipgwUdpPort;
+        mTcpPort = pConfigureManager->m_sipgwTcpPort;
+        mTlsPort = pConfigureManager->m_sipgwTlsPort;
+
+        mNoV4 = !pConfigureManager->m_useIpv4;
+        mEnableV6 = pConfigureManager->m_useIpv6;
+
+        mAor.host() = Data(pConfigureManager->m_sipSvrRealm);
+        mAor.port() = pConfigureManager->m_sipSvrTcpPort;
+        mAor.user() = Data(pConfigureManager->m_sipgwId);
+        mAor.scheme() = Data(pConfigureManager->m_sipScheme);
+
+        mPassword = Data(pConfigureManager->m_sipSvrPassword);
+        
+        mContact.host() = Data(pConfigureManager->m_sipgwIp);
+        mContact.scheme() = Data(pConfigureManager->m_sipgwScheme);
+        mContact.user() = mAor.user();
+
+        mOutboundProxy.host() = Data(pConfigureManager->m_sipSvrIp);
+        mOutboundProxy.user() = Data(pConfigureManager->m_sipSvrId);
+        mOutboundProxy.port() = pConfigureManager->m_sipSvrTcpPort;
+    }
+        
+    //mLogLevel = "Stack";
+    m_LogFileName = "./log/basicClient.log";
 
     //sip client info
     //mTlsDomain = 0;
     //mCertPath = 0;
-    mUdpPort = 5160;
-    mTcpPort = 5160;
-    mTlsPort = 5161;
+    //mUdpPort = 5160;
+    //mTcpPort = 5160;
+    //mTlsPort = 5161;
     mDtlsPort = 5161;
-    mNoV4 = false;
-    mEnableV6 = false;
+    //mNoV4 = false;
+    //mEnableV6 = false;
     mHostFileLookupOnlyDnsMode = false;
 
     // sip client info, will be used when register.
-    mAor.host() = "3402000000"; //sip realm
-    mAor.port() = 5060;
-    mAor.user() = "34020000004000000001";
-    mAor.scheme() = "sip";
-    mPassword = "12345678a";
+    //mAor.host() = "3402000000"; //sip realm
+    //mAor.port() = 5060;
+    //mAor.user() = "34020000004000000001";
+    //mAor.scheme() = "sip";
+    //mPassword = "12345678a";
 
     //mContact = Uri("sip:34020000004000000001@3402000000");
-    mContact.host() = SipStack::getHostAddress();
-    mContact.scheme() = "sip";
-    mContact.user() = "34020000004000000001";
+    //mContact.host() = SipStack::getHostAddress();
+    //mContact.scheme() = "sip";
+    //mContact.user() = "34020000004000000001";
 
     // OutboundProxy info, mOutboundProxy指定的地址将会被添加到route头域中
     mOutboundEnabled = false;
     //mOutboundProxy = Uri("sip:34020000002000000001@192.168.0.123:5061");
-    mOutboundProxy.host() = "192.168.2.128";
-    mOutboundProxy.user() = "34020000002000000001";
-    mOutboundProxy.port() = 5060;
+    //mOutboundProxy.host() = "192.168.2.128";
+    //mOutboundProxy.user() = "34020000002000000001";
+    //mOutboundProxy.port() = 5060;
 
     //SubscribeTarget info
     mSubscribeTarget = Uri("sip:34020000002000000001");
@@ -184,6 +214,8 @@ BasicClientUserAgent::BasicClientUserAgent() :
     mCallTarget.scheme() = "sip";
     mCallTarget.user() = "34020000001320000201";
     mCallTarget.host() = "3402000000";
+
+    printfConfigureInfo();
 
     Log::initialize(mLogType, mLogLevel, "basicClient", m_LogFileName);
 
@@ -1159,6 +1191,22 @@ int BasicClientUserAgent::doSubscribe()
 int BasicClientUserAgent::doUnSubscribe()
 {
     return 0;
+}
+
+void BasicClientUserAgent::printfConfigureInfo()
+{
+    printf("mLogType :%s\n", mLogType.data());
+    printf("mLogLevel :%s\n", mLogLevel.data());
+    printf("mTlsDomain :%s\n", mTlsDomain.data());
+    printf("mCertPath :%s\n", mCertPath.data());
+    printf("mPassword :%s\n", mPassword.data());
+    printf("mAor :%s\n", mAor.toString().data());
+    printf("mOutboundProxy :%s\n", mOutboundProxy.toString().data());
+    printf("mContact :%s\n", mContact.toString().data());
+    printf("mCallTarget :%s\n", mCallTarget.toString().data());
+    printf("mTcpPort :%d\n", mTcpPort);
+    printf("mTlsPort :%d\n", mTlsPort);
+    printf("mUdpPort :%d\n", mUdpPort);
 }
 
 /* ====================================================================
