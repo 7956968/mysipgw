@@ -1,0 +1,21 @@
+#include "stdio.h"
+#include "configure.h"
+
+//#define CONFIGURE_FILE "configure.xml"
+
+int main(int argc, char const *argv[])
+{
+    CConfigure::getInstance()->parese("configure.xml");
+
+    char mysipSvrid[21] = {0};
+    char mysipSvrip[21] = {0};
+
+    sprintf(mysipSvrid, "%s", CConfigure::getInstance()->m_sipSvrId);
+    sprintf(mysipSvrip, "%s", CConfigure::getInstance()->m_sipgwIp);
+
+    printf("mysipSvrid :%s\n", mysipSvrid);
+    printf("mysipSvrip :%s\n", mysipSvrip);
+
+    return 0;
+}
+

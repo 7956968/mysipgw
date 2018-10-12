@@ -29,6 +29,9 @@ bool FALSE=false;
 #include "myfifo.h"
 #include "messageDefine.h"
 #include "taskSchedual.h"
+#include "configure.h"
+
+#define CONFIGURE_FILE "configure.xml"
 
 using namespace resip;
 using namespace std;
@@ -105,6 +108,10 @@ int main(int argc, char* argv[])
     try
     {
 		setup_signal();
+
+        //read configure file
+        CConfigure::getInstance()->parese(CONFIGURE_FILE);
+
 		//create message fifo;
 		CMyFifo<PLAY_MESSAGE_T>::get_instance()->set_capacity(500);
 

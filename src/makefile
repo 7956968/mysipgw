@@ -4,10 +4,15 @@
 #******************************************************************************
 DIRS := sipua \
 	webservice \
-	sipgw
+	sipgw \
+	tinyxml 
+
+
 OBJS := sipua/*.o \
 	webservice/*.o \
-	sipgw/*.o
+	sipgw/*.o \
+	tinyxml/*.o 
+
 
 SO_LIB_DIR = -L/usr/local/resip/lib\
 
