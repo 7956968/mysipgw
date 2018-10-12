@@ -28,7 +28,7 @@ TARGET = sipgw.out
 all:
 	@$(foreach dir, $(DIRS), $(MAKE) -C $(dir);)
 	g++ $(OBJS) $(SO_LIB_DIR) $(SO_LIB_LIST) -lpthread -o $(TARGET)
+	mv $(TARGET) ../bin
 
 clean:
 	@$(foreach dir, $(DIRS), $(MAKE) -C $(dir) clean;)
-	rm -rf $(TARGET)
