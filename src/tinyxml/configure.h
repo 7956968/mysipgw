@@ -6,6 +6,52 @@
 #define CONFIG_FILE "configure.xml"
 #define CONFIG_FILE_NAME_MAX_LENGTH 200
 
+/**
+ * configure.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <global>
+        <!-- values: sip, sips -->
+        <sipscheme>sip</sipscheme>
+        <useipv4>1</useipv4>
+        <useipv6>0</useipv6>
+        <!--logtype values: 
+            cout:print log to terminal; 
+            cerr:print log to terminal; 
+            file:print log to file;
+        -->
+        <logtype>file</logtype>
+        <!-- values: None, Warning, Info, Debug, Stack -->
+        <loglevel>Stack</loglevel>
+    </global>
+
+    <!-- sip_server info -->
+    <sipserver>
+        <ip>192.168.2.128</ip>
+        <tcpport>5060</tcpport>
+        <udpport>5060</udpport>
+        <tlsport>5061</tlsport>
+        <id>34020000002000000001</id>
+        <realm>3402000000</realm>
+        <password>12345678a</password>
+    </sipserver>
+
+    <!-- sip_gw info -->
+    <sipgw>
+        <sipscheme>sip</sipscheme>
+        <ip>192.168.2.128</ip>
+        <tcpport>5160</tcpport>
+        <udpport>5160</udpport>
+        <tlsport>5161</tlsport>
+        <id>34020000004000000001</id>
+        <realm>3402000000</realm>
+        <password>12345678a</password>
+        <registerDuration>3600</registerDuration>
+    </sipgw>
+</root>
+*/
+
 class CConfigure
 {
 public:
