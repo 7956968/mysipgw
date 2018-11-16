@@ -20,6 +20,8 @@ class message_base
     message_base() {}
     virtual ~message_base() {}
 
+    virtual void print_message_info() = 0;
+
     message_type_e get_message_type() { return m_message_type; }
 
   public:
@@ -31,6 +33,8 @@ class start_real_play_message : public message_base
     public:
     start_real_play_message();
     ~start_real_play_message();
+
+    void print_message_info();
 
     public:
     char m_user_id[50];
