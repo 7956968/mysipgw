@@ -20,6 +20,7 @@ void CTaskSchedual::diapatech_message(message_base *message)
 	if(!message)
 	{
 		printf("void message .\n");
+		return;
 	}
 
     switch (message->m_message_type)

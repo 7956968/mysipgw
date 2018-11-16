@@ -6,7 +6,7 @@ OBJS = $(patsubst %.cpp, %.o, $(CPP_SRCS)) $(patsubst %.c, %.o, $(C_SRCS)) $(pat
 
 INCLUDE_DIR = -I. \
 	-I/usr/local/resip/include \
-	-I../tinyxml \
+	-I../configure_manager \
 
 
 SO_LIB_DIR = -L/usr/local/resip/lib\
@@ -19,10 +19,13 @@ SO_LIB_LIST = -ldum \
 
 %.o:%.cxx
 	$(CC) $(INCLUDE_DIR) -c -g $< -o $@
+	mv $@ $(BIN_DIR)
 %.o:%.cpp
 	$(CC) $(INCLUDE_DIR) -c -g $< -o $@
+	mv $@ $(BIN_DIR)
 
 all:$(OBJS)
 
 clean:
 	rm -rf *.o $(TARGET)
+	echo $(BIN_DIR)

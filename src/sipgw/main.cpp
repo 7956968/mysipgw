@@ -27,7 +27,7 @@ bool FALSE=false;
 #include <signal.h>
 
 #include "myfifo.h"
-#include "messageDefine.h"
+#include "message.h"
 #include "taskSchedual.h"
 #include "configure.h"
 
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
         CConfigure::getInstance()->parese(CONFIGURE_FILE);
 
 		//create message fifo;
-		CMyFifo<PLAY_MESSAGE_T>::get_instance()->set_capacity(500);
+		CMyFifo<message_base*>::get_instance()->set_capacity(500);
 
 		//start taskSchedual
 		CTaskSchedual tastSchedual;

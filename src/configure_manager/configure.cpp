@@ -1,3 +1,5 @@
+#include "tinystr.h"
+#include "tinyxml.h"
 #include "configure.h"
 
 CConfigure::CConfigure()

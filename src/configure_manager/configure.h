@@ -1,7 +1,5 @@
 #ifndef __CONFIGURE_H__
 #define __CONFIGURE_H__
-#include "tinystr.h"
-#include "tinyxml.h"
 
 #define CONFIG_FILE "configure.xml"
 #define CONFIG_FILE_NAME_MAX_LENGTH 200
