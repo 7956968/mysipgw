@@ -1,7 +1,10 @@
+#include <string.h>
+#include <stdio.h>
+
 #include "basicClientUserAgent.hxx"
 #include "taskSchedual.h"
 #include "myfifo.h"
-#include "messageDefine.h"
+#include "message.h"
 
 void* CTaskSchedual::real_paly_thread_proc(void*)
 {
