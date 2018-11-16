@@ -6,21 +6,29 @@
 #include "myfifo.h"
 #include "message.h"
 
-void * CTaskSchedual::dispatch_message_thread_proc(void *)
+void * CTaskSchedual::dispatch_message_thread_proc(void* pvoid)
 {
-    message_base* p_message = CMyFifo<PLAY_MESSAGE_T>::get_instance()->pop();
+	CTaskSchedual* p = (CTaskSchedual*)pvoid;
 
-    switch (p_message->m_message_type)
-    {
-        case start_real_play:
-        {
-            do_start_real_play(p_message);
-        }
-    }
+    message_base* p_message = CMyFifo<message_base*>::get_instance()->pop();
+	p->diapatech_message(p_message);
+
 }
 
 void CTaskSchedual::diapatech_message(message_base *message)
 {
+	if(!message)
+	{
+		printf("void message .\n");
+	}
+
+    switch (message->m_message_type)
+    {
+        case start_real_play:
+        {
+            do_start_real_play(message);
+        }
+    }
 
 }
 
@@ -32,7 +40,7 @@ void CTaskSchedual::do_start_real_play(message_base *message)
         return;
     }
 
-    start_real_play_message *p_message = static_cast<message>;
+    start_real_play_message *p_message = static_cast<start_real_play_message*>(message);
     if (p_message)
     {
         p_message->print_message_info();
@@ -112,7 +120,7 @@ int CTaskSchedual::start()
     pthread_attr_t attr; //线程属性结构体，创建线程时加入的参数
     pthread_attr_init(&attr); //初始化
 
-    int ret = pthread_create(&m_dispatch_message_pthread_id, &attr, dispatch_message_thread_proc, NULL);
+    int ret = pthread_create(&m_dispatch_message_pthread_id, &attr, dispatch_message_thread_proc, this);
     if (ret < 0)
     {
         //create dispatch_message_thread_proc failure

@@ -1,6 +1,6 @@
 #include "SipgwService.h"
-#include "myfifo.h"
-#include "messageDefine.h"
+#include "task_schedule/myfifo.h"
+#include "inside_message/message.h"
 
 void *process_request(void *arg)
 {
@@ -88,23 +88,23 @@ int sipgwService::ptz_control(char* target_dev_id, char* target_realm, int ptz, 
 int sipgwService::start_real_play(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
 {
 	
-		PLAY_MESSAGE_T message;
+		start_real_play_message* p_message = new start_real_play_message();
 
-		memcpy(message.device_id, target_dev_id, 20);
-		memcpy(message.realm, target_realm, 20);
-		memcpy(message.receive_ip, media_recv_ip, 16);
-		memcpy(message.user_id, user_id, 20);
-		message.receive_port = media_recv_port;
-		message.play_action = real_time_paly;
+		memcpy(p_message->m_dev_id, target_dev_id, 20);
+		memcpy(p_message->m_real, target_realm, 20);
+		memcpy(p_message->m_media_recv_ip, media_recv_ip, 16);
+		memcpy(p_message->m_user_id, user_id, 20);
+		p_message->m_media_recv_port = media_recv_port;
+		p_message->m_message_type =( message_type_e)1;
 
 		printf("webservice receive start real play message.\n");
-		printf("message.device_id = %s\n", message.device_id);
-		printf("message.realm = %s\n", message.realm);
-		printf("message.receive_ip = %s\n",message.receive_ip);
-		printf("message.receive_port = %d\n", message.receive_port);
-		printf("message.user_id = %s\n", message.user_id);
+		printf("message.device_id = %s\n", p_message->m_dev_id);
+		printf("message.realm = %s\n", p_message->m_real);
+		printf("message.receive_ip = %s\n", p_message->m_media_recv_ip);
+		printf("message.receive_port = %d\n", p_message->m_media_recv_port);
+		printf("message.user_id = %s\n", p_message->m_user_id);
 
-		CMyFifo<PLAY_MESSAGE_T>::get_instance()->push(message);
+		CMyFifo<message_base*>::get_instance()->push(p_message);
 
 		printf("webservice push start real play message to fifo.\n");
 
@@ -112,6 +112,7 @@ int sipgwService::start_real_play(char* user_id, char* target_dev_id, char* targ
 }
 int sipgwService::stop_real_play(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
 {
+#if 0
 		PLAY_MESSAGE_T message;
 		memcpy(message.device_id, target_dev_id, 20);
 		memcpy(message.realm, target_realm, 20);
@@ -130,7 +131,7 @@ int sipgwService::stop_real_play(char* user_id, char* target_dev_id, char* targe
 		CMyFifo<PLAY_MESSAGE_T>::get_instance()->push(message);
 
 		printf("webservice push stop real play message to fifo.\n");
-
+#endif
 		return SOAP_OK;
 }
 
