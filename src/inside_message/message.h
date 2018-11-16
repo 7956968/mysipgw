@@ -22,7 +22,7 @@ class message_base
 
     message_type_e get_message_type() { return m_message_type; }
 
-  private:
+  public:
     message_type_e m_message_type;
 };
 
