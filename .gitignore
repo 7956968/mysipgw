@@ -332,3 +332,5 @@ ASALocalRun/
 *.log
 
 # Use TortoiseGit
+# VSCode
+*.code-workspace
