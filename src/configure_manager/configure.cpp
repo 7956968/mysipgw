@@ -196,26 +196,48 @@ bool CConfigure::parese(char* file_name)
 void CConfigure::printConfig()
 {
     //global configure
-    LOG("m_sipScheme : %s\n", m_sipScheme);
-    LOG("m_logType : %s\n", m_logType);
-    LOG("m_logLevel : %s\n", m_logLevel);
-    LOG("m_useIpv4 : %s\n", (m_useIpv4 ? "true" : "false"));
-    LOG("m_useIpv6 : %s\n", (m_useIpv6 ? "true" : "false"));
+    LOG("global configure:\n"
+    "m_sipScheme : %s\n"
+    "m_logType : %s\n"
+    "m_logLevel : %s\n"
+    "m_useIpv4 : %s\n"
+    "m_useIpv6 : %s\n"
+    , m_sipScheme
+    , m_logType
+    , m_logLevel
+    , (m_useIpv4 ? "true" : "false")
+    , (m_useIpv6 ? "true" : "false"));
 
     //sipSvr configure
-    LOG("m_sipSvrId : %s\n", m_sipSvrId);
-    LOG("m_sipSvrRealm : %s\n", m_sipSvrRealm);
-    LOG("m_sipSvrIp : %s\n", m_sipSvrIp);
-    LOG("m_sipSvrPassword : %s\n", m_sipSvrPassword);
-    LOG("m_sipSvrTcpPort : %d\n", m_sipSvrTcpPort);
-    LOG("m_sipSvrUdpPort : %d\n", m_sipSvrUdpPort);
-    LOG("m_sipSvrTlsPort : %d\n", m_sipSvrTlsPort);
+    LOG("sipSvr configure:\n"
+    "m_sipSvrId : %s\n"
+    "m_sipSvrRealm : %s\n"
+    "m_sipSvrIp : %s\n"
+    "m_sipSvrPassword : %s\n"
+    "m_sipSvrTcpPort : %d\n"
+    "m_sipSvrUdpPort : %d\n"
+    "m_sipSvrTlsPort : %d\n"
+    , m_sipSvrId
+    , m_sipSvrRealm
+    , m_sipSvrIp
+    , m_sipSvrPassword
+    , m_sipSvrTcpPort
+    , m_sipSvrUdpPort
+    , m_sipSvrTlsPort);
+
 
     //sipgw configure
-    LOG("m_sipgwIp : %s\n", m_sipgwIp);
-    LOG("m_sipgwId : %s\n", m_sipgwId);
-    LOG("m_sipgwRealm : %s\n", m_sipgwRealm);
-    LOG("m_sipgwPassword : %s\n", m_sipgwPassword);
-    LOG("m_sipgwTcpPort : %d\n", m_sipgwTcpPort);
-    LOG("m_registerDuation : %d\n", m_registerDuation);
+    LOG("sipgw configure:\n"
+    "m_sipgwIp : %s\n"
+    "m_sipgwId : %s\n"
+    "m_sipgwRealm : %s\n"
+    "m_sipgwPassword : %s\n"
+    "m_sipgwTcpPort : %d\n"
+    "m_registerDuation : %d\n"
+    , m_sipgwIp
+    , m_sipgwId
+    , m_sipgwRealm
+    , m_sipgwPassword
+    , m_sipgwTcpPort
+    , m_registerDuation);
 }
