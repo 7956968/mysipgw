@@ -13,9 +13,14 @@ void * CTaskSchedual::dispatch_message_thread_proc(void* pvoid)
 {
 	CTaskSchedual* p = (CTaskSchedual*)pvoid;
 
-    message_base* p_message = CMyFifo<message_base*>::get_instance()->pop();
-	p->diapatech_message(p_message);
-
+	while(p->dispatch_message_thread_proc_is_running())
+	{
+		message_base* p_message = CMyFifo<message_base*>::get_instance()->pop();
+		if(p_message)
+		{
+			p->diapatech_message(p_message);
+		}
+	}
 }
 
 void CTaskSchedual::diapatech_message(message_base *message)
@@ -47,6 +52,7 @@ void CTaskSchedual::do_start_real_play(message_base *message)
     start_real_play_message *p_message = static_cast<start_real_play_message*>(message);
     if (p_message)
     {
+		LOG("task_schedual recv a start_real_play_message from fifo. and will send it to sipua.\n")
         p_message->print_message_info();
     }
     //call sipua, send message;
@@ -124,6 +130,7 @@ int CTaskSchedual::start()
     pthread_attr_t attr; //线程属性结构体，创建线程时加入的参数
     pthread_attr_init(&attr); //初始化
 
+	m_dispatch_message_thread_proc_is_running = true;
     int ret = pthread_create(&m_dispatch_message_pthread_id, &attr, dispatch_message_thread_proc, this);
     if (ret < 0)
     {
@@ -161,4 +168,13 @@ int CTaskSchedual::start()
         //create review_thread_proc failure
     }
 #endif
+}
+int CTaskSchedual::stop()
+{
+	m_dispatch_message_thread_proc_is_running = false;
+}
+
+bool CTaskSchedual::dispatch_message_thread_proc_is_running()
+{
+	return m_dispatch_message_thread_proc_is_running;
 }

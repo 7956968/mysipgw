@@ -37,10 +37,10 @@ class start_real_play_message : public message_base
     void print_message_info();
 
     public:
-    char m_user_id[50];
-    char m_dev_id[20];
-    char m_real[20];
-    char m_media_recv_ip[20];
+    char m_user_id[50+1];
+    char m_dev_id[20+1];
+    char m_real[20+1];
+    char m_media_recv_ip[20+1];
     unsigned short m_media_recv_port;
 };
 

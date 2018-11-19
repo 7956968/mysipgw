@@ -101,12 +101,10 @@ int sipgwService::start_real_play(char* user_id, char* target_dev_id, char* targ
 
 		LOG("\nwebservice receive start real play message:\n"
         "message.device_id = %s\n"
-        "message.device_id = %s\n"
         "message.realm = %s\n"
         "message.receive_ip = %s\n"
         "message.receive_port = %d\n"
         "message.user_id = %s\n"
-		, p_message->m_dev_id
 		, p_message->m_dev_id
 		, p_message->m_real
 		, p_message->m_media_recv_ip
