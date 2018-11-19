@@ -9,15 +9,15 @@
 
 namespace utils {
 
-    class bsm_i_lock
+    class ilock
     {
     public:
-        virtual ~bsm_i_lock() {};
-        virtual void lock() const = 0;
-        virtual void unlock() const = 0;
+      virtual ~ilock(){};
+      virtual void lock() const = 0;
+      virtual void unlock() const = 0;
     };
 
-    class dlock : public bsm_i_lock
+    class dlock : public ilock
     {
     public:
         dlock();
