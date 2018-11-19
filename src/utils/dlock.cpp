@@ -1,9 +1,8 @@
-#include "bsm_lock.h"
+#include "dlock.h"
 
-namespace bsm {
-namespace bsm_utils {
+namespace utils {
 
-bsm_lock::bsm_lock()
+dlock::dlock()
 {
 #ifndef _WIN32
     pthread_mutex_init(&m_mutex, NULL);
@@ -12,7 +11,7 @@ bsm_lock::bsm_lock()
 #endif
 }
 
-bsm_lock::~bsm_lock()
+dlock::~dlock()
 {
 #ifndef _WIN32
     pthread_mutex_destroy(&m_mutex);
@@ -21,7 +20,7 @@ bsm_lock::~bsm_lock()
 #endif
 }
 
-void bsm_lock::lock() const
+void dlock::lock() const
 {
 #ifndef _WIN32
     pthread_mutex_lock(&m_mutex);
@@ -30,7 +29,7 @@ void bsm_lock::lock() const
 #endif
 }
 
-void bsm_lock::unlock() const
+void dlock::unlock() const
 {
 #ifndef _WIN32
     pthread_mutex_unlock(&m_mutex);
@@ -39,5 +38,4 @@ void bsm_lock::unlock() const
 #endif
 }
 
-} //namespace bsm_utils
-} //namespace bsm
+} //namespace utils
