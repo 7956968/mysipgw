@@ -167,53 +167,26 @@ BasicClientUserAgent::BasicClientUserAgent() :
         mContact.scheme() = Data(pConfigureManager->m_sipgwScheme);
         mContact.user() = mAor.user();
 
+        mSubscribeTarget.host() = Data(pConfigureManager->m_sipSvrId);
+        mSubscribeTarget.scheme() = Data(pConfigureManager->m_sipgwScheme);
+
         mOutboundProxy.host() = Data(pConfigureManager->m_sipSvrIp);
         mOutboundProxy.user() = Data(pConfigureManager->m_sipSvrId);
         mOutboundProxy.port() = pConfigureManager->m_sipSvrTcpPort;
     }
         
-    //mLogLevel = "Stack";
     m_LogFileName = "./log/basicClient.log";
 
-    //sip client info
-    //mTlsDomain = 0;
-    //mCertPath = 0;
-    //mUdpPort = 5160;
-    //mTcpPort = 5160;
-    //mTlsPort = 5161;
     mDtlsPort = 5161;
-    //mNoV4 = false;
-    //mEnableV6 = false;
     mHostFileLookupOnlyDnsMode = false;
-
-    // sip client info, will be used when register.
-    //mAor.host() = "3402000000"; //sip realm
-    //mAor.port() = 5060;
-    //mAor.user() = "34020000004000000001";
-    //mAor.scheme() = "sip";
-    //mPassword = "12345678a";
-
-    //mContact = Uri("sip:34020000004000000001@3402000000");
-    //mContact.host() = SipStack::getHostAddress();
-    //mContact.scheme() = "sip";
-    //mContact.user() = "34020000004000000001";
-
-    // OutboundProxy info, mOutboundProxy指定的地址将会被添加到route头域中
     mOutboundEnabled = false;
-    //mOutboundProxy = Uri("sip:34020000002000000001@192.168.0.123:5061");
-    //mOutboundProxy.host() = "192.168.2.128";
-    //mOutboundProxy.user() = "34020000002000000001";
-    //mOutboundProxy.port() = 5060;
 
     //SubscribeTarget info
-    mSubscribeTarget = Uri("sip:34020000002000000001");
+    //mSubscribeTarget = Uri("sip:34020000002000000001");
 
-    //call target info
-    //mCallTarget = Uri("sip:34020000001320000001@192.168.0.123");
-
-    mCallTarget.scheme() = "sip";
-    mCallTarget.user() = "34020000001320000201";
-    mCallTarget.host() = "3402000000";
+    // mCallTarget.scheme() = "sip";
+    // mCallTarget.user() = "34020000001320000201";
+    // mCallTarget.host() = "3402000000";
 
     printfConfigureInfo();
 
@@ -1122,17 +1095,17 @@ int BasicClientUserAgent::doInvite(char* callid, char* deviceId, char* realm, ch
     Data mediaRecv_Ip(mediaRecvIp);
     Data mediaRecv_Port(mediaRecvPort);
 
-    Data callTarget_buf = Data("sip:") + Data(deviceId) + Data("@") + Data(realm);
+    Data callTarget_uri = Data("sip:") + Data(deviceId) + Data("@") + Data(realm);
     if (securityFlag)
     {
-        callTarget_buf.replace("sip", "sips");
+        callTarget_uri.replace("sip", "sips");
     }
 
-    Uri callTarget(callTarget_buf);
+    Uri callTarget(callTarget_uri);
     if (callTarget.isWellFormed())
     {
         BasicClientCall *newCall = new BasicClientCall(*this);
-        newCall->initiateCall(mCallTarget, mProfile, mediaRecv_Ip, mediaRecv_Port);
+        newCall->initiateCall(callTarget, mProfile, mediaRecv_Ip, mediaRecv_Port);
 
         mCallMap.insert(make_pair(callid, newCall));
     }
