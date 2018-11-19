@@ -30,11 +30,13 @@ bool FALSE=false;
 #include "message.h"
 #include "taskSchedual.h"
 #include "configure.h"
+#include "dlogger/dlogger.h"
 
 #define CONFIGURE_FILE "configure.xml"
 
 using namespace resip;
 using namespace std;
+using namespace dlogger;
 
 #define RESIPROCATE_SUBSYSTEM Subsystem::TEST
 
@@ -107,6 +109,11 @@ int main(int argc, char* argv[])
 {
     try
     {
+		logger::set_log_type(log_type_file);
+		if (!logger::get_instance()->init_logger("log/sipgw.log"))
+		{
+			return -1;
+		}
 		setup_signal();
 
         //read configure file
@@ -146,7 +153,8 @@ int main(int argc, char* argv[])
         std::cout<<"Caught non-resip exception:"<<std::endl;
         exit(-1);
     }
-
+	
+	logger::get_instance()->uninit_logger();
     return 0;
 }
 
