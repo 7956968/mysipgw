@@ -19,11 +19,10 @@ SO_LIB_LIST = -ldum \
 
 %.o:%.cxx
 	$(CC) $(INCLUDE_DIR) -c -g $< -o $@
-	mv $@ $(BIN_DIR)
+	$(if $(wildcard $(BIN_DIR)), mv $@ $(BIN_DIR), )
 %.o:%.cpp
 	$(CC) $(INCLUDE_DIR) -c -g $< -o $@
-	mv $@ $(BIN_DIR)
-
+	$(if $(wildcard $(BIN_DIR)), mv $@ $(BIN_DIR), )
 all:$(OBJS)
 
 clean:

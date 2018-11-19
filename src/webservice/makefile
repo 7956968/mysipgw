@@ -15,10 +15,10 @@ INCLUDE_DIR = -I. \
 
 %.o:%.cxx
 	$(CC) $(CFLAGS)  $(INCLUDE_DIR) $< -o $@
-	mv $@ $(BIN_DIR)
+	$(if $(wildcard $(BIN_DIR)), mv $@ $(BIN_DIR), )
 %.o:%.cpp
 	$(CC) $(CFLAGS)  $(INCLUDE_DIR) $< -o $@
-	mv $@ $(BIN_DIR)
+	$(if $(wildcard $(BIN_DIR)), mv $@ $(BIN_DIR), )
 
 all:$(OBJS)
 
