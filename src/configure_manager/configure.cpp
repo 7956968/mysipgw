@@ -196,7 +196,7 @@ bool CConfigure::parese(char* file_name)
 void CConfigure::printConfig()
 {
     //global configure
-    LOG("global configure:\n"
+    LOG("\nglobal configure:\n"
     "m_sipScheme : %s\n"
     "m_logType : %s\n"
     "m_logLevel : %s\n"
@@ -209,7 +209,7 @@ void CConfigure::printConfig()
     , (m_useIpv6 ? "true" : "false"));
 
     //sipSvr configure
-    LOG("sipSvr configure:\n"
+    LOG("\nsipSvr configure:\n"
     "m_sipSvrId : %s\n"
     "m_sipSvrRealm : %s\n"
     "m_sipSvrIp : %s\n"
@@ -227,7 +227,7 @@ void CConfigure::printConfig()
 
 
     //sipgw configure
-    LOG("sipgw configure:\n"
+    LOG("\nsipgw configure:\n"
     "m_sipgwIp : %s\n"
     "m_sipgwId : %s\n"
     "m_sipgwRealm : %s\n"

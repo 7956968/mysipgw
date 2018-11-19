@@ -90,7 +90,6 @@ int sipgwService::ptz_control(char* target_dev_id, char* target_realm, int ptz, 
 
 int sipgwService::start_real_play(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
 {
-	
 		start_real_play_message* p_message = new start_real_play_message();
 
 		memcpy(p_message->m_dev_id, target_dev_id, 20);
@@ -100,12 +99,19 @@ int sipgwService::start_real_play(char* user_id, char* target_dev_id, char* targ
 		p_message->m_media_recv_port = media_recv_port;
 		p_message->m_message_type =( message_type_e)1;
 
-		LOG("webservice receive start real play message.\n");
-        LOG("message.device_id = %s\n", p_message->m_dev_id);
-        LOG("message.realm = %s\n", p_message->m_real);
-        LOG("message.receive_ip = %s\n", p_message->m_media_recv_ip);
-        LOG("message.receive_port = %d\n", p_message->m_media_recv_port);
-        LOG("message.user_id = %s\n", p_message->m_user_id);
+		LOG("\nwebservice receive start real play message:\n"
+        "message.device_id = %s\n"
+        "message.device_id = %s\n"
+        "message.realm = %s\n"
+        "message.receive_ip = %s\n"
+        "message.receive_port = %d\n"
+        "message.user_id = %s\n"
+		, p_message->m_dev_id
+		, p_message->m_dev_id
+		, p_message->m_real
+		, p_message->m_media_recv_ip
+		, p_message->m_media_recv_port
+		, p_message->m_user_id);
 
         CMyFifo<message_base*>::get_instance()->push(p_message);
 
