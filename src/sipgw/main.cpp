@@ -114,27 +114,33 @@ int main(int argc, char* argv[])
 		{
 			return -1;
 		}
+
 		setup_signal();
 
         //read configure file
         CConfigure::getInstance()->parese(CONFIGURE_FILE);
+        LOG("configure have startup. \n");
 
 		//create message fifo;
 		CMyFifo<message_base*>::get_instance()->set_capacity(500);
+        LOG("message fifo capacity : 500. \n");
 
-		//start taskSchedual
+        //start taskSchedual
 		CTaskSchedual tastSchedual;
 		tastSchedual.start();
+        LOG("tastSchedual have start up. \n");
 
         //start sipua
         BasicClientUserAgent* pUa = BasicClientUserAgent::getInstance();
         pUa->startup();
+        LOG("sipua have start up. \n");
 
         //start webservice
         struct soap ServerSoap;
         ServerSoap.fget = http_get;
         CSipgwSvr sipgwsvr(&ServerSoap);
         sipgwsvr.startup();
+        LOG("webservice have start up. \n");
     }
 #ifdef USE_SSL
     catch (BaseSecurity::Exception& e)

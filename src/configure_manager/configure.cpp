@@ -1,6 +1,9 @@
 #include "tinystr.h"
 #include "tinyxml.h"
 #include "configure.h"
+#include "dlogger/dlogger.h"
+
+using namespace dlogger;
 
 CConfigure::CConfigure()
 {
@@ -20,7 +23,7 @@ bool CConfigure::parese(char* file_name)
 	bool bOkay = Doc.LoadFile();
 	if (!bOkay)
 	{
-		printf("TinyXml Could not load file '%s'. Error='%s'. Exiting. \n", ConfigFile, Doc.ErrorDesc() );
+		LOG("TinyXml Could not load file '%s'. Error='%s'. Exiting. \n", ConfigFile, Doc.ErrorDesc() );
 		return false;
 	}
 	
@@ -193,26 +196,26 @@ bool CConfigure::parese(char* file_name)
 void CConfigure::printConfig()
 {
     //global configure
-    printf("m_sipScheme : %s\n", m_sipScheme);
-    printf("m_logType : %s\n", m_logType);
-    printf("m_logLevel : %s\n", m_logLevel);
-    printf("m_useIpv4 : %s\n", ( m_useIpv4 ? "true" : "false"));
-    printf("m_useIpv6 : %s\n", ( m_useIpv6 ? "true" : "false"));
+    LOG("m_sipScheme : %s\n", m_sipScheme);
+    LOG("m_logType : %s\n", m_logType);
+    LOG("m_logLevel : %s\n", m_logLevel);
+    LOG("m_useIpv4 : %s\n", (m_useIpv4 ? "true" : "false"));
+    LOG("m_useIpv6 : %s\n", (m_useIpv6 ? "true" : "false"));
 
     //sipSvr configure
-    printf("m_sipSvrId : %s\n", m_sipSvrId);
-    printf("m_sipSvrRealm : %s\n", m_sipSvrRealm);
-    printf("m_sipSvrIp : %s\n", m_sipSvrIp);
-    printf("m_sipSvrPassword : %s\n", m_sipSvrPassword);
-    printf("m_sipSvrTcpPort : %d\n", m_sipSvrTcpPort);
-    printf("m_sipSvrUdpPort : %d\n", m_sipSvrUdpPort);
-    printf("m_sipSvrTlsPort : %d\n", m_sipSvrTlsPort);
+    LOG("m_sipSvrId : %s\n", m_sipSvrId);
+    LOG("m_sipSvrRealm : %s\n", m_sipSvrRealm);
+    LOG("m_sipSvrIp : %s\n", m_sipSvrIp);
+    LOG("m_sipSvrPassword : %s\n", m_sipSvrPassword);
+    LOG("m_sipSvrTcpPort : %d\n", m_sipSvrTcpPort);
+    LOG("m_sipSvrUdpPort : %d\n", m_sipSvrUdpPort);
+    LOG("m_sipSvrTlsPort : %d\n", m_sipSvrTlsPort);
 
     //sipgw configure
-    printf("m_sipgwIp : %s\n", m_sipgwIp);
-    printf("m_sipgwId : %s\n", m_sipgwId);
-    printf("m_sipgwRealm : %s\n", m_sipgwRealm);
-    printf("m_sipgwPassword : %s\n", m_sipgwPassword);
-    printf("m_sipgwTcpPort : %d\n", m_sipgwTcpPort);
-    printf("m_registerDuation : %d\n", m_registerDuation);
+    LOG("m_sipgwIp : %s\n", m_sipgwIp);
+    LOG("m_sipgwId : %s\n", m_sipgwId);
+    LOG("m_sipgwRealm : %s\n", m_sipgwRealm);
+    LOG("m_sipgwPassword : %s\n", m_sipgwPassword);
+    LOG("m_sipgwTcpPort : %d\n", m_sipgwTcpPort);
+    LOG("m_registerDuation : %d\n", m_registerDuation);
 }

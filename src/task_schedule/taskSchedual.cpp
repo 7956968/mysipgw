@@ -5,6 +5,9 @@
 #include "taskSchedual.h"
 #include "myfifo.h"
 #include "message.h"
+#include "dlogger/dlogger.h"
+
+using namespace dlogger;
 
 void * CTaskSchedual::dispatch_message_thread_proc(void* pvoid)
 {
@@ -19,7 +22,7 @@ void CTaskSchedual::diapatech_message(message_base *message)
 {
 	if(!message)
 	{
-		printf("void message .\n");
+		LOG("void message .\n");
 		return;
 	}
 
@@ -37,7 +40,7 @@ void CTaskSchedual::do_start_real_play(message_base *message)
 {
     if (!message)
     {
-        printf("do_start_real_play recv a bad message. \n");
+        LOG("do_start_real_play recv a bad message. \n");
         return;
     }
 
@@ -125,7 +128,7 @@ int CTaskSchedual::start()
     if (ret < 0)
     {
         //create dispatch_message_thread_proc failure
-        printf("create dispatch_message_thread_proc failure");
+        LOG("create dispatch_message_thread_proc failure");
         exit(-1);
     }
 
