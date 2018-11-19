@@ -13,6 +13,7 @@ OBJS = $(patsubst %.cpp, %.o, $(CPP_SRCS)) $(patsubst %.c, %.o, $(C_SRCS)) $(pat
 
 INCLUDE_DIR = -I. \
 	-I./tinyxml \
+	-I.. \
 
 SO_LIB_DIR = 
 

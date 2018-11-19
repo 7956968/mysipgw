@@ -13,6 +13,7 @@ INCLUDE_DIR = -I. \
 	-I../inside_message \
 	-I../sipua \
 	-I/usr/local/resip/include \
+	-I.. \
 
 SO_LIB_DIR = 
 
@@ -21,10 +22,10 @@ SO_LIB_LIST =
 
 %.o:%.cxx
 	$(CC) $(INCLUDE_DIR) -c -g $< -o $@
-	mv $@ $(BIN_DIR)
+	$(if $(wildcard $(BIN_DIR)), mv $@ $(BIN_DIR), )
 %.o:%.cpp
 	$(CC) $(INCLUDE_DIR) -c -g $< -o $@
-	mv $@ $(BIN_DIR)
+	$(if $(wildcard $(BIN_DIR)), mv $@ $(BIN_DIR), )
 
 all:$(OBJS)
 	

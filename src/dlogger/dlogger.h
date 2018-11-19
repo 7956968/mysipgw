@@ -63,6 +63,7 @@ private:
         if(NULL != logger::get_instance()->m_fp_logfile)\
         {\
             fprintf(logger::get_instance()->m_fp_logfile, "%s\n%s:%d:" fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);\
+			fflush(logger::get_instance()->m_fp_logfile);\
         }\
         else\
         {\
