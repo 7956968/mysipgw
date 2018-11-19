@@ -1,10 +1,9 @@
-#include "logger.h"
-
 #include <stdio.h>
+#include "dlogger.h"
 
 namespace dlogger{
 
-bsm_log_type_e dlogger::m_log_type = log_type_stdout;
+dlog_type_e dlogger::m_log_type = log_type_stdout;
 dlogger* dlogger::m_instance = NULL;
 
 dlogger::dlogger()
@@ -28,12 +27,12 @@ bool dlogger::init_logger(char* file_name)
     }
 }
 
-bsm_log_type_e dlogger::get_log_type()
+dlog_type_e dlogger::get_log_type()
 {
     return m_log_type;
 }
 
-void dlogger::set_log_type(bsm_log_type_e log_type)
+void dlogger::set_log_type(dlog_type_e log_type)
 {
     m_log_type = log_type;
 }

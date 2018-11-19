@@ -1,21 +1,30 @@
-#ifndef __LOGGER_H__
-#define __LOGGER_H__
+/**
+ *  description:
+ *     a simple log system, which will runing on windows and linux.
+ * 
+ *  author: YandDong
+ *  date:   20181117
+ * 
+ * */
+
+#ifndef __DLOGGER_H__
+#define __DLOGGER_H__
 
 #include "stdio.h"
 #include "stdint.h"
 
 namespace dlogger{
 
-typedef enum bsm_log_type
+typedef enum dlog_type
 {
     log_type_stdout = 1,
     log_type_file = 2
-}bsm_log_type_e;
+}dlog_type_e;
 
 class dlogger
 {
 public:
-    static bsm_log_type m_log_type;
+    static dlog_type m_log_type;
     static dlogger* m_instance;
     static dlogger* get_instance()
     {
@@ -29,8 +38,8 @@ public:
             return m_instance;
         }
     }
-    static bsm_log_type_e get_log_type();
-    static void set_log_type(bsm_log_type_e log_type);
+    static dlog_type_e get_log_type();
+    static void set_log_type(dlog_type_e log_type);
 
     bool init_logger(char* file_name);
     void uninit_logger();
@@ -63,5 +72,5 @@ private:
 	
 }
 
-#endif // !__LOGGER_H__
+#endif // !__DLOGGER_H__
 

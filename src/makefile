@@ -10,7 +10,9 @@ DIRS := sipua \
 	sipgw \
 	task_schedule \
 	inside_message \
-	configure_manager
+	configure_manager\
+	utils\
+	dlogger\
 
 
 OBJS := $(BIN_DIR)/*.o \
