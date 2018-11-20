@@ -3,7 +3,7 @@
 #include <pthread.h>
 
 #include "message.h"
-#include "basicClientUserAgent.hxx"
+//#include "basicClientUserAgent.hxx"
 
 class CTaskSchedual
 {
