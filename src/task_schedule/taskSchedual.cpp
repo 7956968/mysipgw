@@ -54,8 +54,12 @@ void CTaskSchedual::do_start_real_play(message_base *message)
     {
 		LOG("task_schedual recv a start_real_play_message from fifo. and will send it to sipua.\n")
         p_message->print_message_info();
+
+        //call sipua, send message;
+        BasicClientUserAgent::getInstance()->doInvite(p_message->m_user_id, p_message->m_dev_id, p_message->m_real,
+        p_message->m_media_recv_ip, p_message->m_media_recv_port);
     }
-    //call sipua, send message;
+    
 
     delete message;
 }

@@ -1176,7 +1176,7 @@ void BasicClientUserAgent::printfConfigureInfo()
     printf("mAor :%s\n", mAor.toString().data());
     printf("mOutboundProxy :%s\n", mOutboundProxy.toString().data());
     printf("mContact :%s\n", mContact.toString().data());
-    printf("mCallTarget :%s\n", mCallTarget.toString().data());
+    //printf("mCallTarget :%s\n", mCallTarget.toString().data());
     printf("mTcpPort :%d\n", mTcpPort);
     printf("mTlsPort :%d\n", mTlsPort);
     printf("mUdpPort :%d\n", mUdpPort);
