@@ -177,7 +177,7 @@ BasicClientUserAgent::BasicClientUserAgent() :
         
     m_LogFileName = "./log/basicClient.log";
 
-    mDtlsPort = 5161;
+    //mDtlsPort = 5161;
     mHostFileLookupOnlyDnsMode = false;
     mOutboundEnabled = false;
 

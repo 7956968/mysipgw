@@ -10,7 +10,7 @@
             cerr:print log to terminal; 
             file:print log to file;
         -->
-        <logtype>file</logtype>
+        <logtype>cout</logtype>
         <!-- values: None, Warning, Info, Debug, Stack -->
         <loglevel>Stack</loglevel>
     </global>
