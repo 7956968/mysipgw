@@ -26,7 +26,7 @@ bool FALSE=false;
 
 #include <signal.h>
 
-#include "myfifo.h"
+#include "utils/myfifo.h"
 #include "message.h"
 #include "taskSchedual.h"
 #include "configure.h"
