@@ -51,11 +51,11 @@ static void signalHandler(int signo)
 int http_get(struct soap *soap)
 {
     FILE *fd;
-    char *s = strchr(soap->path, '?'); // soap->path has the URL path (soap->endpoint has the full URL)
+    char *s = strrchr(soap->path, '/'); // soap->path has the URL path (soap->endpoint has the full URL)
     char *respose_message = "method not supported\n if you want get wsdl file. please input:"
         "\n\"http://192.168.2.128:9800/SipGwServer?wsdl\" "
         "\nin your web browser.";
-    if (!s || strcmp(s, "?wsdl"))
+    if (!s || strcmp(s, "/SipGwServer?wsdl"))
     {
         //return SOAP_GET_METHOD; // GET method not supported
         soap_send_raw(soap, respose_message, strlen(respose_message));
