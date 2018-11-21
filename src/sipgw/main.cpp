@@ -17,7 +17,7 @@ bool FALSE=false;
 
 //webservice 
 #include "webservice/sipgw.nsmap"
-#include "webservice/SipgwService.h"
+#include "webservice/bst_webservice.h"
 #include <unistd.h>
 
 #ifdef USE_SSL

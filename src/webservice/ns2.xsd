@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <schema targetNamespace="urn:sipgw"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns2="urn:sipgw"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <!-- operation request element -->
+    <element name="login">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__login::user_id -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__login::password -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="loginResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__login::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="logout">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__logout::user_id -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__logout::password -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="logoutResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__logout::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="keepalive">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__keepalive::user_id -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__keepalive::password -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="keepaliveResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__keepalive::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="get-directory-info">
+      <complexType>
+          <sequence>
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__get_directory_info::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__get_directory_info::target_realm -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="get-directory-infoResponse">
+      <complexType>
+          <sequence>
+            <element name="directory-info-buf-out" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__get_directory_info::directory_info_buf_out -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="ptz-control">
+      <complexType>
+          <sequence>
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__ptz_control::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__ptz_control::target_realm -->
+            <element name="ptz" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::ptz -->
+            <element name="ptz-speed" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::ptz_speed -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="ptz-controlResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="start-real-play">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_real_play::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="start-real-playResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_real_play::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="stop-real-play">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="stop-real-playResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="start-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_play_back::media_recv_port -->
+            <element name="start-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::start_time -->
+            <element name="end-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::end_time -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="start-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="stop-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_port -->
+            <element name="start-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::start_time -->
+            <element name="end-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::end_time -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="stop-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="pause-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="pause-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="restart-play-back">
+      <complexType>
+          <sequence>
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::user_id -->
+            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_dev_id -->
+            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_realm -->
+            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_ip -->
+            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_port -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="restart-play-backResponse">
+      <complexType>
+          <sequence>
+            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::result -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+
