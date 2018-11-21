@@ -69,34 +69,32 @@ int CSipgwSvr::startup()
     return 0;
 }
 
-
-//以下实现父类函数
-int CSipgwSvr::login(char* user_id, char* password, int& result)
+int CSipgwSvr::login(char *user_id, char *password, char **result)
 {
     return SOAP_OK;
 }
 
-int CSipgwSvr::logout(char* user_id, char* password, int& result)
+int CSipgwSvr::logout(char *user_id, char *password, char **result)
 {
     return SOAP_OK;
 }
-int CSipgwSvr::keepalive(char* user_id, char* password, int& result)
+int CSipgwSvr::keepalive(char *user_id, char *password, char **result)
 {
     return SOAP_OK;
 }
 
-int CSipgwSvr::get_directory_info(char* target_dev_id, char* target_realm, char** directory_info_buf_out)
+int CSipgwSvr::get_directory_info(char *target_dev_id, char *target_realm, char **directory_info_buf_out)
 {
 	*directory_info_buf_out = "haha";
 	sleep(3);
     return SOAP_OK;
 }
-int CSipgwSvr::ptz_control(char* target_dev_id, char* target_realm, int ptz, int ptz_speed, int& result)
+int CSipgwSvr::ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result)
 {
     return SOAP_OK;
 }
 
-int CSipgwSvr::start_real_play(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
+int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
 {
 		start_real_play_message* p_message = new start_real_play_message();
 
@@ -123,9 +121,11 @@ int CSipgwSvr::start_real_play(char* user_id, char* target_dev_id, char* target_
 
         LOG("webservice push start real play message to fifo.\n");
 
+        *result = user_id;
+
         return SOAP_OK;
 }
-int CSipgwSvr::stop_real_play(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
+int CSipgwSvr::stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
 {
 #if 0
 		PLAY_MESSAGE_T message;
@@ -150,20 +150,20 @@ int CSipgwSvr::stop_real_play(char* user_id, char* target_dev_id, char* target_r
 		return SOAP_OK;
 }
 
-int CSipgwSvr::start_play_back(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, char* start_time, char* end_time, int& result)
+int CSipgwSvr::start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result)
 {
     return SOAP_OK;
 }
-int CSipgwSvr::stop_play_back(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, char* start_time, char* end_time, int& result)
+int CSipgwSvr::stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result)
 {
     return SOAP_OK;
 }
 
-int CSipgwSvr::pause_play_back(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
+int CSipgwSvr::pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
 {
     return SOAP_OK;
 }
-int CSipgwSvr::restart_play_back(char* user_id, char* target_dev_id, char* target_realm, char* media_recv_ip, int media_recv_port, int& result)
+int CSipgwSvr::restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
 {
     return SOAP_OK;
 }
