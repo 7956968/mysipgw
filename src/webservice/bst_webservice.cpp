@@ -63,7 +63,7 @@ CSipgwSvr::CSipgwSvr()
 {
 	this->soap = soap_new();
 	this->soap_own = true;
-    (this->soap).fget = http_get;
+    (this->soap)->fget = http_get;
     //sipgwService_init(SOAP_IO_DEFAULT, SOAP_IO_DEFAULT);
 	CSipgwSvr(this->soap);
 }
