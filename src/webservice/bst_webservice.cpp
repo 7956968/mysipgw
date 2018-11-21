@@ -5,6 +5,40 @@
 
 using namespace dlogger;
 
+int http_get(struct soap *soap)
+{
+    FILE *fd;
+    char *s = strrchr(soap->path, '/'); // soap->path has the URL path (soap->endpoint has the full URL)
+    char *respose_message = "method not supported\n if you want get wsdl file. please input:"
+                            "\n\"http://192.168.2.128:9800/SipGwServer?wsdl\" "
+                            "\nin your web browser.";
+    if (!s || strcmp(s, "/SipGwServer?wsdl"))
+    {
+        //return SOAP_GET_METHOD; // GET method not supported
+        soap_send_raw(soap, respose_message, strlen(respose_message));
+        return SOAP_OK;
+    }
+
+    fd = fopen("sipgw.wsdl", "rb"); // open WSDL file to copy as a response
+
+    if (!fd)
+    {
+        return 404; // return HTTP 404 not found
+    }
+
+    soap->http_content = "text/xml; charset=utf-8"; // HTTP header with text/xml content
+    soap_response(soap, SOAP_FILE);
+    for (;;)
+    {
+        size_t r = fread(soap->tmpbuf, 1, sizeof(soap->tmpbuf), fd);
+        if (!r || soap_send_raw(soap, soap->tmpbuf, r))
+            break;
+    }
+    fclose(fd);
+    soap_end_send(soap);
+    return SOAP_OK;
+}
+
 void *process_request(void *arg)
 {
 	sipgwService *service = (sipgwService*)arg;
@@ -29,7 +63,8 @@ CSipgwSvr::CSipgwSvr()
 {
 	this->soap = soap_new();
 	this->soap_own = true;
-	//sipgwService_init(SOAP_IO_DEFAULT, SOAP_IO_DEFAULT);
+    (this->soap).fget = http_get;
+    //sipgwService_init(SOAP_IO_DEFAULT, SOAP_IO_DEFAULT);
 	CSipgwSvr(this->soap);
 }
 
