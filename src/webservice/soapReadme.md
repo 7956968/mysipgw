@@ -590,27 +590,27 @@ This service class is declared in [soapsipgwService.h](soapsipgwService.h) and d
         /// Note: compile with -DWITH_PURE_VIRTUAL for pure virtual methods
         ///
         /// Web service operation 'login' (returns SOAP_OK or error code)
-        virtual int login(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int login(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'logout' (returns SOAP_OK or error code)
-        virtual int logout(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int logout(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'keepalive' (returns SOAP_OK or error code)
-        virtual int keepalive(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int keepalive(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'get-directory-info' (returns SOAP_OK or error code)
         virtual int get_directory_info(char *target_dev_id, char *target_realm, char **directory_info_buf_out) SOAP_PURE_VIRTUAL;
         /// Web service operation 'ptz-control' (returns SOAP_OK or error code)
-        virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, int &result) SOAP_PURE_VIRTUAL;
+        virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'start-real-play' (returns SOAP_OK or error code)
-        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'stop-real-play' (returns SOAP_OK or error code)
-        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'start-play-back' (returns SOAP_OK or error code)
-        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, int &result) SOAP_PURE_VIRTUAL;
+        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'stop-play-back' (returns SOAP_OK or error code)
-        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, int &result) SOAP_PURE_VIRTUAL;
+        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'pause-play-back' (returns SOAP_OK or error code)
-        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'restart-play-back' (returns SOAP_OK or error code)
-        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
     };
 
 Use the service request dispatcher to accept and process service requests:
@@ -635,13 +635,13 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'login' (returns SOAP_OK or error code)
-        virtual int login(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int login(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
 - `char *user_id` is optional
 - `char *password` is optional
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -662,13 +662,13 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'logout' (returns SOAP_OK or error code)
-        virtual int logout(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int logout(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
 - `char *user_id` is optional
 - `char *password` is optional
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -689,13 +689,13 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'keepalive' (returns SOAP_OK or error code)
-        virtual int keepalive(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int keepalive(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
 - `char *user_id` is optional
 - `char *password` is optional
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -743,7 +743,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'ptz-control' (returns SOAP_OK or error code)
-        virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, int &result) SOAP_PURE_VIRTUAL;
+        virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -751,7 +751,7 @@ where:
 - `char *target_realm` is optional
 - `int ptz` is required
 - `int ptz_speed` is required
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -772,7 +772,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'start-real-play' (returns SOAP_OK or error code)
-        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -781,7 +781,7 @@ where:
 - `char *target_realm` is optional
 - `char *media_recv_ip` is optional
 - `int media_recv_port` is required
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -802,7 +802,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'stop-real-play' (returns SOAP_OK or error code)
-        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -811,7 +811,7 @@ where:
 - `char *target_realm` is optional
 - `char *media_recv_ip` is optional
 - `int media_recv_port` is required
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -832,7 +832,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'start-play-back' (returns SOAP_OK or error code)
-        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, int &result) SOAP_PURE_VIRTUAL;
+        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -843,7 +843,7 @@ where:
 - `int media_recv_port` is required
 - `char *start_time` is optional
 - `char *end_time` is optional
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -864,7 +864,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'stop-play-back' (returns SOAP_OK or error code)
-        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, int &result) SOAP_PURE_VIRTUAL;
+        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -875,7 +875,7 @@ where:
 - `int media_recv_port` is required
 - `char *start_time` is optional
 - `char *end_time` is optional
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -896,7 +896,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'pause-play-back' (returns SOAP_OK or error code)
-        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -905,7 +905,7 @@ where:
 - `char *target_realm` is optional
 - `char *media_recv_ip` is optional
 - `int media_recv_port` is required
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -926,7 +926,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'restart-play-back' (returns SOAP_OK or error code)
-        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -935,7 +935,7 @@ where:
 - `char *target_realm` is optional
 - `char *media_recv_ip` is optional
 - `int media_recv_port` is required
-- `int &result` is the service operation response data populated by the service operation
+- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
 
@@ -969,5 +969,5 @@ The table binds XML namespace prefixes (first column) to namespace URIs (second 
 
 --------------------------------------------------------------------------------
 
-_Generated on Tue Nov 20 2018 09:51:59 UTC by soapcpp2 v2.8.70 for webservice_source.h._
+_Generated on Wed Nov 21 2018 03:11:11 UTC by soapcpp2 v2.8.70 for webservice_source.h._
 _The gSOAP XML Web services tools are Copyright (C) Robert van Engelen, Genivia Inc. All Rights Reserved._

@@ -62,8 +62,8 @@ struct ns2__restart_play_back;	/* webservice_source.h:29 */
 /* complex XSD type 'ns2:loginResponse': */
 struct SOAP_CMAC ns2__loginResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__loginResponse */
         long soap_type() const { return SOAP_TYPE_ns2__loginResponse; }
@@ -100,8 +100,8 @@ struct SOAP_CMAC ns2__login {
 /* complex XSD type 'ns2:logoutResponse': */
 struct SOAP_CMAC ns2__logoutResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__logoutResponse */
         long soap_type() const { return SOAP_TYPE_ns2__logoutResponse; }
@@ -138,8 +138,8 @@ struct SOAP_CMAC ns2__logout {
 /* complex XSD type 'ns2:keepaliveResponse': */
 struct SOAP_CMAC ns2__keepaliveResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__keepaliveResponse */
         long soap_type() const { return SOAP_TYPE_ns2__keepaliveResponse; }
@@ -172,7 +172,7 @@ struct SOAP_CMAC ns2__keepalive {
 
 /* webservice_source.h:19 */
 #ifndef SOAP_TYPE_ns2__get_directory_infoResponse
-#define SOAP_TYPE_ns2__get_directory_infoResponse (19)
+#define SOAP_TYPE_ns2__get_directory_infoResponse (18)
 /* complex XSD type 'ns2:get-directory-infoResponse': */
 struct SOAP_CMAC ns2__get_directory_infoResponse {
       public:
@@ -190,7 +190,7 @@ struct SOAP_CMAC ns2__get_directory_infoResponse {
 
 /* webservice_source.h:19 */
 #ifndef SOAP_TYPE_ns2__get_directory_info
-#define SOAP_TYPE_ns2__get_directory_info (20)
+#define SOAP_TYPE_ns2__get_directory_info (19)
 /* complex XSD type 'ns2:get-directory-info': */
 struct SOAP_CMAC ns2__get_directory_info {
       public:
@@ -210,12 +210,12 @@ struct SOAP_CMAC ns2__get_directory_info {
 
 /* webservice_source.h:20 */
 #ifndef SOAP_TYPE_ns2__ptz_controlResponse
-#define SOAP_TYPE_ns2__ptz_controlResponse (22)
+#define SOAP_TYPE_ns2__ptz_controlResponse (21)
 /* complex XSD type 'ns2:ptz-controlResponse': */
 struct SOAP_CMAC ns2__ptz_controlResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__ptz_controlResponse */
         long soap_type() const { return SOAP_TYPE_ns2__ptz_controlResponse; }
@@ -228,7 +228,7 @@ struct SOAP_CMAC ns2__ptz_controlResponse {
 
 /* webservice_source.h:20 */
 #ifndef SOAP_TYPE_ns2__ptz_control
-#define SOAP_TYPE_ns2__ptz_control (23)
+#define SOAP_TYPE_ns2__ptz_control (22)
 /* complex XSD type 'ns2:ptz-control': */
 struct SOAP_CMAC ns2__ptz_control {
       public:
@@ -252,12 +252,12 @@ struct SOAP_CMAC ns2__ptz_control {
 
 /* webservice_source.h:22 */
 #ifndef SOAP_TYPE_ns2__start_real_playResponse
-#define SOAP_TYPE_ns2__start_real_playResponse (25)
+#define SOAP_TYPE_ns2__start_real_playResponse (24)
 /* complex XSD type 'ns2:start-real-playResponse': */
 struct SOAP_CMAC ns2__start_real_playResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__start_real_playResponse */
         long soap_type() const { return SOAP_TYPE_ns2__start_real_playResponse; }
@@ -270,7 +270,7 @@ struct SOAP_CMAC ns2__start_real_playResponse {
 
 /* webservice_source.h:22 */
 #ifndef SOAP_TYPE_ns2__start_real_play
-#define SOAP_TYPE_ns2__start_real_play (26)
+#define SOAP_TYPE_ns2__start_real_play (25)
 /* complex XSD type 'ns2:start-real-play': */
 struct SOAP_CMAC ns2__start_real_play {
       public:
@@ -296,12 +296,12 @@ struct SOAP_CMAC ns2__start_real_play {
 
 /* webservice_source.h:23 */
 #ifndef SOAP_TYPE_ns2__stop_real_playResponse
-#define SOAP_TYPE_ns2__stop_real_playResponse (28)
+#define SOAP_TYPE_ns2__stop_real_playResponse (27)
 /* complex XSD type 'ns2:stop-real-playResponse': */
 struct SOAP_CMAC ns2__stop_real_playResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__stop_real_playResponse */
         long soap_type() const { return SOAP_TYPE_ns2__stop_real_playResponse; }
@@ -314,7 +314,7 @@ struct SOAP_CMAC ns2__stop_real_playResponse {
 
 /* webservice_source.h:23 */
 #ifndef SOAP_TYPE_ns2__stop_real_play
-#define SOAP_TYPE_ns2__stop_real_play (29)
+#define SOAP_TYPE_ns2__stop_real_play (28)
 /* complex XSD type 'ns2:stop-real-play': */
 struct SOAP_CMAC ns2__stop_real_play {
       public:
@@ -340,12 +340,12 @@ struct SOAP_CMAC ns2__stop_real_play {
 
 /* webservice_source.h:25 */
 #ifndef SOAP_TYPE_ns2__start_play_backResponse
-#define SOAP_TYPE_ns2__start_play_backResponse (31)
+#define SOAP_TYPE_ns2__start_play_backResponse (30)
 /* complex XSD type 'ns2:start-play-backResponse': */
 struct SOAP_CMAC ns2__start_play_backResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__start_play_backResponse */
         long soap_type() const { return SOAP_TYPE_ns2__start_play_backResponse; }
@@ -358,7 +358,7 @@ struct SOAP_CMAC ns2__start_play_backResponse {
 
 /* webservice_source.h:25 */
 #ifndef SOAP_TYPE_ns2__start_play_back
-#define SOAP_TYPE_ns2__start_play_back (32)
+#define SOAP_TYPE_ns2__start_play_back (31)
 /* complex XSD type 'ns2:start-play-back': */
 struct SOAP_CMAC ns2__start_play_back {
       public:
@@ -388,12 +388,12 @@ struct SOAP_CMAC ns2__start_play_back {
 
 /* webservice_source.h:26 */
 #ifndef SOAP_TYPE_ns2__stop_play_backResponse
-#define SOAP_TYPE_ns2__stop_play_backResponse (34)
+#define SOAP_TYPE_ns2__stop_play_backResponse (33)
 /* complex XSD type 'ns2:stop-play-backResponse': */
 struct SOAP_CMAC ns2__stop_play_backResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__stop_play_backResponse */
         long soap_type() const { return SOAP_TYPE_ns2__stop_play_backResponse; }
@@ -406,7 +406,7 @@ struct SOAP_CMAC ns2__stop_play_backResponse {
 
 /* webservice_source.h:26 */
 #ifndef SOAP_TYPE_ns2__stop_play_back
-#define SOAP_TYPE_ns2__stop_play_back (35)
+#define SOAP_TYPE_ns2__stop_play_back (34)
 /* complex XSD type 'ns2:stop-play-back': */
 struct SOAP_CMAC ns2__stop_play_back {
       public:
@@ -436,12 +436,12 @@ struct SOAP_CMAC ns2__stop_play_back {
 
 /* webservice_source.h:28 */
 #ifndef SOAP_TYPE_ns2__pause_play_backResponse
-#define SOAP_TYPE_ns2__pause_play_backResponse (37)
+#define SOAP_TYPE_ns2__pause_play_backResponse (36)
 /* complex XSD type 'ns2:pause-play-backResponse': */
 struct SOAP_CMAC ns2__pause_play_backResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__pause_play_backResponse */
         long soap_type() const { return SOAP_TYPE_ns2__pause_play_backResponse; }
@@ -454,7 +454,7 @@ struct SOAP_CMAC ns2__pause_play_backResponse {
 
 /* webservice_source.h:28 */
 #ifndef SOAP_TYPE_ns2__pause_play_back
-#define SOAP_TYPE_ns2__pause_play_back (38)
+#define SOAP_TYPE_ns2__pause_play_back (37)
 /* complex XSD type 'ns2:pause-play-back': */
 struct SOAP_CMAC ns2__pause_play_back {
       public:
@@ -480,12 +480,12 @@ struct SOAP_CMAC ns2__pause_play_back {
 
 /* webservice_source.h:29 */
 #ifndef SOAP_TYPE_ns2__restart_play_backResponse
-#define SOAP_TYPE_ns2__restart_play_backResponse (40)
+#define SOAP_TYPE_ns2__restart_play_backResponse (39)
 /* complex XSD type 'ns2:restart-play-backResponse': */
 struct SOAP_CMAC ns2__restart_play_backResponse {
       public:
-        /** Required element 'result' of XSD type 'xsd:int' */
-        int result;
+        /** Optional element 'result' of XSD type 'xsd:string' */
+        char **result;
       public:
         /** Return unique type id SOAP_TYPE_ns2__restart_play_backResponse */
         long soap_type() const { return SOAP_TYPE_ns2__restart_play_backResponse; }
@@ -498,7 +498,7 @@ struct SOAP_CMAC ns2__restart_play_backResponse {
 
 /* webservice_source.h:29 */
 #ifndef SOAP_TYPE_ns2__restart_play_back
-#define SOAP_TYPE_ns2__restart_play_back (41)
+#define SOAP_TYPE_ns2__restart_play_back (40)
 /* complex XSD type 'ns2:restart-play-back': */
 struct SOAP_CMAC ns2__restart_play_back {
       public:
@@ -525,7 +525,7 @@ struct SOAP_CMAC ns2__restart_play_back {
 /* webservice_source.h:30 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (42)
+#define SOAP_TYPE_SOAP_ENV__Header (41)
 /* SOAP_ENV__Header: */
 struct SOAP_CMAC SOAP_ENV__Header {
       public:
@@ -542,7 +542,7 @@ struct SOAP_CMAC SOAP_ENV__Header {
 /* webservice_source.h:30 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (43)
+#define SOAP_TYPE_SOAP_ENV__Code (42)
 /* Type SOAP_ENV__Code is a recursive data type, (in)directly referencing itself through its (base or derived class) members */
 /* SOAP_ENV__Code: */
 struct SOAP_CMAC SOAP_ENV__Code {
@@ -565,7 +565,7 @@ struct SOAP_CMAC SOAP_ENV__Code {
 /* webservice_source.h:30 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (45)
+#define SOAP_TYPE_SOAP_ENV__Detail (44)
 /* SOAP_ENV__Detail: */
 struct SOAP_CMAC SOAP_ENV__Detail {
       public:
@@ -588,7 +588,7 @@ struct SOAP_CMAC SOAP_ENV__Detail {
 /* webservice_source.h:30 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (48)
+#define SOAP_TYPE_SOAP_ENV__Reason (47)
 /* SOAP_ENV__Reason: */
 struct SOAP_CMAC SOAP_ENV__Reason {
       public:
@@ -608,7 +608,7 @@ struct SOAP_CMAC SOAP_ENV__Reason {
 /* webservice_source.h:30 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (49)
+#define SOAP_TYPE_SOAP_ENV__Fault (48)
 /* SOAP_ENV__Fault: */
 struct SOAP_CMAC SOAP_ENV__Fault {
       public:
@@ -679,107 +679,107 @@ typedef char *_QName;
 
 /* struct SOAP_ENV__Fault has binding name 'SOAP_ENV__Fault' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (49)
+#define SOAP_TYPE_SOAP_ENV__Fault (48)
 #endif
 
 /* struct SOAP_ENV__Reason has binding name 'SOAP_ENV__Reason' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (48)
+#define SOAP_TYPE_SOAP_ENV__Reason (47)
 #endif
 
 /* struct SOAP_ENV__Detail has binding name 'SOAP_ENV__Detail' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (45)
+#define SOAP_TYPE_SOAP_ENV__Detail (44)
 #endif
 
 /* struct SOAP_ENV__Code has binding name 'SOAP_ENV__Code' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (43)
+#define SOAP_TYPE_SOAP_ENV__Code (42)
 #endif
 
 /* struct SOAP_ENV__Header has binding name 'SOAP_ENV__Header' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (42)
+#define SOAP_TYPE_SOAP_ENV__Header (41)
 #endif
 
 /* struct ns2__restart_play_back has binding name 'ns2__restart_play_back' for type 'ns2:restart-play-back' */
 #ifndef SOAP_TYPE_ns2__restart_play_back
-#define SOAP_TYPE_ns2__restart_play_back (41)
+#define SOAP_TYPE_ns2__restart_play_back (40)
 #endif
 
 /* struct ns2__restart_play_backResponse has binding name 'ns2__restart_play_backResponse' for type 'ns2:restart-play-backResponse' */
 #ifndef SOAP_TYPE_ns2__restart_play_backResponse
-#define SOAP_TYPE_ns2__restart_play_backResponse (40)
+#define SOAP_TYPE_ns2__restart_play_backResponse (39)
 #endif
 
 /* struct ns2__pause_play_back has binding name 'ns2__pause_play_back' for type 'ns2:pause-play-back' */
 #ifndef SOAP_TYPE_ns2__pause_play_back
-#define SOAP_TYPE_ns2__pause_play_back (38)
+#define SOAP_TYPE_ns2__pause_play_back (37)
 #endif
 
 /* struct ns2__pause_play_backResponse has binding name 'ns2__pause_play_backResponse' for type 'ns2:pause-play-backResponse' */
 #ifndef SOAP_TYPE_ns2__pause_play_backResponse
-#define SOAP_TYPE_ns2__pause_play_backResponse (37)
+#define SOAP_TYPE_ns2__pause_play_backResponse (36)
 #endif
 
 /* struct ns2__stop_play_back has binding name 'ns2__stop_play_back' for type 'ns2:stop-play-back' */
 #ifndef SOAP_TYPE_ns2__stop_play_back
-#define SOAP_TYPE_ns2__stop_play_back (35)
+#define SOAP_TYPE_ns2__stop_play_back (34)
 #endif
 
 /* struct ns2__stop_play_backResponse has binding name 'ns2__stop_play_backResponse' for type 'ns2:stop-play-backResponse' */
 #ifndef SOAP_TYPE_ns2__stop_play_backResponse
-#define SOAP_TYPE_ns2__stop_play_backResponse (34)
+#define SOAP_TYPE_ns2__stop_play_backResponse (33)
 #endif
 
 /* struct ns2__start_play_back has binding name 'ns2__start_play_back' for type 'ns2:start-play-back' */
 #ifndef SOAP_TYPE_ns2__start_play_back
-#define SOAP_TYPE_ns2__start_play_back (32)
+#define SOAP_TYPE_ns2__start_play_back (31)
 #endif
 
 /* struct ns2__start_play_backResponse has binding name 'ns2__start_play_backResponse' for type 'ns2:start-play-backResponse' */
 #ifndef SOAP_TYPE_ns2__start_play_backResponse
-#define SOAP_TYPE_ns2__start_play_backResponse (31)
+#define SOAP_TYPE_ns2__start_play_backResponse (30)
 #endif
 
 /* struct ns2__stop_real_play has binding name 'ns2__stop_real_play' for type 'ns2:stop-real-play' */
 #ifndef SOAP_TYPE_ns2__stop_real_play
-#define SOAP_TYPE_ns2__stop_real_play (29)
+#define SOAP_TYPE_ns2__stop_real_play (28)
 #endif
 
 /* struct ns2__stop_real_playResponse has binding name 'ns2__stop_real_playResponse' for type 'ns2:stop-real-playResponse' */
 #ifndef SOAP_TYPE_ns2__stop_real_playResponse
-#define SOAP_TYPE_ns2__stop_real_playResponse (28)
+#define SOAP_TYPE_ns2__stop_real_playResponse (27)
 #endif
 
 /* struct ns2__start_real_play has binding name 'ns2__start_real_play' for type 'ns2:start-real-play' */
 #ifndef SOAP_TYPE_ns2__start_real_play
-#define SOAP_TYPE_ns2__start_real_play (26)
+#define SOAP_TYPE_ns2__start_real_play (25)
 #endif
 
 /* struct ns2__start_real_playResponse has binding name 'ns2__start_real_playResponse' for type 'ns2:start-real-playResponse' */
 #ifndef SOAP_TYPE_ns2__start_real_playResponse
-#define SOAP_TYPE_ns2__start_real_playResponse (25)
+#define SOAP_TYPE_ns2__start_real_playResponse (24)
 #endif
 
 /* struct ns2__ptz_control has binding name 'ns2__ptz_control' for type 'ns2:ptz-control' */
 #ifndef SOAP_TYPE_ns2__ptz_control
-#define SOAP_TYPE_ns2__ptz_control (23)
+#define SOAP_TYPE_ns2__ptz_control (22)
 #endif
 
 /* struct ns2__ptz_controlResponse has binding name 'ns2__ptz_controlResponse' for type 'ns2:ptz-controlResponse' */
 #ifndef SOAP_TYPE_ns2__ptz_controlResponse
-#define SOAP_TYPE_ns2__ptz_controlResponse (22)
+#define SOAP_TYPE_ns2__ptz_controlResponse (21)
 #endif
 
 /* struct ns2__get_directory_info has binding name 'ns2__get_directory_info' for type 'ns2:get-directory-info' */
 #ifndef SOAP_TYPE_ns2__get_directory_info
-#define SOAP_TYPE_ns2__get_directory_info (20)
+#define SOAP_TYPE_ns2__get_directory_info (19)
 #endif
 
 /* struct ns2__get_directory_infoResponse has binding name 'ns2__get_directory_infoResponse' for type 'ns2:get-directory-infoResponse' */
 #ifndef SOAP_TYPE_ns2__get_directory_infoResponse
-#define SOAP_TYPE_ns2__get_directory_infoResponse (19)
+#define SOAP_TYPE_ns2__get_directory_infoResponse (18)
 #endif
 
 /* struct ns2__keepalive has binding name 'ns2__keepalive' for type 'ns2:keepalive' */
@@ -814,22 +814,22 @@ typedef char *_QName;
 
 /* struct SOAP_ENV__Reason * has binding name 'PointerToSOAP_ENV__Reason' for type '' */
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Reason
-#define SOAP_TYPE_PointerToSOAP_ENV__Reason (51)
+#define SOAP_TYPE_PointerToSOAP_ENV__Reason (50)
 #endif
 
 /* struct SOAP_ENV__Detail * has binding name 'PointerToSOAP_ENV__Detail' for type '' */
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Detail
-#define SOAP_TYPE_PointerToSOAP_ENV__Detail (50)
+#define SOAP_TYPE_PointerToSOAP_ENV__Detail (49)
 #endif
 
 /* struct SOAP_ENV__Code * has binding name 'PointerToSOAP_ENV__Code' for type '' */
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Code
-#define SOAP_TYPE_PointerToSOAP_ENV__Code (44)
+#define SOAP_TYPE_PointerToSOAP_ENV__Code (43)
 #endif
 
 /* char ** has binding name 'PointerTostring' for type 'xsd:string' */
 #ifndef SOAP_TYPE_PointerTostring
-#define SOAP_TYPE_PointerTostring (17)
+#define SOAP_TYPE_PointerTostring (7)
 #endif
 
 /* _QName has binding name '_QName' for type 'xsd:QName' */

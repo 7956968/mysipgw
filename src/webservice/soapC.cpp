@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.70 2018-11-20 09:51:59 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.70 2018-11-21 03:11:11 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -1869,13 +1869,14 @@ SOAP_FMAC3 struct ns2__restart_play_back * SOAP_FMAC4 soap_get_ns2__restart_play
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__restart_play_backResponse(struct soap *soap, struct ns2__restart_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__restart_play_backResponse(struct soap *soap, const struct ns2__restart_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -1884,7 +1885,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__restart_play_backResponse(struct soap *s
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__restart_play_backResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -1903,7 +1904,7 @@ SOAP_FMAC3 struct ns2__restart_play_backResponse * SOAP_FMAC4 soap_in_ns2__resta
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -1917,14 +1918,6 @@ SOAP_FMAC3 struct ns2__restart_play_backResponse * SOAP_FMAC4 soap_in_ns2__resta
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__restart_play_backResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__restart_play_backResponse, SOAP_TYPE_ns2__restart_play_backResponse, sizeof(struct ns2__restart_play_backResponse), 0, soap_finsert, NULL);
@@ -2131,13 +2124,14 @@ SOAP_FMAC3 struct ns2__pause_play_back * SOAP_FMAC4 soap_get_ns2__pause_play_bac
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__pause_play_backResponse(struct soap *soap, struct ns2__pause_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__pause_play_backResponse(struct soap *soap, const struct ns2__pause_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -2146,7 +2140,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__pause_play_backResponse(struct soap *soa
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__pause_play_backResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -2165,7 +2159,7 @@ SOAP_FMAC3 struct ns2__pause_play_backResponse * SOAP_FMAC4 soap_in_ns2__pause_p
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -2179,14 +2173,6 @@ SOAP_FMAC3 struct ns2__pause_play_backResponse * SOAP_FMAC4 soap_in_ns2__pause_p
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__pause_play_backResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__pause_play_backResponse, SOAP_TYPE_ns2__pause_play_backResponse, sizeof(struct ns2__pause_play_backResponse), 0, soap_finsert, NULL);
@@ -2415,13 +2401,14 @@ SOAP_FMAC3 struct ns2__stop_play_back * SOAP_FMAC4 soap_get_ns2__stop_play_back(
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__stop_play_backResponse(struct soap *soap, struct ns2__stop_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__stop_play_backResponse(struct soap *soap, const struct ns2__stop_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -2430,7 +2417,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__stop_play_backResponse(struct soap *soap
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__stop_play_backResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -2449,7 +2436,7 @@ SOAP_FMAC3 struct ns2__stop_play_backResponse * SOAP_FMAC4 soap_in_ns2__stop_pla
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -2463,14 +2450,6 @@ SOAP_FMAC3 struct ns2__stop_play_backResponse * SOAP_FMAC4 soap_in_ns2__stop_pla
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__stop_play_backResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__stop_play_backResponse, SOAP_TYPE_ns2__stop_play_backResponse, sizeof(struct ns2__stop_play_backResponse), 0, soap_finsert, NULL);
@@ -2699,13 +2678,14 @@ SOAP_FMAC3 struct ns2__start_play_back * SOAP_FMAC4 soap_get_ns2__start_play_bac
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__start_play_backResponse(struct soap *soap, struct ns2__start_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__start_play_backResponse(struct soap *soap, const struct ns2__start_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -2714,7 +2694,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__start_play_backResponse(struct soap *soa
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__start_play_backResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -2733,7 +2713,7 @@ SOAP_FMAC3 struct ns2__start_play_backResponse * SOAP_FMAC4 soap_in_ns2__start_p
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -2747,14 +2727,6 @@ SOAP_FMAC3 struct ns2__start_play_backResponse * SOAP_FMAC4 soap_in_ns2__start_p
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__start_play_backResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__start_play_backResponse, SOAP_TYPE_ns2__start_play_backResponse, sizeof(struct ns2__start_play_backResponse), 0, soap_finsert, NULL);
@@ -2961,13 +2933,14 @@ SOAP_FMAC3 struct ns2__stop_real_play * SOAP_FMAC4 soap_get_ns2__stop_real_play(
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__stop_real_playResponse(struct soap *soap, struct ns2__stop_real_playResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__stop_real_playResponse(struct soap *soap, const struct ns2__stop_real_playResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -2976,7 +2949,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__stop_real_playResponse(struct soap *soap
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__stop_real_playResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -2995,7 +2968,7 @@ SOAP_FMAC3 struct ns2__stop_real_playResponse * SOAP_FMAC4 soap_in_ns2__stop_rea
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -3009,14 +2982,6 @@ SOAP_FMAC3 struct ns2__stop_real_playResponse * SOAP_FMAC4 soap_in_ns2__stop_rea
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__stop_real_playResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__stop_real_playResponse, SOAP_TYPE_ns2__stop_real_playResponse, sizeof(struct ns2__stop_real_playResponse), 0, soap_finsert, NULL);
@@ -3223,13 +3188,14 @@ SOAP_FMAC3 struct ns2__start_real_play * SOAP_FMAC4 soap_get_ns2__start_real_pla
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__start_real_playResponse(struct soap *soap, struct ns2__start_real_playResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__start_real_playResponse(struct soap *soap, const struct ns2__start_real_playResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -3238,7 +3204,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__start_real_playResponse(struct soap *soa
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__start_real_playResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -3257,7 +3223,7 @@ SOAP_FMAC3 struct ns2__start_real_playResponse * SOAP_FMAC4 soap_in_ns2__start_r
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -3271,14 +3237,6 @@ SOAP_FMAC3 struct ns2__start_real_playResponse * SOAP_FMAC4 soap_in_ns2__start_r
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__start_real_playResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__start_real_playResponse, SOAP_TYPE_ns2__start_real_playResponse, sizeof(struct ns2__start_real_playResponse), 0, soap_finsert, NULL);
@@ -3473,13 +3431,14 @@ SOAP_FMAC3 struct ns2__ptz_control * SOAP_FMAC4 soap_get_ns2__ptz_control(struct
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__ptz_controlResponse(struct soap *soap, struct ns2__ptz_controlResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__ptz_controlResponse(struct soap *soap, const struct ns2__ptz_controlResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -3488,7 +3447,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__ptz_controlResponse(struct soap *soap, c
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__ptz_controlResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -3507,7 +3466,7 @@ SOAP_FMAC3 struct ns2__ptz_controlResponse * SOAP_FMAC4 soap_in_ns2__ptz_control
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -3521,14 +3480,6 @@ SOAP_FMAC3 struct ns2__ptz_controlResponse * SOAP_FMAC4 soap_in_ns2__ptz_control
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__ptz_controlResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__ptz_controlResponse, SOAP_TYPE_ns2__ptz_controlResponse, sizeof(struct ns2__ptz_controlResponse), 0, soap_finsert, NULL);
@@ -3910,13 +3861,14 @@ SOAP_FMAC3 struct ns2__keepalive * SOAP_FMAC4 soap_get_ns2__keepalive(struct soa
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__keepaliveResponse(struct soap *soap, struct ns2__keepaliveResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__keepaliveResponse(struct soap *soap, const struct ns2__keepaliveResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -3925,7 +3877,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__keepaliveResponse(struct soap *soap, con
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__keepaliveResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -3944,7 +3896,7 @@ SOAP_FMAC3 struct ns2__keepaliveResponse * SOAP_FMAC4 soap_in_ns2__keepaliveResp
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -3958,14 +3910,6 @@ SOAP_FMAC3 struct ns2__keepaliveResponse * SOAP_FMAC4 soap_in_ns2__keepaliveResp
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__keepaliveResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__keepaliveResponse, SOAP_TYPE_ns2__keepaliveResponse, sizeof(struct ns2__keepaliveResponse), 0, soap_finsert, NULL);
@@ -4132,13 +4076,14 @@ SOAP_FMAC3 struct ns2__logout * SOAP_FMAC4 soap_get_ns2__logout(struct soap *soa
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__logoutResponse(struct soap *soap, struct ns2__logoutResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__logoutResponse(struct soap *soap, const struct ns2__logoutResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -4147,7 +4092,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__logoutResponse(struct soap *soap, const 
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__logoutResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -4166,7 +4111,7 @@ SOAP_FMAC3 struct ns2__logoutResponse * SOAP_FMAC4 soap_in_ns2__logoutResponse(s
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -4180,14 +4125,6 @@ SOAP_FMAC3 struct ns2__logoutResponse * SOAP_FMAC4 soap_in_ns2__logoutResponse(s
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__logoutResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__logoutResponse, SOAP_TYPE_ns2__logoutResponse, sizeof(struct ns2__logoutResponse), 0, soap_finsert, NULL);
@@ -4354,13 +4291,14 @@ SOAP_FMAC3 struct ns2__login * SOAP_FMAC4 soap_get_ns2__login(struct soap *soap,
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__loginResponse(struct soap *soap, struct ns2__loginResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_int(soap, &a->result);
+	a->result = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__loginResponse(struct soap *soap, const struct ns2__loginResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
+	soap_serialize_PointerTostring(soap, &a->result);
 #endif
 }
 
@@ -4369,7 +4307,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__loginResponse(struct soap *soap, const c
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__loginResponse), type))
 		return soap->error;
-	if (soap_out_int(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -4388,7 +4326,7 @@ SOAP_FMAC3 struct ns2__loginResponse * SOAP_FMAC4 soap_in_ns2__loginResponse(str
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
 			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "result", &a->result, "xsd:int"))
+			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
 				{	soap_flag_result--;
 					continue;
 				}
@@ -4402,14 +4340,6 @@ SOAP_FMAC3 struct ns2__loginResponse * SOAP_FMAC4 soap_in_ns2__loginResponse(str
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_result > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__loginResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__loginResponse, SOAP_TYPE_ns2__loginResponse, sizeof(struct ns2__loginResponse), 0, soap_finsert, NULL);

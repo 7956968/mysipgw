@@ -95,26 +95,26 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
         /// Note: compile with -DWITH_PURE_VIRTUAL for pure virtual methods
         ///
         /// Web service operation 'login' (returns SOAP_OK or error code)
-        virtual int login(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int login(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'logout' (returns SOAP_OK or error code)
-        virtual int logout(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int logout(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'keepalive' (returns SOAP_OK or error code)
-        virtual int keepalive(char *user_id, char *password, int &result) SOAP_PURE_VIRTUAL;
+        virtual int keepalive(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'get-directory-info' (returns SOAP_OK or error code)
         virtual int get_directory_info(char *target_dev_id, char *target_realm, char **directory_info_buf_out) SOAP_PURE_VIRTUAL;
         /// Web service operation 'ptz-control' (returns SOAP_OK or error code)
-        virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, int &result) SOAP_PURE_VIRTUAL;
+        virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'start-real-play' (returns SOAP_OK or error code)
-        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'stop-real-play' (returns SOAP_OK or error code)
-        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'start-play-back' (returns SOAP_OK or error code)
-        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, int &result) SOAP_PURE_VIRTUAL;
+        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'stop-play-back' (returns SOAP_OK or error code)
-        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, int &result) SOAP_PURE_VIRTUAL;
+        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'pause-play-back' (returns SOAP_OK or error code)
-        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'restart-play-back' (returns SOAP_OK or error code)
-        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, int &result) SOAP_PURE_VIRTUAL;
+        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
     };
 #endif

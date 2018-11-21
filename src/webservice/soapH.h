@@ -769,20 +769,18 @@ inline struct ns2__restart_play_backResponse * soap_new_ns2__restart_play_backRe
 }
 
 inline struct ns2__restart_play_backResponse * soap_new_req_ns2__restart_play_backResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__restart_play_backResponse *_p = ::soap_new_ns2__restart_play_backResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__restart_play_backResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__restart_play_backResponse * soap_new_set_ns2__restart_play_backResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__restart_play_backResponse *_p = ::soap_new_ns2__restart_play_backResponse(soap);
 	if (_p)
@@ -953,20 +951,18 @@ inline struct ns2__pause_play_backResponse * soap_new_ns2__pause_play_backRespon
 }
 
 inline struct ns2__pause_play_backResponse * soap_new_req_ns2__pause_play_backResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__pause_play_backResponse *_p = ::soap_new_ns2__pause_play_backResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__pause_play_backResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__pause_play_backResponse * soap_new_set_ns2__pause_play_backResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__pause_play_backResponse *_p = ::soap_new_ns2__pause_play_backResponse(soap);
 	if (_p)
@@ -1141,20 +1137,18 @@ inline struct ns2__stop_play_backResponse * soap_new_ns2__stop_play_backResponse
 }
 
 inline struct ns2__stop_play_backResponse * soap_new_req_ns2__stop_play_backResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__stop_play_backResponse *_p = ::soap_new_ns2__stop_play_backResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__stop_play_backResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__stop_play_backResponse * soap_new_set_ns2__stop_play_backResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__stop_play_backResponse *_p = ::soap_new_ns2__stop_play_backResponse(soap);
 	if (_p)
@@ -1329,20 +1323,18 @@ inline struct ns2__start_play_backResponse * soap_new_ns2__start_play_backRespon
 }
 
 inline struct ns2__start_play_backResponse * soap_new_req_ns2__start_play_backResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__start_play_backResponse *_p = ::soap_new_ns2__start_play_backResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__start_play_backResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__start_play_backResponse * soap_new_set_ns2__start_play_backResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__start_play_backResponse *_p = ::soap_new_ns2__start_play_backResponse(soap);
 	if (_p)
@@ -1513,20 +1505,18 @@ inline struct ns2__stop_real_playResponse * soap_new_ns2__stop_real_playResponse
 }
 
 inline struct ns2__stop_real_playResponse * soap_new_req_ns2__stop_real_playResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__stop_real_playResponse *_p = ::soap_new_ns2__stop_real_playResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__stop_real_playResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__stop_real_playResponse * soap_new_set_ns2__stop_real_playResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__stop_real_playResponse *_p = ::soap_new_ns2__stop_real_playResponse(soap);
 	if (_p)
@@ -1697,20 +1687,18 @@ inline struct ns2__start_real_playResponse * soap_new_ns2__start_real_playRespon
 }
 
 inline struct ns2__start_real_playResponse * soap_new_req_ns2__start_real_playResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__start_real_playResponse *_p = ::soap_new_ns2__start_real_playResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__start_real_playResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__start_real_playResponse * soap_new_set_ns2__start_real_playResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__start_real_playResponse *_p = ::soap_new_ns2__start_real_playResponse(soap);
 	if (_p)
@@ -1881,20 +1869,18 @@ inline struct ns2__ptz_controlResponse * soap_new_ns2__ptz_controlResponse(struc
 }
 
 inline struct ns2__ptz_controlResponse * soap_new_req_ns2__ptz_controlResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__ptz_controlResponse *_p = ::soap_new_ns2__ptz_controlResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__ptz_controlResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__ptz_controlResponse * soap_new_set_ns2__ptz_controlResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__ptz_controlResponse *_p = ::soap_new_ns2__ptz_controlResponse(soap);
 	if (_p)
@@ -2231,20 +2217,18 @@ inline struct ns2__keepaliveResponse * soap_new_ns2__keepaliveResponse(struct so
 }
 
 inline struct ns2__keepaliveResponse * soap_new_req_ns2__keepaliveResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__keepaliveResponse *_p = ::soap_new_ns2__keepaliveResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__keepaliveResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__keepaliveResponse * soap_new_set_ns2__keepaliveResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__keepaliveResponse *_p = ::soap_new_ns2__keepaliveResponse(soap);
 	if (_p)
@@ -2407,20 +2391,18 @@ inline struct ns2__logoutResponse * soap_new_ns2__logoutResponse(struct soap *so
 }
 
 inline struct ns2__logoutResponse * soap_new_req_ns2__logoutResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__logoutResponse *_p = ::soap_new_ns2__logoutResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__logoutResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__logoutResponse * soap_new_set_ns2__logoutResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__logoutResponse *_p = ::soap_new_ns2__logoutResponse(soap);
 	if (_p)
@@ -2583,20 +2565,18 @@ inline struct ns2__loginResponse * soap_new_ns2__loginResponse(struct soap *soap
 }
 
 inline struct ns2__loginResponse * soap_new_req_ns2__loginResponse(
-	struct soap *soap,
-	int result)
+	struct soap *soap)
 {
 	struct ns2__loginResponse *_p = ::soap_new_ns2__loginResponse(soap);
 	if (_p)
 	{	::soap_default_ns2__loginResponse(soap, _p);
-		_p->result = result;
 	}
 	return _p;
 }
 
 inline struct ns2__loginResponse * soap_new_set_ns2__loginResponse(
 	struct soap *soap,
-	int result)
+	char **result)
 {
 	struct ns2__loginResponse *_p = ::soap_new_ns2__loginResponse(soap);
 	if (_p)

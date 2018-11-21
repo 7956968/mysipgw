@@ -275,7 +275,10 @@ int sipgwService::dispatch(struct soap* soap)
 static int serve_ns2__login(struct soap *soap, sipgwService *service)
 {	struct ns2__login soap_tmp_ns2__login;
 	struct ns2__loginResponse soap_tmp_ns2__loginResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__loginResponse(soap, &soap_tmp_ns2__loginResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__loginResponse.result = &soap_tmp_string;
 	soap_default_ns2__login(soap, &soap_tmp_ns2__login);
 	if (!soap_get_ns2__login(soap, &soap_tmp_ns2__login, "ns2:login", NULL))
 		return soap->error;
@@ -316,7 +319,10 @@ static int serve_ns2__login(struct soap *soap, sipgwService *service)
 static int serve_ns2__logout(struct soap *soap, sipgwService *service)
 {	struct ns2__logout soap_tmp_ns2__logout;
 	struct ns2__logoutResponse soap_tmp_ns2__logoutResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__logoutResponse(soap, &soap_tmp_ns2__logoutResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__logoutResponse.result = &soap_tmp_string;
 	soap_default_ns2__logout(soap, &soap_tmp_ns2__logout);
 	if (!soap_get_ns2__logout(soap, &soap_tmp_ns2__logout, "ns2:logout", NULL))
 		return soap->error;
@@ -357,7 +363,10 @@ static int serve_ns2__logout(struct soap *soap, sipgwService *service)
 static int serve_ns2__keepalive(struct soap *soap, sipgwService *service)
 {	struct ns2__keepalive soap_tmp_ns2__keepalive;
 	struct ns2__keepaliveResponse soap_tmp_ns2__keepaliveResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__keepaliveResponse(soap, &soap_tmp_ns2__keepaliveResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__keepaliveResponse.result = &soap_tmp_string;
 	soap_default_ns2__keepalive(soap, &soap_tmp_ns2__keepalive);
 	if (!soap_get_ns2__keepalive(soap, &soap_tmp_ns2__keepalive, "ns2:keepalive", NULL))
 		return soap->error;
@@ -442,7 +451,10 @@ static int serve_ns2__get_directory_info(struct soap *soap, sipgwService *servic
 static int serve_ns2__ptz_control(struct soap *soap, sipgwService *service)
 {	struct ns2__ptz_control soap_tmp_ns2__ptz_control;
 	struct ns2__ptz_controlResponse soap_tmp_ns2__ptz_controlResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__ptz_controlResponse(soap, &soap_tmp_ns2__ptz_controlResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__ptz_controlResponse.result = &soap_tmp_string;
 	soap_default_ns2__ptz_control(soap, &soap_tmp_ns2__ptz_control);
 	if (!soap_get_ns2__ptz_control(soap, &soap_tmp_ns2__ptz_control, "ns2:ptz-control", NULL))
 		return soap->error;
@@ -483,7 +495,10 @@ static int serve_ns2__ptz_control(struct soap *soap, sipgwService *service)
 static int serve_ns2__start_real_play(struct soap *soap, sipgwService *service)
 {	struct ns2__start_real_play soap_tmp_ns2__start_real_play;
 	struct ns2__start_real_playResponse soap_tmp_ns2__start_real_playResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__start_real_playResponse(soap, &soap_tmp_ns2__start_real_playResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__start_real_playResponse.result = &soap_tmp_string;
 	soap_default_ns2__start_real_play(soap, &soap_tmp_ns2__start_real_play);
 	if (!soap_get_ns2__start_real_play(soap, &soap_tmp_ns2__start_real_play, "ns2:start-real-play", NULL))
 		return soap->error;
@@ -524,7 +539,10 @@ static int serve_ns2__start_real_play(struct soap *soap, sipgwService *service)
 static int serve_ns2__stop_real_play(struct soap *soap, sipgwService *service)
 {	struct ns2__stop_real_play soap_tmp_ns2__stop_real_play;
 	struct ns2__stop_real_playResponse soap_tmp_ns2__stop_real_playResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__stop_real_playResponse(soap, &soap_tmp_ns2__stop_real_playResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__stop_real_playResponse.result = &soap_tmp_string;
 	soap_default_ns2__stop_real_play(soap, &soap_tmp_ns2__stop_real_play);
 	if (!soap_get_ns2__stop_real_play(soap, &soap_tmp_ns2__stop_real_play, "ns2:stop-real-play", NULL))
 		return soap->error;
@@ -565,7 +583,10 @@ static int serve_ns2__stop_real_play(struct soap *soap, sipgwService *service)
 static int serve_ns2__start_play_back(struct soap *soap, sipgwService *service)
 {	struct ns2__start_play_back soap_tmp_ns2__start_play_back;
 	struct ns2__start_play_backResponse soap_tmp_ns2__start_play_backResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__start_play_backResponse(soap, &soap_tmp_ns2__start_play_backResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__start_play_backResponse.result = &soap_tmp_string;
 	soap_default_ns2__start_play_back(soap, &soap_tmp_ns2__start_play_back);
 	if (!soap_get_ns2__start_play_back(soap, &soap_tmp_ns2__start_play_back, "ns2:start-play-back", NULL))
 		return soap->error;
@@ -606,7 +627,10 @@ static int serve_ns2__start_play_back(struct soap *soap, sipgwService *service)
 static int serve_ns2__stop_play_back(struct soap *soap, sipgwService *service)
 {	struct ns2__stop_play_back soap_tmp_ns2__stop_play_back;
 	struct ns2__stop_play_backResponse soap_tmp_ns2__stop_play_backResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__stop_play_backResponse(soap, &soap_tmp_ns2__stop_play_backResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__stop_play_backResponse.result = &soap_tmp_string;
 	soap_default_ns2__stop_play_back(soap, &soap_tmp_ns2__stop_play_back);
 	if (!soap_get_ns2__stop_play_back(soap, &soap_tmp_ns2__stop_play_back, "ns2:stop-play-back", NULL))
 		return soap->error;
@@ -647,7 +671,10 @@ static int serve_ns2__stop_play_back(struct soap *soap, sipgwService *service)
 static int serve_ns2__pause_play_back(struct soap *soap, sipgwService *service)
 {	struct ns2__pause_play_back soap_tmp_ns2__pause_play_back;
 	struct ns2__pause_play_backResponse soap_tmp_ns2__pause_play_backResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__pause_play_backResponse(soap, &soap_tmp_ns2__pause_play_backResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__pause_play_backResponse.result = &soap_tmp_string;
 	soap_default_ns2__pause_play_back(soap, &soap_tmp_ns2__pause_play_back);
 	if (!soap_get_ns2__pause_play_back(soap, &soap_tmp_ns2__pause_play_back, "ns2:pause-play-back", NULL))
 		return soap->error;
@@ -688,7 +715,10 @@ static int serve_ns2__pause_play_back(struct soap *soap, sipgwService *service)
 static int serve_ns2__restart_play_back(struct soap *soap, sipgwService *service)
 {	struct ns2__restart_play_back soap_tmp_ns2__restart_play_back;
 	struct ns2__restart_play_backResponse soap_tmp_ns2__restart_play_backResponse;
+	char * soap_tmp_string;
 	soap_default_ns2__restart_play_backResponse(soap, &soap_tmp_ns2__restart_play_backResponse);
+	soap_tmp_string = NULL;
+	soap_tmp_ns2__restart_play_backResponse.result = &soap_tmp_string;
 	soap_default_ns2__restart_play_back(soap, &soap_tmp_ns2__restart_play_back);
 	if (!soap_get_ns2__restart_play_back(soap, &soap_tmp_ns2__restart_play_back, "ns2:restart-play-back", NULL))
 		return soap->error;

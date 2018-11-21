@@ -22,7 +22,7 @@
     <element name="loginResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__login::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__login::result -->
           </sequence>
       </complexType>
     </element>
@@ -39,7 +39,7 @@
     <element name="logoutResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__logout::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__logout::result -->
           </sequence>
       </complexType>
     </element>
@@ -56,7 +56,7 @@
     <element name="keepaliveResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__keepalive::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__keepalive::result -->
           </sequence>
       </complexType>
     </element>
@@ -92,7 +92,7 @@
     <element name="ptz-controlResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__ptz_control::result -->
           </sequence>
       </complexType>
     </element>
@@ -112,7 +112,7 @@
     <element name="start-real-playResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_real_play::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::result -->
           </sequence>
       </complexType>
     </element>
@@ -132,7 +132,7 @@
     <element name="stop-real-playResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::result -->
           </sequence>
       </complexType>
     </element>
@@ -154,7 +154,7 @@
     <element name="start-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::result -->
           </sequence>
       </complexType>
     </element>
@@ -176,7 +176,7 @@
     <element name="stop-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::result -->
           </sequence>
       </complexType>
     </element>
@@ -196,7 +196,7 @@
     <element name="pause-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::result -->
           </sequence>
       </complexType>
     </element>
@@ -216,7 +216,7 @@
     <element name="restart-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::result -->
           </sequence>
       </complexType>
     </element>
