@@ -56,7 +56,6 @@ void *process_request(void *arg)
 CSipgwSvr::CSipgwSvr(struct soap *obj)
     :sipgwService(obj)
 {
-    
 }
 
 CSipgwSvr::CSipgwSvr()
@@ -131,34 +130,39 @@ int CSipgwSvr::ptz_control(char *target_dev_id, char *target_realm, int ptz, int
 
 int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
 {
-		start_real_play_message* p_message = new start_real_play_message();
+    start_real_play_message *p_message = new start_real_play_message();
 
-		memcpy(p_message->m_dev_id, target_dev_id, 20);
-		memcpy(p_message->m_real, target_realm, 20);
-		memcpy(p_message->m_media_recv_ip, media_recv_ip, 16);
-		memcpy(p_message->m_user_id, user_id, 20);
-		p_message->m_media_recv_port = media_recv_port;
-		p_message->m_message_type =( message_type_e)1;
+    memcpy(p_message->m_dev_id, target_dev_id, 20);
+    memcpy(p_message->m_real, target_realm, 20);
+    memcpy(p_message->m_media_recv_ip, media_recv_ip, 16);
+    memcpy(p_message->m_user_id, user_id, 20);
+    p_message->m_media_recv_port = media_recv_port;
+    p_message->m_message_type = (message_type_e)1;
 
-		LOG("\nwebservice receive start real play message:\n"
-        "message.device_id = %s\n"
-        "message.realm = %s\n"
-        "message.receive_ip = %s\n"
-        "message.receive_port = %d\n"
-        "message.user_id = %s\n"
-		, p_message->m_dev_id
-		, p_message->m_real
-		, p_message->m_media_recv_ip
-		, p_message->m_media_recv_port
-		, p_message->m_user_id);
+    if(30 < strlen(user_id))
+    {
+        *result = "user_id is too long, must less than 30.";
+        return SOAP_ERR;
+    }
 
-        CMyFifo<message_base*>::get_instance()->push(p_message);
+    sprintf(p_message->m_call_id, "%s", user_id);
+    m_rand_creator.get_rand_string(p_message->m_call_id + strlen(p_message->m_call_id), 20);
 
-        LOG("webservice push start real play message to fifo.\n");
+    LOG("\nwebservice receive start real play message:\n"
+            "message.device_id = %s\n"
+            "message.realm = %s\n"
+            "message.receive_ip = %s\n"
+            "message.receive_port = %d\n"
+            "message.user_id = %s\n",
+            p_message->m_dev_id, p_message->m_real, p_message->m_media_recv_ip, p_message->m_media_recv_port, p_message->m_user_id);
 
-        *result = user_id;
+    CMyFifo<message_base *>::get_instance()->push(p_message);
 
-        return SOAP_OK;
+    LOG("webservice push start real play message to fifo.\n");
+
+    *result = user_id;
+
+    return SOAP_OK;
 }
 int CSipgwSvr::stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
 {

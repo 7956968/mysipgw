@@ -37,6 +37,7 @@ class start_real_play_message : public message_base
     void print_message_info();
 
     public:
+    char m_call_id[70+1];
     char m_user_id[50+1];
     char m_dev_id[20+1];
     char m_real[20+1];

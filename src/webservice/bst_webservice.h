@@ -4,6 +4,7 @@
 //#include "sipgw.nsmap"        // XML namespace mapping table (only needed once at the global level)
 #include "soapsipgwService.h" // the service class, also #includes "soapH.h" and "soapStub.h"
 #include "threads.h"
+#include "utils/rand_generator.h"
 
 class CSipgwSvr : public sipgwService
 {
@@ -15,6 +16,9 @@ class CSipgwSvr : public sipgwService
     public:
 	int startup();
  	CSipgwSvr * copy();
+
+    private:
+    rand_generator m_rand_creator;
 
     //inherit from parent class
 
