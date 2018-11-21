@@ -1,13 +1,20 @@
+#include <signal.h>
+#include <cstring>
+#include <cassert>
+#include <unistd.h>
+
+//resip
 #if defined(HAVE_CONFIG_HXX)
 #include "resip/stack/config.hxx"
 #endif
 
-#include <cstring>
-#include <cassert>
-
 #ifndef __APPLE__
 bool TRUE=true;
 bool FALSE=false;
+#endif
+
+#ifdef USE_SSL
+#include <resip/stack/ssl/Security.hxx>
 #endif
 
 #include "sipua/basicClientUserAgent.hxx"
@@ -15,14 +22,8 @@ bool FALSE=false;
 //webservice 
 #include "webservice/sipgw.nsmap"
 #include "webservice/bst_webservice.h"
-#include <unistd.h>
 
-#ifdef USE_SSL
-#include <resip/stack/ssl/Security.hxx>
-#endif
-
-#include <signal.h>
-
+//user define
 #include "utils/myfifo.h"
 #include "message.h"
 #include "taskSchedual.h"
@@ -37,12 +38,9 @@ using namespace dlogger;
 
 #define RESIPROCATE_SUBSYSTEM Subsystem::TEST
 
-static bool exitSignalDetected = false;
-
 static void signalHandler(int signo)
 {
     std::cerr << "Shutting down" << endl;
-    exitSignalDetected = true;
 }
 
 void setup_signal()
