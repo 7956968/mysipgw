@@ -57,7 +57,7 @@ void CTaskSchedual::do_start_real_play(message_base *message)
         p_message->print_message_info();
 
 		//call sipua, send message;
-		BasicClientUserAgent::getInstance()->doInvite(p_message->m_user_id, p_message->m_dev_id, p_message->m_real,
+		BasicClientUserAgent::getInstance()->doInvite(p_message->m_call_id, p_message->m_dev_id, p_message->m_real,
 						p_message->m_media_recv_ip, p_message->m_media_recv_port);
     }
 

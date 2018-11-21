@@ -5,6 +5,8 @@
 
 using namespace dlogger;
 
+rand_generator* CSipgwSvr::m_rand_creator = new rand_generator();
+
 int http_get(struct soap *soap)
 {
     FILE *fd;
@@ -146,8 +148,11 @@ int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_
     }
 
     sprintf(p_message->m_call_id, "%s", user_id);
-    m_rand_creator.get_rand_string(p_message->m_call_id + strlen(p_message->m_call_id), 20);
-
+	
+	if(m_rand_creator)
+	{
+    	m_rand_creator->get_rand_string(p_message->m_call_id + strlen(p_message->m_call_id), 20);
+	}
     LOG("\nwebservice receive start real play message:\n"
             "message.device_id = %s\n"
             "message.realm = %s\n"
@@ -160,7 +165,7 @@ int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_
 
     LOG("webservice push start real play message to fifo.\n");
 
-    *result = user_id;
+    *result = p_message->m_call_id;
 
     return SOAP_OK;
 }

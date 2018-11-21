@@ -18,7 +18,7 @@ class CSipgwSvr : public sipgwService
  	CSipgwSvr * copy();
 
     private:
-    rand_generator m_rand_creator;
+    static rand_generator* m_rand_creator;
 
     //inherit from parent class
 
