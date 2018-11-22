@@ -18,7 +18,7 @@ A commercial use license is available from Genivia Inc., contact@genivia.com
 
 #include "soapH.h"
 
-SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.70 2018-11-21 03:11:11 GMT")
+SOAP_SOURCE_STAMP("@(#) soapC.cpp ver 2.8.70 2018-11-22 03:16:04 GMT")
 
 
 #ifndef WITH_NOGLOBAL
@@ -195,14 +195,10 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		return soap_in_byte(soap, NULL, NULL, "xsd:byte");
 	case SOAP_TYPE_int:
 		return soap_in_int(soap, NULL, NULL, "xsd:int");
-	case SOAP_TYPE_ns2__restart_play_back:
-		return soap_in_ns2__restart_play_back(soap, NULL, NULL, "ns2:restart-play-back");
-	case SOAP_TYPE_ns2__restart_play_backResponse:
-		return soap_in_ns2__restart_play_backResponse(soap, NULL, NULL, "ns2:restart-play-backResponse");
-	case SOAP_TYPE_ns2__pause_play_back:
-		return soap_in_ns2__pause_play_back(soap, NULL, NULL, "ns2:pause-play-back");
-	case SOAP_TYPE_ns2__pause_play_backResponse:
-		return soap_in_ns2__pause_play_backResponse(soap, NULL, NULL, "ns2:pause-play-backResponse");
+	case SOAP_TYPE_ns2__call_lookup:
+		return soap_in_ns2__call_lookup(soap, NULL, NULL, "ns2:call-lookup");
+	case SOAP_TYPE_ns2__call_lookupResponse:
+		return soap_in_ns2__call_lookupResponse(soap, NULL, NULL, "ns2:call-lookupResponse");
 	case SOAP_TYPE_ns2__stop_play_back:
 		return soap_in_ns2__stop_play_back(soap, NULL, NULL, "ns2:stop-play-back");
 	case SOAP_TYPE_ns2__stop_play_backResponse:
@@ -266,21 +262,13 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_getelement(struct soap *soap, int *type)
 		{	*type = SOAP_TYPE_int;
 			return soap_in_int(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:restart-play-back"))
-		{	*type = SOAP_TYPE_ns2__restart_play_back;
-			return soap_in_ns2__restart_play_back(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns2:call-lookup"))
+		{	*type = SOAP_TYPE_ns2__call_lookup;
+			return soap_in_ns2__call_lookup(soap, NULL, NULL, NULL);
 		}
-		if (!soap_match_tag(soap, t, "ns2:restart-play-backResponse"))
-		{	*type = SOAP_TYPE_ns2__restart_play_backResponse;
-			return soap_in_ns2__restart_play_backResponse(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "ns2:pause-play-back"))
-		{	*type = SOAP_TYPE_ns2__pause_play_back;
-			return soap_in_ns2__pause_play_back(soap, NULL, NULL, NULL);
-		}
-		if (!soap_match_tag(soap, t, "ns2:pause-play-backResponse"))
-		{	*type = SOAP_TYPE_ns2__pause_play_backResponse;
-			return soap_in_ns2__pause_play_backResponse(soap, NULL, NULL, NULL);
+		if (!soap_match_tag(soap, t, "ns2:call-lookupResponse"))
+		{	*type = SOAP_TYPE_ns2__call_lookupResponse;
+			return soap_in_ns2__call_lookupResponse(soap, NULL, NULL, NULL);
 		}
 		if (!soap_match_tag(soap, t, "ns2:stop-play-back"))
 		{	*type = SOAP_TYPE_ns2__stop_play_back;
@@ -430,14 +418,10 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_putelement(struct soap *soap, const void *ptr, co
 		return soap_out_byte(soap, tag, id, (const char *)ptr, "xsd:byte");
 	case SOAP_TYPE_int:
 		return soap_out_int(soap, tag, id, (const int *)ptr, "xsd:int");
-	case SOAP_TYPE_ns2__restart_play_back:
-		return soap_out_ns2__restart_play_back(soap, tag, id, (const struct ns2__restart_play_back *)ptr, "ns2:restart-play-back");
-	case SOAP_TYPE_ns2__restart_play_backResponse:
-		return soap_out_ns2__restart_play_backResponse(soap, tag, id, (const struct ns2__restart_play_backResponse *)ptr, "ns2:restart-play-backResponse");
-	case SOAP_TYPE_ns2__pause_play_back:
-		return soap_out_ns2__pause_play_back(soap, tag, id, (const struct ns2__pause_play_back *)ptr, "ns2:pause-play-back");
-	case SOAP_TYPE_ns2__pause_play_backResponse:
-		return soap_out_ns2__pause_play_backResponse(soap, tag, id, (const struct ns2__pause_play_backResponse *)ptr, "ns2:pause-play-backResponse");
+	case SOAP_TYPE_ns2__call_lookup:
+		return soap_out_ns2__call_lookup(soap, tag, id, (const struct ns2__call_lookup *)ptr, "ns2:call-lookup");
+	case SOAP_TYPE_ns2__call_lookupResponse:
+		return soap_out_ns2__call_lookupResponse(soap, tag, id, (const struct ns2__call_lookupResponse *)ptr, "ns2:call-lookupResponse");
 	case SOAP_TYPE_ns2__stop_play_back:
 		return soap_out_ns2__stop_play_back(soap, tag, id, (const struct ns2__stop_play_back *)ptr, "ns2:stop-play-back");
 	case SOAP_TYPE_ns2__stop_play_backResponse:
@@ -500,17 +484,11 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_markelement(struct soap *soap, const void *ptr, 
 	(void)soap; (void)ptr; (void)type; /* appease -Wall -Werror */
 	switch (type)
 	{
-	case SOAP_TYPE_ns2__restart_play_back:
-		soap_serialize_ns2__restart_play_back(soap, (const struct ns2__restart_play_back *)ptr);
+	case SOAP_TYPE_ns2__call_lookup:
+		soap_serialize_ns2__call_lookup(soap, (const struct ns2__call_lookup *)ptr);
 		break;
-	case SOAP_TYPE_ns2__restart_play_backResponse:
-		soap_serialize_ns2__restart_play_backResponse(soap, (const struct ns2__restart_play_backResponse *)ptr);
-		break;
-	case SOAP_TYPE_ns2__pause_play_back:
-		soap_serialize_ns2__pause_play_back(soap, (const struct ns2__pause_play_back *)ptr);
-		break;
-	case SOAP_TYPE_ns2__pause_play_backResponse:
-		soap_serialize_ns2__pause_play_backResponse(soap, (const struct ns2__pause_play_backResponse *)ptr);
+	case SOAP_TYPE_ns2__call_lookupResponse:
+		soap_serialize_ns2__call_lookupResponse(soap, (const struct ns2__call_lookupResponse *)ptr);
 		break;
 	case SOAP_TYPE_ns2__stop_play_back:
 		soap_serialize_ns2__stop_play_back(soap, (const struct ns2__stop_play_back *)ptr);
@@ -645,14 +623,10 @@ SOAP_FMAC3 void * SOAP_FMAC4 soap_instantiate(struct soap *soap, int t, const ch
 		return (void*)soap_instantiate_ns2__stop_play_backResponse(soap, -1, type, arrayType, n);
 	case SOAP_TYPE_ns2__stop_play_back:
 		return (void*)soap_instantiate_ns2__stop_play_back(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__pause_play_backResponse:
-		return (void*)soap_instantiate_ns2__pause_play_backResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__pause_play_back:
-		return (void*)soap_instantiate_ns2__pause_play_back(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__restart_play_backResponse:
-		return (void*)soap_instantiate_ns2__restart_play_backResponse(soap, -1, type, arrayType, n);
-	case SOAP_TYPE_ns2__restart_play_back:
-		return (void*)soap_instantiate_ns2__restart_play_back(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns2__call_lookupResponse:
+		return (void*)soap_instantiate_ns2__call_lookupResponse(soap, -1, type, arrayType, n);
+	case SOAP_TYPE_ns2__call_lookup:
+		return (void*)soap_instantiate_ns2__call_lookup(soap, -1, type, arrayType, n);
 #ifndef WITH_NOGLOBAL
 	case SOAP_TYPE_SOAP_ENV__Header:
 		return (void*)soap_instantiate_SOAP_ENV__Header(soap, -1, type, arrayType, n);
@@ -791,29 +765,17 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_fdelete(struct soap *soap, struct soap_clist *p)
 		else
 			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__stop_play_back*>(p->ptr), struct ns2__stop_play_back);
 		break;
-	case SOAP_TYPE_ns2__pause_play_backResponse:
+	case SOAP_TYPE_ns2__call_lookupResponse:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<struct ns2__pause_play_backResponse*>(p->ptr), struct ns2__pause_play_backResponse);
+			SOAP_DELETE(soap, static_cast<struct ns2__call_lookupResponse*>(p->ptr), struct ns2__call_lookupResponse);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__pause_play_backResponse*>(p->ptr), struct ns2__pause_play_backResponse);
+			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__call_lookupResponse*>(p->ptr), struct ns2__call_lookupResponse);
 		break;
-	case SOAP_TYPE_ns2__pause_play_back:
+	case SOAP_TYPE_ns2__call_lookup:
 		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<struct ns2__pause_play_back*>(p->ptr), struct ns2__pause_play_back);
+			SOAP_DELETE(soap, static_cast<struct ns2__call_lookup*>(p->ptr), struct ns2__call_lookup);
 		else
-			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__pause_play_back*>(p->ptr), struct ns2__pause_play_back);
-		break;
-	case SOAP_TYPE_ns2__restart_play_backResponse:
-		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<struct ns2__restart_play_backResponse*>(p->ptr), struct ns2__restart_play_backResponse);
-		else
-			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__restart_play_backResponse*>(p->ptr), struct ns2__restart_play_backResponse);
-		break;
-	case SOAP_TYPE_ns2__restart_play_back:
-		if (p->size < 0)
-			SOAP_DELETE(soap, static_cast<struct ns2__restart_play_back*>(p->ptr), struct ns2__restart_play_back);
-		else
-			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__restart_play_back*>(p->ptr), struct ns2__restart_play_back);
+			SOAP_DELETE_ARRAY(soap, static_cast<struct ns2__call_lookup*>(p->ptr), struct ns2__call_lookup);
 		break;
 #ifndef WITH_NOGLOBAL
 	case SOAP_TYPE_SOAP_ENV__Header:
@@ -957,21 +919,13 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_finsert(struct soap *soap, int t, int tt, void *
 		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__stop_play_back type=%d location=%p object=%p\n", t, p, q));
 		*(struct ns2__stop_play_back*)p = *(struct ns2__stop_play_back*)q;
 		break;
-	case SOAP_TYPE_ns2__pause_play_backResponse:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__pause_play_backResponse type=%d location=%p object=%p\n", t, p, q));
-		*(struct ns2__pause_play_backResponse*)p = *(struct ns2__pause_play_backResponse*)q;
+	case SOAP_TYPE_ns2__call_lookupResponse:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__call_lookupResponse type=%d location=%p object=%p\n", t, p, q));
+		*(struct ns2__call_lookupResponse*)p = *(struct ns2__call_lookupResponse*)q;
 		break;
-	case SOAP_TYPE_ns2__pause_play_back:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__pause_play_back type=%d location=%p object=%p\n", t, p, q));
-		*(struct ns2__pause_play_back*)p = *(struct ns2__pause_play_back*)q;
-		break;
-	case SOAP_TYPE_ns2__restart_play_backResponse:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__restart_play_backResponse type=%d location=%p object=%p\n", t, p, q));
-		*(struct ns2__restart_play_backResponse*)p = *(struct ns2__restart_play_backResponse*)q;
-		break;
-	case SOAP_TYPE_ns2__restart_play_back:
-		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__restart_play_back type=%d location=%p object=%p\n", t, p, q));
-		*(struct ns2__restart_play_back*)p = *(struct ns2__restart_play_back*)q;
+	case SOAP_TYPE_ns2__call_lookup:
+		DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Copy struct ns2__call_lookup type=%d location=%p object=%p\n", t, p, q));
+		*(struct ns2__call_lookup*)p = *(struct ns2__call_lookup*)q;
 		break;
 #ifndef WITH_NOGLOBAL
 	case SOAP_TYPE_SOAP_ENV__Header:
@@ -1713,58 +1667,39 @@ SOAP_FMAC3 struct SOAP_ENV__Header * SOAP_FMAC4 soap_get_SOAP_ENV__Header(struct
 
 #endif
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__restart_play_back(struct soap *soap, struct ns2__restart_play_back *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__call_lookup(struct soap *soap, struct ns2__call_lookup *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 	soap_default_string(soap, &a->user_id);
-	soap_default_string(soap, &a->target_dev_id);
-	soap_default_string(soap, &a->target_realm);
-	soap_default_string(soap, &a->media_recv_ip);
-	soap_default_int(soap, &a->media_recv_port);
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__restart_play_back(struct soap *soap, const struct ns2__restart_play_back *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__call_lookup(struct soap *soap, const struct ns2__call_lookup *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
 	soap_serialize_string(soap, (char*const*)&a->user_id);
-	soap_serialize_string(soap, (char*const*)&a->target_dev_id);
-	soap_serialize_string(soap, (char*const*)&a->target_realm);
-	soap_serialize_string(soap, (char*const*)&a->media_recv_ip);
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__restart_play_back(struct soap *soap, const char *tag, int id, const struct ns2__restart_play_back *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__call_lookup(struct soap *soap, const char *tag, int id, const struct ns2__call_lookup *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__restart_play_back), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__call_lookup), type))
 		return soap->error;
 	if (soap_out_string(soap, "user-id", -1, (char*const*)&a->user_id, ""))
-		return soap->error;
-	if (soap_out_string(soap, "target-dev-id", -1, (char*const*)&a->target_dev_id, ""))
-		return soap->error;
-	if (soap_out_string(soap, "target-realm", -1, (char*const*)&a->target_realm, ""))
-		return soap->error;
-	if (soap_out_string(soap, "media-recv-ip", -1, (char*const*)&a->media_recv_ip, ""))
-		return soap->error;
-	if (soap_out_int(soap, "media-recv-port", -1, &a->media_recv_port, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns2__restart_play_back * SOAP_FMAC4 soap_in_ns2__restart_play_back(struct soap *soap, const char *tag, struct ns2__restart_play_back *a, const char *type)
+SOAP_FMAC3 struct ns2__call_lookup * SOAP_FMAC4 soap_in_ns2__call_lookup(struct soap *soap, const char *tag, struct ns2__call_lookup *a, const char *type)
 {
 	size_t soap_flag_user_id = 1;
-	size_t soap_flag_target_dev_id = 1;
-	size_t soap_flag_target_realm = 1;
-	size_t soap_flag_media_recv_ip = 1;
-	size_t soap_flag_media_recv_port = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns2__restart_play_back *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__restart_play_back, sizeof(struct ns2__restart_play_back), NULL, NULL, NULL, NULL);
+	a = (struct ns2__call_lookup *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__call_lookup, sizeof(struct ns2__call_lookup), NULL, NULL, NULL, NULL);
 	if (!a)
 		return NULL;
-	soap_default_ns2__restart_play_back(soap, a);
+	soap_default_ns2__call_lookup(soap, a);
 	if (soap->body && *soap->href != '#')
 	{
 		for (;;)
@@ -1772,30 +1707,6 @@ SOAP_FMAC3 struct ns2__restart_play_back * SOAP_FMAC4 soap_in_ns2__restart_play_
 			if (soap_flag_user_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
 			{	if (soap_in_string(soap, "user-id", (char**)&a->user_id, "xsd:string"))
 				{	soap_flag_user_id--;
-					continue;
-				}
-			}
-			if (soap_flag_target_dev_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-dev-id", (char**)&a->target_dev_id, "xsd:string"))
-				{	soap_flag_target_dev_id--;
-					continue;
-				}
-			}
-			if (soap_flag_target_realm && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-realm", (char**)&a->target_realm, "xsd:string"))
-				{	soap_flag_target_realm--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_ip && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "media-recv-ip", (char**)&a->media_recv_ip, "xsd:string"))
-				{	soap_flag_media_recv_ip--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_port && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "media-recv-port", &a->media_recv_port, "xsd:int"))
-				{	soap_flag_media_recv_port--;
 					continue;
 				}
 			}
@@ -1808,40 +1719,32 @@ SOAP_FMAC3 struct ns2__restart_play_back * SOAP_FMAC4 soap_in_ns2__restart_play_
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_media_recv_port > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
-	{	a = (struct ns2__restart_play_back *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__restart_play_back, SOAP_TYPE_ns2__restart_play_back, sizeof(struct ns2__restart_play_back), 0, soap_finsert, NULL);
+	{	a = (struct ns2__call_lookup *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__call_lookup, SOAP_TYPE_ns2__call_lookup, sizeof(struct ns2__call_lookup), 0, soap_finsert, NULL);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 struct ns2__restart_play_back * SOAP_FMAC2 soap_instantiate_ns2__restart_play_back(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns2__call_lookup * SOAP_FMAC2 soap_instantiate_ns2__call_lookup(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__restart_play_back(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__call_lookup(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	struct ns2__restart_play_back *p;
-	size_t k = sizeof(struct ns2__restart_play_back);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__restart_play_back, n, soap_fdelete);
+	struct ns2__call_lookup *p;
+	size_t k = sizeof(struct ns2__call_lookup);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__call_lookup, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, struct ns2__restart_play_back);
+	{	p = SOAP_NEW(soap, struct ns2__call_lookup);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, struct ns2__restart_play_back, n);
+	{	p = SOAP_NEW_ARRAY(soap, struct ns2__call_lookup, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated struct ns2__restart_play_back location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated struct ns2__call_lookup location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -1851,28 +1754,28 @@ SOAP_FMAC1 struct ns2__restart_play_back * SOAP_FMAC2 soap_instantiate_ns2__rest
 	return p;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns2__restart_play_back(struct soap *soap, const struct ns2__restart_play_back *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns2__call_lookup(struct soap *soap, const struct ns2__call_lookup *a, const char *tag, const char *type)
 {
-	if (soap_out_ns2__restart_play_back(soap, tag ? tag : "ns2:restart-play-back", -2, a, type))
+	if (soap_out_ns2__call_lookup(soap, tag ? tag : "ns2:call-lookup", -2, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns2__restart_play_back * SOAP_FMAC4 soap_get_ns2__restart_play_back(struct soap *soap, struct ns2__restart_play_back *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns2__call_lookup * SOAP_FMAC4 soap_get_ns2__call_lookup(struct soap *soap, struct ns2__call_lookup *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__restart_play_back(soap, tag, p, type)))
+	if ((p = soap_in_ns2__call_lookup(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__restart_play_backResponse(struct soap *soap, struct ns2__restart_play_backResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__call_lookupResponse(struct soap *soap, struct ns2__call_lookupResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 	a->result = NULL;
 }
 
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__restart_play_backResponse(struct soap *soap, const struct ns2__restart_play_backResponse *a)
+SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__call_lookupResponse(struct soap *soap, const struct ns2__call_lookupResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
@@ -1880,25 +1783,25 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__restart_play_backResponse(struct 
 #endif
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__restart_play_backResponse(struct soap *soap, const char *tag, int id, const struct ns2__restart_play_backResponse *a, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__call_lookupResponse(struct soap *soap, const char *tag, int id, const struct ns2__call_lookupResponse *a, const char *type)
 {
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__restart_play_backResponse), type))
+	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__call_lookupResponse), type))
 		return soap->error;
 	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
-SOAP_FMAC3 struct ns2__restart_play_backResponse * SOAP_FMAC4 soap_in_ns2__restart_play_backResponse(struct soap *soap, const char *tag, struct ns2__restart_play_backResponse *a, const char *type)
+SOAP_FMAC3 struct ns2__call_lookupResponse * SOAP_FMAC4 soap_in_ns2__call_lookupResponse(struct soap *soap, const char *tag, struct ns2__call_lookupResponse *a, const char *type)
 {
 	size_t soap_flag_result = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
-	a = (struct ns2__restart_play_backResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__restart_play_backResponse, sizeof(struct ns2__restart_play_backResponse), NULL, NULL, NULL, NULL);
+	a = (struct ns2__call_lookupResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__call_lookupResponse, sizeof(struct ns2__call_lookupResponse), NULL, NULL, NULL, NULL);
 	if (!a)
 		return NULL;
-	soap_default_ns2__restart_play_backResponse(soap, a);
+	soap_default_ns2__call_lookupResponse(soap, a);
 	if (soap->body && *soap->href != '#')
 	{
 		for (;;)
@@ -1920,30 +1823,30 @@ SOAP_FMAC3 struct ns2__restart_play_backResponse * SOAP_FMAC4 soap_in_ns2__resta
 			return NULL;
 	}
 	else
-	{	a = (struct ns2__restart_play_backResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__restart_play_backResponse, SOAP_TYPE_ns2__restart_play_backResponse, sizeof(struct ns2__restart_play_backResponse), 0, soap_finsert, NULL);
+	{	a = (struct ns2__call_lookupResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__call_lookupResponse, SOAP_TYPE_ns2__call_lookupResponse, sizeof(struct ns2__call_lookupResponse), 0, soap_finsert, NULL);
 		if (soap->body && soap_element_end_in(soap, tag))
 			return NULL;
 	}
 	return a;
 }
 
-SOAP_FMAC1 struct ns2__restart_play_backResponse * SOAP_FMAC2 soap_instantiate_ns2__restart_play_backResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
+SOAP_FMAC1 struct ns2__call_lookupResponse * SOAP_FMAC2 soap_instantiate_ns2__call_lookupResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
 {
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__restart_play_backResponse(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__call_lookupResponse(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
 	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	struct ns2__restart_play_backResponse *p;
-	size_t k = sizeof(struct ns2__restart_play_backResponse);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__restart_play_backResponse, n, soap_fdelete);
+	struct ns2__call_lookupResponse *p;
+	size_t k = sizeof(struct ns2__call_lookupResponse);
+	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__call_lookupResponse, n, soap_fdelete);
 	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
 		return NULL;
 	if (n < 0)
-	{	p = SOAP_NEW(soap, struct ns2__restart_play_backResponse);
+	{	p = SOAP_NEW(soap, struct ns2__call_lookupResponse);
 	}
 	else
-	{	p = SOAP_NEW_ARRAY(soap, struct ns2__restart_play_backResponse, n);
+	{	p = SOAP_NEW_ARRAY(soap, struct ns2__call_lookupResponse, n);
 		k *= n;
 	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated struct ns2__restart_play_backResponse location=%p n=%d\n", (void*)p, n));
+	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated struct ns2__call_lookupResponse location=%p n=%d\n", (void*)p, n));
 	if (size)
 		*size = k;
 	if (!p)
@@ -1953,271 +1856,16 @@ SOAP_FMAC1 struct ns2__restart_play_backResponse * SOAP_FMAC2 soap_instantiate_n
 	return p;
 }
 
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns2__restart_play_backResponse(struct soap *soap, const struct ns2__restart_play_backResponse *a, const char *tag, const char *type)
+SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns2__call_lookupResponse(struct soap *soap, const struct ns2__call_lookupResponse *a, const char *tag, const char *type)
 {
-	if (soap_out_ns2__restart_play_backResponse(soap, tag ? tag : "ns2:restart-play-backResponse", -2, a, type))
+	if (soap_out_ns2__call_lookupResponse(soap, tag ? tag : "ns2:call-lookupResponse", -2, a, type))
 		return soap->error;
 	return soap_putindependent(soap);
 }
 
-SOAP_FMAC3 struct ns2__restart_play_backResponse * SOAP_FMAC4 soap_get_ns2__restart_play_backResponse(struct soap *soap, struct ns2__restart_play_backResponse *p, const char *tag, const char *type)
+SOAP_FMAC3 struct ns2__call_lookupResponse * SOAP_FMAC4 soap_get_ns2__call_lookupResponse(struct soap *soap, struct ns2__call_lookupResponse *p, const char *tag, const char *type)
 {
-	if ((p = soap_in_ns2__restart_play_backResponse(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__pause_play_back(struct soap *soap, struct ns2__pause_play_back *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-	soap_default_string(soap, &a->user_id);
-	soap_default_string(soap, &a->target_dev_id);
-	soap_default_string(soap, &a->target_realm);
-	soap_default_string(soap, &a->media_recv_ip);
-	soap_default_int(soap, &a->media_recv_port);
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__pause_play_back(struct soap *soap, const struct ns2__pause_play_back *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_serialize_string(soap, (char*const*)&a->user_id);
-	soap_serialize_string(soap, (char*const*)&a->target_dev_id);
-	soap_serialize_string(soap, (char*const*)&a->target_realm);
-	soap_serialize_string(soap, (char*const*)&a->media_recv_ip);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__pause_play_back(struct soap *soap, const char *tag, int id, const struct ns2__pause_play_back *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__pause_play_back), type))
-		return soap->error;
-	if (soap_out_string(soap, "user-id", -1, (char*const*)&a->user_id, ""))
-		return soap->error;
-	if (soap_out_string(soap, "target-dev-id", -1, (char*const*)&a->target_dev_id, ""))
-		return soap->error;
-	if (soap_out_string(soap, "target-realm", -1, (char*const*)&a->target_realm, ""))
-		return soap->error;
-	if (soap_out_string(soap, "media-recv-ip", -1, (char*const*)&a->media_recv_ip, ""))
-		return soap->error;
-	if (soap_out_int(soap, "media-recv-port", -1, &a->media_recv_port, ""))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns2__pause_play_back * SOAP_FMAC4 soap_in_ns2__pause_play_back(struct soap *soap, const char *tag, struct ns2__pause_play_back *a, const char *type)
-{
-	size_t soap_flag_user_id = 1;
-	size_t soap_flag_target_dev_id = 1;
-	size_t soap_flag_target_realm = 1;
-	size_t soap_flag_media_recv_ip = 1;
-	size_t soap_flag_media_recv_port = 1;
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns2__pause_play_back *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__pause_play_back, sizeof(struct ns2__pause_play_back), NULL, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	soap_default_ns2__pause_play_back(soap, a);
-	if (soap->body && *soap->href != '#')
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_user_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "user-id", (char**)&a->user_id, "xsd:string"))
-				{	soap_flag_user_id--;
-					continue;
-				}
-			}
-			if (soap_flag_target_dev_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-dev-id", (char**)&a->target_dev_id, "xsd:string"))
-				{	soap_flag_target_dev_id--;
-					continue;
-				}
-			}
-			if (soap_flag_target_realm && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-realm", (char**)&a->target_realm, "xsd:string"))
-				{	soap_flag_target_realm--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_ip && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "media-recv-ip", (char**)&a->media_recv_ip, "xsd:string"))
-				{	soap_flag_media_recv_ip--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_port && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "media-recv-port", &a->media_recv_port, "xsd:int"))
-				{	soap_flag_media_recv_port--;
-					continue;
-				}
-			}
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_media_recv_port > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
-	}
-	else
-	{	a = (struct ns2__pause_play_back *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__pause_play_back, SOAP_TYPE_ns2__pause_play_back, sizeof(struct ns2__pause_play_back), 0, soap_finsert, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC1 struct ns2__pause_play_back * SOAP_FMAC2 soap_instantiate_ns2__pause_play_back(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__pause_play_back(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	struct ns2__pause_play_back *p;
-	size_t k = sizeof(struct ns2__pause_play_back);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__pause_play_back, n, soap_fdelete);
-	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
-		return NULL;
-	if (n < 0)
-	{	p = SOAP_NEW(soap, struct ns2__pause_play_back);
-	}
-	else
-	{	p = SOAP_NEW_ARRAY(soap, struct ns2__pause_play_back, n);
-		k *= n;
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated struct ns2__pause_play_back location=%p n=%d\n", (void*)p, n));
-	if (size)
-		*size = k;
-	if (!p)
-		soap->error = SOAP_EOM;
-	else if (cp)
-		cp->ptr = (void*)p;
-	return p;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns2__pause_play_back(struct soap *soap, const struct ns2__pause_play_back *a, const char *tag, const char *type)
-{
-	if (soap_out_ns2__pause_play_back(soap, tag ? tag : "ns2:pause-play-back", -2, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns2__pause_play_back * SOAP_FMAC4 soap_get_ns2__pause_play_back(struct soap *soap, struct ns2__pause_play_back *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns2__pause_play_back(soap, tag, p, type)))
-		if (soap_getindependent(soap))
-			return NULL;
-	return p;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__pause_play_backResponse(struct soap *soap, struct ns2__pause_play_backResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->result = NULL;
-}
-
-SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__pause_play_backResponse(struct soap *soap, const struct ns2__pause_play_backResponse *a)
-{
-	(void)soap; (void)a; /* appease -Wall -Werror */
-#ifndef WITH_NOIDREF
-	soap_serialize_PointerTostring(soap, &a->result);
-#endif
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__pause_play_backResponse(struct soap *soap, const char *tag, int id, const struct ns2__pause_play_backResponse *a, const char *type)
-{
-	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
-	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__pause_play_backResponse), type))
-		return soap->error;
-	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
-		return soap->error;
-	return soap_element_end_out(soap, tag);
-}
-
-SOAP_FMAC3 struct ns2__pause_play_backResponse * SOAP_FMAC4 soap_in_ns2__pause_play_backResponse(struct soap *soap, const char *tag, struct ns2__pause_play_backResponse *a, const char *type)
-{
-	size_t soap_flag_result = 1;
-	if (soap_element_begin_in(soap, tag, 0, type))
-		return NULL;
-	a = (struct ns2__pause_play_backResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__pause_play_backResponse, sizeof(struct ns2__pause_play_backResponse), NULL, NULL, NULL, NULL);
-	if (!a)
-		return NULL;
-	soap_default_ns2__pause_play_backResponse(soap, a);
-	if (soap->body && *soap->href != '#')
-	{
-		for (;;)
-		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
-				{	soap_flag_result--;
-					continue;
-				}
-			}
-			if (soap->error == SOAP_TAG_MISMATCH)
-				soap->error = soap_ignore_element(soap);
-			if (soap->error == SOAP_NO_TAG)
-				break;
-			if (soap->error)
-				return NULL;
-		}
-		if (soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	else
-	{	a = (struct ns2__pause_play_backResponse *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__pause_play_backResponse, SOAP_TYPE_ns2__pause_play_backResponse, sizeof(struct ns2__pause_play_backResponse), 0, soap_finsert, NULL);
-		if (soap->body && soap_element_end_in(soap, tag))
-			return NULL;
-	}
-	return a;
-}
-
-SOAP_FMAC1 struct ns2__pause_play_backResponse * SOAP_FMAC2 soap_instantiate_ns2__pause_play_backResponse(struct soap *soap, int n, const char *type, const char *arrayType, size_t *size)
-{
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "soap_instantiate_ns2__pause_play_backResponse(%p, %d, %s, %s)\n", (void*)soap, n, type?type:"", arrayType?arrayType:""));
-	(void)type; (void)arrayType; /* appease -Wall -Werror */
-	struct ns2__pause_play_backResponse *p;
-	size_t k = sizeof(struct ns2__pause_play_backResponse);
-	struct soap_clist *cp = soap_link(soap, SOAP_TYPE_ns2__pause_play_backResponse, n, soap_fdelete);
-	if (!cp && soap && n != SOAP_NO_LINK_TO_DELETE)
-		return NULL;
-	if (n < 0)
-	{	p = SOAP_NEW(soap, struct ns2__pause_play_backResponse);
-	}
-	else
-	{	p = SOAP_NEW_ARRAY(soap, struct ns2__pause_play_backResponse, n);
-		k *= n;
-	}
-	DBGLOG(TEST, SOAP_MESSAGE(fdebug, "Instantiated struct ns2__pause_play_backResponse location=%p n=%d\n", (void*)p, n));
-	if (size)
-		*size = k;
-	if (!p)
-		soap->error = SOAP_EOM;
-	else if (cp)
-		cp->ptr = (void*)p;
-	return p;
-}
-
-SOAP_FMAC3 int SOAP_FMAC4 soap_put_ns2__pause_play_backResponse(struct soap *soap, const struct ns2__pause_play_backResponse *a, const char *tag, const char *type)
-{
-	if (soap_out_ns2__pause_play_backResponse(soap, tag ? tag : "ns2:pause-play-backResponse", -2, a, type))
-		return soap->error;
-	return soap_putindependent(soap);
-}
-
-SOAP_FMAC3 struct ns2__pause_play_backResponse * SOAP_FMAC4 soap_get_ns2__pause_play_backResponse(struct soap *soap, struct ns2__pause_play_backResponse *p, const char *tag, const char *type)
-{
-	if ((p = soap_in_ns2__pause_play_backResponse(soap, tag, p, type)))
+	if ((p = soap_in_ns2__call_lookupResponse(soap, tag, p, type)))
 		if (soap_getindependent(soap))
 			return NULL;
 	return p;
@@ -2227,12 +1875,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__stop_play_back(struct soap *soap, s
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 	soap_default_string(soap, &a->user_id);
-	soap_default_string(soap, &a->target_dev_id);
-	soap_default_string(soap, &a->target_realm);
-	soap_default_string(soap, &a->media_recv_ip);
-	soap_default_int(soap, &a->media_recv_port);
-	soap_default_string(soap, &a->start_time);
-	soap_default_string(soap, &a->end_time);
+	soap_default_string(soap, &a->call_id);
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__stop_play_back(struct soap *soap, const struct ns2__stop_play_back *a)
@@ -2240,11 +1883,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__stop_play_back(struct soap *soap,
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
 	soap_serialize_string(soap, (char*const*)&a->user_id);
-	soap_serialize_string(soap, (char*const*)&a->target_dev_id);
-	soap_serialize_string(soap, (char*const*)&a->target_realm);
-	soap_serialize_string(soap, (char*const*)&a->media_recv_ip);
-	soap_serialize_string(soap, (char*const*)&a->start_time);
-	soap_serialize_string(soap, (char*const*)&a->end_time);
+	soap_serialize_string(soap, (char*const*)&a->call_id);
 #endif
 }
 
@@ -2255,17 +1894,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__stop_play_back(struct soap *soap, const 
 		return soap->error;
 	if (soap_out_string(soap, "user-id", -1, (char*const*)&a->user_id, ""))
 		return soap->error;
-	if (soap_out_string(soap, "target-dev-id", -1, (char*const*)&a->target_dev_id, ""))
-		return soap->error;
-	if (soap_out_string(soap, "target-realm", -1, (char*const*)&a->target_realm, ""))
-		return soap->error;
-	if (soap_out_string(soap, "media-recv-ip", -1, (char*const*)&a->media_recv_ip, ""))
-		return soap->error;
-	if (soap_out_int(soap, "media-recv-port", -1, &a->media_recv_port, ""))
-		return soap->error;
-	if (soap_out_string(soap, "start-time", -1, (char*const*)&a->start_time, ""))
-		return soap->error;
-	if (soap_out_string(soap, "end-time", -1, (char*const*)&a->end_time, ""))
+	if (soap_out_string(soap, "call-id", -1, (char*const*)&a->call_id, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -2273,12 +1902,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__stop_play_back(struct soap *soap, const 
 SOAP_FMAC3 struct ns2__stop_play_back * SOAP_FMAC4 soap_in_ns2__stop_play_back(struct soap *soap, const char *tag, struct ns2__stop_play_back *a, const char *type)
 {
 	size_t soap_flag_user_id = 1;
-	size_t soap_flag_target_dev_id = 1;
-	size_t soap_flag_target_realm = 1;
-	size_t soap_flag_media_recv_ip = 1;
-	size_t soap_flag_media_recv_port = 1;
-	size_t soap_flag_start_time = 1;
-	size_t soap_flag_end_time = 1;
+	size_t soap_flag_call_id = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
 	a = (struct ns2__stop_play_back *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__stop_play_back, sizeof(struct ns2__stop_play_back), NULL, NULL, NULL, NULL);
@@ -2295,39 +1919,9 @@ SOAP_FMAC3 struct ns2__stop_play_back * SOAP_FMAC4 soap_in_ns2__stop_play_back(s
 					continue;
 				}
 			}
-			if (soap_flag_target_dev_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-dev-id", (char**)&a->target_dev_id, "xsd:string"))
-				{	soap_flag_target_dev_id--;
-					continue;
-				}
-			}
-			if (soap_flag_target_realm && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-realm", (char**)&a->target_realm, "xsd:string"))
-				{	soap_flag_target_realm--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_ip && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "media-recv-ip", (char**)&a->media_recv_ip, "xsd:string"))
-				{	soap_flag_media_recv_ip--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_port && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "media-recv-port", &a->media_recv_port, "xsd:int"))
-				{	soap_flag_media_recv_port--;
-					continue;
-				}
-			}
-			if (soap_flag_start_time && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "start-time", (char**)&a->start_time, "xsd:string"))
-				{	soap_flag_start_time--;
-					continue;
-				}
-			}
-			if (soap_flag_end_time && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "end-time", (char**)&a->end_time, "xsd:string"))
-				{	soap_flag_end_time--;
+			if (soap_flag_call_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+			{	if (soap_in_string(soap, "call-id", (char**)&a->call_id, "xsd:string"))
+				{	soap_flag_call_id--;
 					continue;
 				}
 			}
@@ -2340,14 +1934,6 @@ SOAP_FMAC3 struct ns2__stop_play_back * SOAP_FMAC4 soap_in_ns2__stop_play_back(s
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_media_recv_port > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__stop_play_back *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__stop_play_back, SOAP_TYPE_ns2__stop_play_back, sizeof(struct ns2__stop_play_back), 0, soap_finsert, NULL);
@@ -2678,14 +2264,14 @@ SOAP_FMAC3 struct ns2__start_play_back * SOAP_FMAC4 soap_get_ns2__start_play_bac
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__start_play_backResponse(struct soap *soap, struct ns2__start_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->result = NULL;
+	a->call_id = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__start_play_backResponse(struct soap *soap, const struct ns2__start_play_backResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTostring(soap, &a->result);
+	soap_serialize_PointerTostring(soap, &a->call_id);
 #endif
 }
 
@@ -2694,14 +2280,14 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__start_play_backResponse(struct soap *soa
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__start_play_backResponse), type))
 		return soap->error;
-	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "call-id", -1, &a->call_id, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
 SOAP_FMAC3 struct ns2__start_play_backResponse * SOAP_FMAC4 soap_in_ns2__start_play_backResponse(struct soap *soap, const char *tag, struct ns2__start_play_backResponse *a, const char *type)
 {
-	size_t soap_flag_result = 1;
+	size_t soap_flag_call_id = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
 	a = (struct ns2__start_play_backResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__start_play_backResponse, sizeof(struct ns2__start_play_backResponse), NULL, NULL, NULL, NULL);
@@ -2712,9 +2298,9 @@ SOAP_FMAC3 struct ns2__start_play_backResponse * SOAP_FMAC4 soap_in_ns2__start_p
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
-				{	soap_flag_result--;
+			if (soap_flag_call_id && soap->error == SOAP_TAG_MISMATCH)
+			{	if (soap_in_PointerTostring(soap, "call-id", &a->call_id, "xsd:string"))
+				{	soap_flag_call_id--;
 					continue;
 				}
 			}
@@ -2781,10 +2367,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__stop_real_play(struct soap *soap, s
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 	soap_default_string(soap, &a->user_id);
-	soap_default_string(soap, &a->target_dev_id);
-	soap_default_string(soap, &a->target_realm);
-	soap_default_string(soap, &a->media_recv_ip);
-	soap_default_int(soap, &a->media_recv_port);
+	soap_default_string(soap, &a->call_id);
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__stop_real_play(struct soap *soap, const struct ns2__stop_real_play *a)
@@ -2792,9 +2375,7 @@ SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__stop_real_play(struct soap *soap,
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
 	soap_serialize_string(soap, (char*const*)&a->user_id);
-	soap_serialize_string(soap, (char*const*)&a->target_dev_id);
-	soap_serialize_string(soap, (char*const*)&a->target_realm);
-	soap_serialize_string(soap, (char*const*)&a->media_recv_ip);
+	soap_serialize_string(soap, (char*const*)&a->call_id);
 #endif
 }
 
@@ -2805,13 +2386,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__stop_real_play(struct soap *soap, const 
 		return soap->error;
 	if (soap_out_string(soap, "user-id", -1, (char*const*)&a->user_id, ""))
 		return soap->error;
-	if (soap_out_string(soap, "target-dev-id", -1, (char*const*)&a->target_dev_id, ""))
-		return soap->error;
-	if (soap_out_string(soap, "target-realm", -1, (char*const*)&a->target_realm, ""))
-		return soap->error;
-	if (soap_out_string(soap, "media-recv-ip", -1, (char*const*)&a->media_recv_ip, ""))
-		return soap->error;
-	if (soap_out_int(soap, "media-recv-port", -1, &a->media_recv_port, ""))
+	if (soap_out_string(soap, "call-id", -1, (char*const*)&a->call_id, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
@@ -2819,10 +2394,7 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__stop_real_play(struct soap *soap, const 
 SOAP_FMAC3 struct ns2__stop_real_play * SOAP_FMAC4 soap_in_ns2__stop_real_play(struct soap *soap, const char *tag, struct ns2__stop_real_play *a, const char *type)
 {
 	size_t soap_flag_user_id = 1;
-	size_t soap_flag_target_dev_id = 1;
-	size_t soap_flag_target_realm = 1;
-	size_t soap_flag_media_recv_ip = 1;
-	size_t soap_flag_media_recv_port = 1;
+	size_t soap_flag_call_id = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
 	a = (struct ns2__stop_real_play *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__stop_real_play, sizeof(struct ns2__stop_real_play), NULL, NULL, NULL, NULL);
@@ -2839,27 +2411,9 @@ SOAP_FMAC3 struct ns2__stop_real_play * SOAP_FMAC4 soap_in_ns2__stop_real_play(s
 					continue;
 				}
 			}
-			if (soap_flag_target_dev_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-dev-id", (char**)&a->target_dev_id, "xsd:string"))
-				{	soap_flag_target_dev_id--;
-					continue;
-				}
-			}
-			if (soap_flag_target_realm && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "target-realm", (char**)&a->target_realm, "xsd:string"))
-				{	soap_flag_target_realm--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_ip && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
-			{	if (soap_in_string(soap, "media-recv-ip", (char**)&a->media_recv_ip, "xsd:string"))
-				{	soap_flag_media_recv_ip--;
-					continue;
-				}
-			}
-			if (soap_flag_media_recv_port && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_int(soap, "media-recv-port", &a->media_recv_port, "xsd:int"))
-				{	soap_flag_media_recv_port--;
+			if (soap_flag_call_id && (soap->error == SOAP_TAG_MISMATCH || soap->error == SOAP_NO_TAG))
+			{	if (soap_in_string(soap, "call-id", (char**)&a->call_id, "xsd:string"))
+				{	soap_flag_call_id--;
 					continue;
 				}
 			}
@@ -2872,14 +2426,6 @@ SOAP_FMAC3 struct ns2__stop_real_play * SOAP_FMAC4 soap_in_ns2__stop_real_play(s
 		}
 		if (soap_element_end_in(soap, tag))
 			return NULL;
-		if ((soap->mode & SOAP_XML_STRICT) && (soap_flag_media_recv_port > 0))
-		{	soap->error = SOAP_OCCURS;
-			return NULL;
-		}
-	}
-	else if ((soap->mode & SOAP_XML_STRICT) && *soap->href != '#')
-	{	soap->error = SOAP_OCCURS;
-		return NULL;
 	}
 	else
 	{	a = (struct ns2__stop_real_play *)soap_id_forward(soap, soap->href, (void*)a, 0, SOAP_TYPE_ns2__stop_real_play, SOAP_TYPE_ns2__stop_real_play, sizeof(struct ns2__stop_real_play), 0, soap_finsert, NULL);
@@ -3188,14 +2734,14 @@ SOAP_FMAC3 struct ns2__start_real_play * SOAP_FMAC4 soap_get_ns2__start_real_pla
 SOAP_FMAC3 void SOAP_FMAC4 soap_default_ns2__start_real_playResponse(struct soap *soap, struct ns2__start_real_playResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
-	a->result = NULL;
+	a->call_id = NULL;
 }
 
 SOAP_FMAC3 void SOAP_FMAC4 soap_serialize_ns2__start_real_playResponse(struct soap *soap, const struct ns2__start_real_playResponse *a)
 {
 	(void)soap; (void)a; /* appease -Wall -Werror */
 #ifndef WITH_NOIDREF
-	soap_serialize_PointerTostring(soap, &a->result);
+	soap_serialize_PointerTostring(soap, &a->call_id);
 #endif
 }
 
@@ -3204,14 +2750,14 @@ SOAP_FMAC3 int SOAP_FMAC4 soap_out_ns2__start_real_playResponse(struct soap *soa
 	(void)soap; (void)tag; (void)id; (void)a; (void)type; /* appease -Wall -Werror */
 	if (soap_element_begin_out(soap, tag, soap_embedded_id(soap, id, a, SOAP_TYPE_ns2__start_real_playResponse), type))
 		return soap->error;
-	if (soap_out_PointerTostring(soap, "result", -1, &a->result, ""))
+	if (soap_out_PointerTostring(soap, "call-id", -1, &a->call_id, ""))
 		return soap->error;
 	return soap_element_end_out(soap, tag);
 }
 
 SOAP_FMAC3 struct ns2__start_real_playResponse * SOAP_FMAC4 soap_in_ns2__start_real_playResponse(struct soap *soap, const char *tag, struct ns2__start_real_playResponse *a, const char *type)
 {
-	size_t soap_flag_result = 1;
+	size_t soap_flag_call_id = 1;
 	if (soap_element_begin_in(soap, tag, 0, type))
 		return NULL;
 	a = (struct ns2__start_real_playResponse *)soap_id_enter(soap, soap->id, a, SOAP_TYPE_ns2__start_real_playResponse, sizeof(struct ns2__start_real_playResponse), NULL, NULL, NULL, NULL);
@@ -3222,9 +2768,9 @@ SOAP_FMAC3 struct ns2__start_real_playResponse * SOAP_FMAC4 soap_in_ns2__start_r
 	{
 		for (;;)
 		{	soap->error = SOAP_TAG_MISMATCH;
-			if (soap_flag_result && soap->error == SOAP_TAG_MISMATCH)
-			{	if (soap_in_PointerTostring(soap, "result", &a->result, "xsd:string"))
-				{	soap_flag_result--;
+			if (soap_flag_call_id && soap->error == SOAP_TAG_MISMATCH)
+			{	if (soap_in_PointerTostring(soap, "call-id", &a->call_id, "xsd:string"))
+				{	soap_flag_call_id--;
 					continue;
 				}
 			}

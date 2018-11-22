@@ -235,8 +235,7 @@ static int serve_ns2__start_real_play(struct soap*, sipgwService*);
 static int serve_ns2__stop_real_play(struct soap*, sipgwService*);
 static int serve_ns2__start_play_back(struct soap*, sipgwService*);
 static int serve_ns2__stop_play_back(struct soap*, sipgwService*);
-static int serve_ns2__pause_play_back(struct soap*, sipgwService*);
-static int serve_ns2__restart_play_back(struct soap*, sipgwService*);
+static int serve_ns2__call_lookup(struct soap*, sipgwService*);
 
 int sipgwService::dispatch()
 {	return dispatch(this->soap);
@@ -265,10 +264,8 @@ int sipgwService::dispatch(struct soap* soap)
 		return serve_ns2__start_play_back(soap, this);
 	if (!soap_match_tag(soap, soap->tag, "ns2:stop-play-back"))
 		return serve_ns2__stop_play_back(soap, this);
-	if (!soap_match_tag(soap, soap->tag, "ns2:pause-play-back"))
-		return serve_ns2__pause_play_back(soap, this);
-	if (!soap_match_tag(soap, soap->tag, "ns2:restart-play-back"))
-		return serve_ns2__restart_play_back(soap, this);
+	if (!soap_match_tag(soap, soap->tag, "ns2:call-lookup"))
+		return serve_ns2__call_lookup(soap, this);
 	return soap->error = SOAP_NO_METHOD;
 }
 
@@ -498,7 +495,7 @@ static int serve_ns2__start_real_play(struct soap *soap, sipgwService *service)
 	char * soap_tmp_string;
 	soap_default_ns2__start_real_playResponse(soap, &soap_tmp_ns2__start_real_playResponse);
 	soap_tmp_string = NULL;
-	soap_tmp_ns2__start_real_playResponse.result = &soap_tmp_string;
+	soap_tmp_ns2__start_real_playResponse.call_id = &soap_tmp_string;
 	soap_default_ns2__start_real_play(soap, &soap_tmp_ns2__start_real_play);
 	if (!soap_get_ns2__start_real_play(soap, &soap_tmp_ns2__start_real_play, "ns2:start-real-play", NULL))
 		return soap->error;
@@ -506,7 +503,7 @@ static int serve_ns2__start_real_play(struct soap *soap, sipgwService *service)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->start_real_play(soap_tmp_ns2__start_real_play.user_id, soap_tmp_ns2__start_real_play.target_dev_id, soap_tmp_ns2__start_real_play.target_realm, soap_tmp_ns2__start_real_play.media_recv_ip, soap_tmp_ns2__start_real_play.media_recv_port, soap_tmp_ns2__start_real_playResponse.result);
+	soap->error = service->start_real_play(soap_tmp_ns2__start_real_play.user_id, soap_tmp_ns2__start_real_play.target_dev_id, soap_tmp_ns2__start_real_play.target_realm, soap_tmp_ns2__start_real_play.media_recv_ip, soap_tmp_ns2__start_real_play.media_recv_port, soap_tmp_ns2__start_real_playResponse.call_id);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
@@ -550,7 +547,7 @@ static int serve_ns2__stop_real_play(struct soap *soap, sipgwService *service)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->stop_real_play(soap_tmp_ns2__stop_real_play.user_id, soap_tmp_ns2__stop_real_play.target_dev_id, soap_tmp_ns2__stop_real_play.target_realm, soap_tmp_ns2__stop_real_play.media_recv_ip, soap_tmp_ns2__stop_real_play.media_recv_port, soap_tmp_ns2__stop_real_playResponse.result);
+	soap->error = service->stop_real_play(soap_tmp_ns2__stop_real_play.user_id, soap_tmp_ns2__stop_real_play.call_id, soap_tmp_ns2__stop_real_playResponse.result);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
@@ -586,7 +583,7 @@ static int serve_ns2__start_play_back(struct soap *soap, sipgwService *service)
 	char * soap_tmp_string;
 	soap_default_ns2__start_play_backResponse(soap, &soap_tmp_ns2__start_play_backResponse);
 	soap_tmp_string = NULL;
-	soap_tmp_ns2__start_play_backResponse.result = &soap_tmp_string;
+	soap_tmp_ns2__start_play_backResponse.call_id = &soap_tmp_string;
 	soap_default_ns2__start_play_back(soap, &soap_tmp_ns2__start_play_back);
 	if (!soap_get_ns2__start_play_back(soap, &soap_tmp_ns2__start_play_back, "ns2:start-play-back", NULL))
 		return soap->error;
@@ -594,7 +591,7 @@ static int serve_ns2__start_play_back(struct soap *soap, sipgwService *service)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->start_play_back(soap_tmp_ns2__start_play_back.user_id, soap_tmp_ns2__start_play_back.target_dev_id, soap_tmp_ns2__start_play_back.target_realm, soap_tmp_ns2__start_play_back.media_recv_ip, soap_tmp_ns2__start_play_back.media_recv_port, soap_tmp_ns2__start_play_back.start_time, soap_tmp_ns2__start_play_back.end_time, soap_tmp_ns2__start_play_backResponse.result);
+	soap->error = service->start_play_back(soap_tmp_ns2__start_play_back.user_id, soap_tmp_ns2__start_play_back.target_dev_id, soap_tmp_ns2__start_play_back.target_realm, soap_tmp_ns2__start_play_back.media_recv_ip, soap_tmp_ns2__start_play_back.media_recv_port, soap_tmp_ns2__start_play_back.start_time, soap_tmp_ns2__start_play_back.end_time, soap_tmp_ns2__start_play_backResponse.call_id);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
@@ -638,7 +635,7 @@ static int serve_ns2__stop_play_back(struct soap *soap, sipgwService *service)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->stop_play_back(soap_tmp_ns2__stop_play_back.user_id, soap_tmp_ns2__stop_play_back.target_dev_id, soap_tmp_ns2__stop_play_back.target_realm, soap_tmp_ns2__stop_play_back.media_recv_ip, soap_tmp_ns2__stop_play_back.media_recv_port, soap_tmp_ns2__stop_play_back.start_time, soap_tmp_ns2__stop_play_back.end_time, soap_tmp_ns2__stop_play_backResponse.result);
+	soap->error = service->stop_play_back(soap_tmp_ns2__stop_play_back.user_id, soap_tmp_ns2__stop_play_back.call_id, soap_tmp_ns2__stop_play_backResponse.result);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
@@ -668,33 +665,33 @@ static int serve_ns2__stop_play_back(struct soap *soap, sipgwService *service)
 	return soap_closesock(soap);
 }
 
-static int serve_ns2__pause_play_back(struct soap *soap, sipgwService *service)
-{	struct ns2__pause_play_back soap_tmp_ns2__pause_play_back;
-	struct ns2__pause_play_backResponse soap_tmp_ns2__pause_play_backResponse;
+static int serve_ns2__call_lookup(struct soap *soap, sipgwService *service)
+{	struct ns2__call_lookup soap_tmp_ns2__call_lookup;
+	struct ns2__call_lookupResponse soap_tmp_ns2__call_lookupResponse;
 	char * soap_tmp_string;
-	soap_default_ns2__pause_play_backResponse(soap, &soap_tmp_ns2__pause_play_backResponse);
+	soap_default_ns2__call_lookupResponse(soap, &soap_tmp_ns2__call_lookupResponse);
 	soap_tmp_string = NULL;
-	soap_tmp_ns2__pause_play_backResponse.result = &soap_tmp_string;
-	soap_default_ns2__pause_play_back(soap, &soap_tmp_ns2__pause_play_back);
-	if (!soap_get_ns2__pause_play_back(soap, &soap_tmp_ns2__pause_play_back, "ns2:pause-play-back", NULL))
+	soap_tmp_ns2__call_lookupResponse.result = &soap_tmp_string;
+	soap_default_ns2__call_lookup(soap, &soap_tmp_ns2__call_lookup);
+	if (!soap_get_ns2__call_lookup(soap, &soap_tmp_ns2__call_lookup, "ns2:call-lookup", NULL))
 		return soap->error;
 	if (soap_body_end_in(soap)
 	 || soap_envelope_end_in(soap)
 	 || soap_end_recv(soap))
 		return soap->error;
-	soap->error = service->pause_play_back(soap_tmp_ns2__pause_play_back.user_id, soap_tmp_ns2__pause_play_back.target_dev_id, soap_tmp_ns2__pause_play_back.target_realm, soap_tmp_ns2__pause_play_back.media_recv_ip, soap_tmp_ns2__pause_play_back.media_recv_port, soap_tmp_ns2__pause_play_backResponse.result);
+	soap->error = service->call_lookup(soap_tmp_ns2__call_lookup.user_id, soap_tmp_ns2__call_lookupResponse.result);
 	if (soap->error)
 		return soap->error;
 	soap->encodingStyle = NULL;
 	soap_serializeheader(soap);
-	soap_serialize_ns2__pause_play_backResponse(soap, &soap_tmp_ns2__pause_play_backResponse);
+	soap_serialize_ns2__call_lookupResponse(soap, &soap_tmp_ns2__call_lookupResponse);
 	if (soap_begin_count(soap))
 		return soap->error;
 	if (soap->mode & SOAP_IO_LENGTH)
 	{	if (soap_envelope_begin_out(soap)
 		 || soap_putheader(soap)
 		 || soap_body_begin_out(soap)
-		 || soap_put_ns2__pause_play_backResponse(soap, &soap_tmp_ns2__pause_play_backResponse, "ns2:pause-play-backResponse", "")
+		 || soap_put_ns2__call_lookupResponse(soap, &soap_tmp_ns2__call_lookupResponse, "ns2:call-lookupResponse", "")
 		 || soap_body_end_out(soap)
 		 || soap_envelope_end_out(soap))
 			 return soap->error;
@@ -704,51 +701,7 @@ static int serve_ns2__pause_play_back(struct soap *soap, sipgwService *service)
 	 || soap_envelope_begin_out(soap)
 	 || soap_putheader(soap)
 	 || soap_body_begin_out(soap)
-	 || soap_put_ns2__pause_play_backResponse(soap, &soap_tmp_ns2__pause_play_backResponse, "ns2:pause-play-backResponse", "")
-	 || soap_body_end_out(soap)
-	 || soap_envelope_end_out(soap)
-	 || soap_end_send(soap))
-		return soap->error;
-	return soap_closesock(soap);
-}
-
-static int serve_ns2__restart_play_back(struct soap *soap, sipgwService *service)
-{	struct ns2__restart_play_back soap_tmp_ns2__restart_play_back;
-	struct ns2__restart_play_backResponse soap_tmp_ns2__restart_play_backResponse;
-	char * soap_tmp_string;
-	soap_default_ns2__restart_play_backResponse(soap, &soap_tmp_ns2__restart_play_backResponse);
-	soap_tmp_string = NULL;
-	soap_tmp_ns2__restart_play_backResponse.result = &soap_tmp_string;
-	soap_default_ns2__restart_play_back(soap, &soap_tmp_ns2__restart_play_back);
-	if (!soap_get_ns2__restart_play_back(soap, &soap_tmp_ns2__restart_play_back, "ns2:restart-play-back", NULL))
-		return soap->error;
-	if (soap_body_end_in(soap)
-	 || soap_envelope_end_in(soap)
-	 || soap_end_recv(soap))
-		return soap->error;
-	soap->error = service->restart_play_back(soap_tmp_ns2__restart_play_back.user_id, soap_tmp_ns2__restart_play_back.target_dev_id, soap_tmp_ns2__restart_play_back.target_realm, soap_tmp_ns2__restart_play_back.media_recv_ip, soap_tmp_ns2__restart_play_back.media_recv_port, soap_tmp_ns2__restart_play_backResponse.result);
-	if (soap->error)
-		return soap->error;
-	soap->encodingStyle = NULL;
-	soap_serializeheader(soap);
-	soap_serialize_ns2__restart_play_backResponse(soap, &soap_tmp_ns2__restart_play_backResponse);
-	if (soap_begin_count(soap))
-		return soap->error;
-	if (soap->mode & SOAP_IO_LENGTH)
-	{	if (soap_envelope_begin_out(soap)
-		 || soap_putheader(soap)
-		 || soap_body_begin_out(soap)
-		 || soap_put_ns2__restart_play_backResponse(soap, &soap_tmp_ns2__restart_play_backResponse, "ns2:restart-play-backResponse", "")
-		 || soap_body_end_out(soap)
-		 || soap_envelope_end_out(soap))
-			 return soap->error;
-	};
-	if (soap_end_count(soap)
-	 || soap_response(soap, SOAP_OK)
-	 || soap_envelope_begin_out(soap)
-	 || soap_putheader(soap)
-	 || soap_body_begin_out(soap)
-	 || soap_put_ns2__restart_play_backResponse(soap, &soap_tmp_ns2__restart_play_backResponse, "ns2:restart-play-backResponse", "")
+	 || soap_put_ns2__call_lookupResponse(soap, &soap_tmp_ns2__call_lookupResponse, "ns2:call-lookupResponse", "")
 	 || soap_body_end_out(soap)
 	 || soap_envelope_end_out(soap)
 	 || soap_end_send(soap))

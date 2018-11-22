@@ -51,10 +51,8 @@ struct ns2__start_play_backResponse;	/* webservice_source.h:25 */
 struct ns2__start_play_back;	/* webservice_source.h:25 */
 struct ns2__stop_play_backResponse;	/* webservice_source.h:26 */
 struct ns2__stop_play_back;	/* webservice_source.h:26 */
-struct ns2__pause_play_backResponse;	/* webservice_source.h:28 */
-struct ns2__pause_play_back;	/* webservice_source.h:28 */
-struct ns2__restart_play_backResponse;	/* webservice_source.h:29 */
-struct ns2__restart_play_back;	/* webservice_source.h:29 */
+struct ns2__call_lookupResponse;	/* webservice_source.h:28 */
+struct ns2__call_lookup;	/* webservice_source.h:28 */
 
 /* webservice_source.h:15 */
 #ifndef SOAP_TYPE_ns2__loginResponse
@@ -256,13 +254,13 @@ struct SOAP_CMAC ns2__ptz_control {
 /* complex XSD type 'ns2:start-real-playResponse': */
 struct SOAP_CMAC ns2__start_real_playResponse {
       public:
-        /** Optional element 'result' of XSD type 'xsd:string' */
-        char **result;
+        /** Optional element 'call-id' of XSD type 'xsd:string' */
+        char **call_id;
       public:
         /** Return unique type id SOAP_TYPE_ns2__start_real_playResponse */
         long soap_type() const { return SOAP_TYPE_ns2__start_real_playResponse; }
         /** Constructor with member initializations */
-        ns2__start_real_playResponse() : result() { }
+        ns2__start_real_playResponse() : call_id() { }
         /** Friend allocator */
         friend SOAP_FMAC1 ns2__start_real_playResponse * SOAP_FMAC2 soap_instantiate_ns2__start_real_playResponse(struct soap*, int, const char*, const char*, size_t*);
 };
@@ -320,19 +318,13 @@ struct SOAP_CMAC ns2__stop_real_play {
       public:
         /** Optional element 'user-id' of XSD type 'xsd:string' */
         char *user_id;
-        /** Optional element 'target-dev-id' of XSD type 'xsd:string' */
-        char *target_dev_id;
-        /** Optional element 'target-realm' of XSD type 'xsd:string' */
-        char *target_realm;
-        /** Optional element 'media-recv-ip' of XSD type 'xsd:string' */
-        char *media_recv_ip;
-        /** Required element 'media-recv-port' of XSD type 'xsd:int' */
-        int media_recv_port;
+        /** Optional element 'call-id' of XSD type 'xsd:string' */
+        char *call_id;
       public:
         /** Return unique type id SOAP_TYPE_ns2__stop_real_play */
         long soap_type() const { return SOAP_TYPE_ns2__stop_real_play; }
         /** Constructor with member initializations */
-        ns2__stop_real_play() : user_id(), target_dev_id(), target_realm(), media_recv_ip(), media_recv_port() { }
+        ns2__stop_real_play() : user_id(), call_id() { }
         /** Friend allocator */
         friend SOAP_FMAC1 ns2__stop_real_play * SOAP_FMAC2 soap_instantiate_ns2__stop_real_play(struct soap*, int, const char*, const char*, size_t*);
 };
@@ -344,13 +336,13 @@ struct SOAP_CMAC ns2__stop_real_play {
 /* complex XSD type 'ns2:start-play-backResponse': */
 struct SOAP_CMAC ns2__start_play_backResponse {
       public:
-        /** Optional element 'result' of XSD type 'xsd:string' */
-        char **result;
+        /** Optional element 'call-id' of XSD type 'xsd:string' */
+        char **call_id;
       public:
         /** Return unique type id SOAP_TYPE_ns2__start_play_backResponse */
         long soap_type() const { return SOAP_TYPE_ns2__start_play_backResponse; }
         /** Constructor with member initializations */
-        ns2__start_play_backResponse() : result() { }
+        ns2__start_play_backResponse() : call_id() { }
         /** Friend allocator */
         friend SOAP_FMAC1 ns2__start_play_backResponse * SOAP_FMAC2 soap_instantiate_ns2__start_play_backResponse(struct soap*, int, const char*, const char*, size_t*);
 };
@@ -412,120 +404,58 @@ struct SOAP_CMAC ns2__stop_play_back {
       public:
         /** Optional element 'user-id' of XSD type 'xsd:string' */
         char *user_id;
-        /** Optional element 'target-dev-id' of XSD type 'xsd:string' */
-        char *target_dev_id;
-        /** Optional element 'target-realm' of XSD type 'xsd:string' */
-        char *target_realm;
-        /** Optional element 'media-recv-ip' of XSD type 'xsd:string' */
-        char *media_recv_ip;
-        /** Required element 'media-recv-port' of XSD type 'xsd:int' */
-        int media_recv_port;
-        /** Optional element 'start-time' of XSD type 'xsd:string' */
-        char *start_time;
-        /** Optional element 'end-time' of XSD type 'xsd:string' */
-        char *end_time;
+        /** Optional element 'call-id' of XSD type 'xsd:string' */
+        char *call_id;
       public:
         /** Return unique type id SOAP_TYPE_ns2__stop_play_back */
         long soap_type() const { return SOAP_TYPE_ns2__stop_play_back; }
         /** Constructor with member initializations */
-        ns2__stop_play_back() : user_id(), target_dev_id(), target_realm(), media_recv_ip(), media_recv_port(), start_time(), end_time() { }
+        ns2__stop_play_back() : user_id(), call_id() { }
         /** Friend allocator */
         friend SOAP_FMAC1 ns2__stop_play_back * SOAP_FMAC2 soap_instantiate_ns2__stop_play_back(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* webservice_source.h:28 */
-#ifndef SOAP_TYPE_ns2__pause_play_backResponse
-#define SOAP_TYPE_ns2__pause_play_backResponse (36)
-/* complex XSD type 'ns2:pause-play-backResponse': */
-struct SOAP_CMAC ns2__pause_play_backResponse {
+#ifndef SOAP_TYPE_ns2__call_lookupResponse
+#define SOAP_TYPE_ns2__call_lookupResponse (36)
+/* complex XSD type 'ns2:call-lookupResponse': */
+struct SOAP_CMAC ns2__call_lookupResponse {
       public:
         /** Optional element 'result' of XSD type 'xsd:string' */
         char **result;
       public:
-        /** Return unique type id SOAP_TYPE_ns2__pause_play_backResponse */
-        long soap_type() const { return SOAP_TYPE_ns2__pause_play_backResponse; }
+        /** Return unique type id SOAP_TYPE_ns2__call_lookupResponse */
+        long soap_type() const { return SOAP_TYPE_ns2__call_lookupResponse; }
         /** Constructor with member initializations */
-        ns2__pause_play_backResponse() : result() { }
+        ns2__call_lookupResponse() : result() { }
         /** Friend allocator */
-        friend SOAP_FMAC1 ns2__pause_play_backResponse * SOAP_FMAC2 soap_instantiate_ns2__pause_play_backResponse(struct soap*, int, const char*, const char*, size_t*);
+        friend SOAP_FMAC1 ns2__call_lookupResponse * SOAP_FMAC2 soap_instantiate_ns2__call_lookupResponse(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* webservice_source.h:28 */
-#ifndef SOAP_TYPE_ns2__pause_play_back
-#define SOAP_TYPE_ns2__pause_play_back (37)
-/* complex XSD type 'ns2:pause-play-back': */
-struct SOAP_CMAC ns2__pause_play_back {
+#ifndef SOAP_TYPE_ns2__call_lookup
+#define SOAP_TYPE_ns2__call_lookup (37)
+/* complex XSD type 'ns2:call-lookup': */
+struct SOAP_CMAC ns2__call_lookup {
       public:
         /** Optional element 'user-id' of XSD type 'xsd:string' */
         char *user_id;
-        /** Optional element 'target-dev-id' of XSD type 'xsd:string' */
-        char *target_dev_id;
-        /** Optional element 'target-realm' of XSD type 'xsd:string' */
-        char *target_realm;
-        /** Optional element 'media-recv-ip' of XSD type 'xsd:string' */
-        char *media_recv_ip;
-        /** Required element 'media-recv-port' of XSD type 'xsd:int' */
-        int media_recv_port;
       public:
-        /** Return unique type id SOAP_TYPE_ns2__pause_play_back */
-        long soap_type() const { return SOAP_TYPE_ns2__pause_play_back; }
+        /** Return unique type id SOAP_TYPE_ns2__call_lookup */
+        long soap_type() const { return SOAP_TYPE_ns2__call_lookup; }
         /** Constructor with member initializations */
-        ns2__pause_play_back() : user_id(), target_dev_id(), target_realm(), media_recv_ip(), media_recv_port() { }
+        ns2__call_lookup() : user_id() { }
         /** Friend allocator */
-        friend SOAP_FMAC1 ns2__pause_play_back * SOAP_FMAC2 soap_instantiate_ns2__pause_play_back(struct soap*, int, const char*, const char*, size_t*);
+        friend SOAP_FMAC1 ns2__call_lookup * SOAP_FMAC2 soap_instantiate_ns2__call_lookup(struct soap*, int, const char*, const char*, size_t*);
 };
 #endif
 
 /* webservice_source.h:29 */
-#ifndef SOAP_TYPE_ns2__restart_play_backResponse
-#define SOAP_TYPE_ns2__restart_play_backResponse (39)
-/* complex XSD type 'ns2:restart-play-backResponse': */
-struct SOAP_CMAC ns2__restart_play_backResponse {
-      public:
-        /** Optional element 'result' of XSD type 'xsd:string' */
-        char **result;
-      public:
-        /** Return unique type id SOAP_TYPE_ns2__restart_play_backResponse */
-        long soap_type() const { return SOAP_TYPE_ns2__restart_play_backResponse; }
-        /** Constructor with member initializations */
-        ns2__restart_play_backResponse() : result() { }
-        /** Friend allocator */
-        friend SOAP_FMAC1 ns2__restart_play_backResponse * SOAP_FMAC2 soap_instantiate_ns2__restart_play_backResponse(struct soap*, int, const char*, const char*, size_t*);
-};
-#endif
-
-/* webservice_source.h:29 */
-#ifndef SOAP_TYPE_ns2__restart_play_back
-#define SOAP_TYPE_ns2__restart_play_back (40)
-/* complex XSD type 'ns2:restart-play-back': */
-struct SOAP_CMAC ns2__restart_play_back {
-      public:
-        /** Optional element 'user-id' of XSD type 'xsd:string' */
-        char *user_id;
-        /** Optional element 'target-dev-id' of XSD type 'xsd:string' */
-        char *target_dev_id;
-        /** Optional element 'target-realm' of XSD type 'xsd:string' */
-        char *target_realm;
-        /** Optional element 'media-recv-ip' of XSD type 'xsd:string' */
-        char *media_recv_ip;
-        /** Required element 'media-recv-port' of XSD type 'xsd:int' */
-        int media_recv_port;
-      public:
-        /** Return unique type id SOAP_TYPE_ns2__restart_play_back */
-        long soap_type() const { return SOAP_TYPE_ns2__restart_play_back; }
-        /** Constructor with member initializations */
-        ns2__restart_play_back() : user_id(), target_dev_id(), target_realm(), media_recv_ip(), media_recv_port() { }
-        /** Friend allocator */
-        friend SOAP_FMAC1 ns2__restart_play_back * SOAP_FMAC2 soap_instantiate_ns2__restart_play_back(struct soap*, int, const char*, const char*, size_t*);
-};
-#endif
-
-/* webservice_source.h:30 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (41)
+#define SOAP_TYPE_SOAP_ENV__Header (38)
 /* SOAP_ENV__Header: */
 struct SOAP_CMAC SOAP_ENV__Header {
       public:
@@ -539,10 +469,10 @@ struct SOAP_CMAC SOAP_ENV__Header {
 #endif
 #endif
 
-/* webservice_source.h:30 */
+/* webservice_source.h:29 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (42)
+#define SOAP_TYPE_SOAP_ENV__Code (39)
 /* Type SOAP_ENV__Code is a recursive data type, (in)directly referencing itself through its (base or derived class) members */
 /* SOAP_ENV__Code: */
 struct SOAP_CMAC SOAP_ENV__Code {
@@ -562,10 +492,10 @@ struct SOAP_CMAC SOAP_ENV__Code {
 #endif
 #endif
 
-/* webservice_source.h:30 */
+/* webservice_source.h:29 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (44)
+#define SOAP_TYPE_SOAP_ENV__Detail (41)
 /* SOAP_ENV__Detail: */
 struct SOAP_CMAC SOAP_ENV__Detail {
       public:
@@ -585,10 +515,10 @@ struct SOAP_CMAC SOAP_ENV__Detail {
 #endif
 #endif
 
-/* webservice_source.h:30 */
+/* webservice_source.h:29 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (47)
+#define SOAP_TYPE_SOAP_ENV__Reason (44)
 /* SOAP_ENV__Reason: */
 struct SOAP_CMAC SOAP_ENV__Reason {
       public:
@@ -605,10 +535,10 @@ struct SOAP_CMAC SOAP_ENV__Reason {
 #endif
 #endif
 
-/* webservice_source.h:30 */
+/* webservice_source.h:29 */
 #ifndef WITH_NOGLOBAL
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (48)
+#define SOAP_TYPE_SOAP_ENV__Fault (45)
 /* SOAP_ENV__Fault: */
 struct SOAP_CMAC SOAP_ENV__Fault {
       public:
@@ -679,47 +609,37 @@ typedef char *_QName;
 
 /* struct SOAP_ENV__Fault has binding name 'SOAP_ENV__Fault' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Fault
-#define SOAP_TYPE_SOAP_ENV__Fault (48)
+#define SOAP_TYPE_SOAP_ENV__Fault (45)
 #endif
 
 /* struct SOAP_ENV__Reason has binding name 'SOAP_ENV__Reason' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Reason
-#define SOAP_TYPE_SOAP_ENV__Reason (47)
+#define SOAP_TYPE_SOAP_ENV__Reason (44)
 #endif
 
 /* struct SOAP_ENV__Detail has binding name 'SOAP_ENV__Detail' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Detail
-#define SOAP_TYPE_SOAP_ENV__Detail (44)
+#define SOAP_TYPE_SOAP_ENV__Detail (41)
 #endif
 
 /* struct SOAP_ENV__Code has binding name 'SOAP_ENV__Code' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Code
-#define SOAP_TYPE_SOAP_ENV__Code (42)
+#define SOAP_TYPE_SOAP_ENV__Code (39)
 #endif
 
 /* struct SOAP_ENV__Header has binding name 'SOAP_ENV__Header' for type '' */
 #ifndef SOAP_TYPE_SOAP_ENV__Header
-#define SOAP_TYPE_SOAP_ENV__Header (41)
+#define SOAP_TYPE_SOAP_ENV__Header (38)
 #endif
 
-/* struct ns2__restart_play_back has binding name 'ns2__restart_play_back' for type 'ns2:restart-play-back' */
-#ifndef SOAP_TYPE_ns2__restart_play_back
-#define SOAP_TYPE_ns2__restart_play_back (40)
+/* struct ns2__call_lookup has binding name 'ns2__call_lookup' for type 'ns2:call-lookup' */
+#ifndef SOAP_TYPE_ns2__call_lookup
+#define SOAP_TYPE_ns2__call_lookup (37)
 #endif
 
-/* struct ns2__restart_play_backResponse has binding name 'ns2__restart_play_backResponse' for type 'ns2:restart-play-backResponse' */
-#ifndef SOAP_TYPE_ns2__restart_play_backResponse
-#define SOAP_TYPE_ns2__restart_play_backResponse (39)
-#endif
-
-/* struct ns2__pause_play_back has binding name 'ns2__pause_play_back' for type 'ns2:pause-play-back' */
-#ifndef SOAP_TYPE_ns2__pause_play_back
-#define SOAP_TYPE_ns2__pause_play_back (37)
-#endif
-
-/* struct ns2__pause_play_backResponse has binding name 'ns2__pause_play_backResponse' for type 'ns2:pause-play-backResponse' */
-#ifndef SOAP_TYPE_ns2__pause_play_backResponse
-#define SOAP_TYPE_ns2__pause_play_backResponse (36)
+/* struct ns2__call_lookupResponse has binding name 'ns2__call_lookupResponse' for type 'ns2:call-lookupResponse' */
+#ifndef SOAP_TYPE_ns2__call_lookupResponse
+#define SOAP_TYPE_ns2__call_lookupResponse (36)
 #endif
 
 /* struct ns2__stop_play_back has binding name 'ns2__stop_play_back' for type 'ns2:stop-play-back' */
@@ -814,17 +734,17 @@ typedef char *_QName;
 
 /* struct SOAP_ENV__Reason * has binding name 'PointerToSOAP_ENV__Reason' for type '' */
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Reason
-#define SOAP_TYPE_PointerToSOAP_ENV__Reason (50)
+#define SOAP_TYPE_PointerToSOAP_ENV__Reason (47)
 #endif
 
 /* struct SOAP_ENV__Detail * has binding name 'PointerToSOAP_ENV__Detail' for type '' */
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Detail
-#define SOAP_TYPE_PointerToSOAP_ENV__Detail (49)
+#define SOAP_TYPE_PointerToSOAP_ENV__Detail (46)
 #endif
 
 /* struct SOAP_ENV__Code * has binding name 'PointerToSOAP_ENV__Code' for type '' */
 #ifndef SOAP_TYPE_PointerToSOAP_ENV__Code
-#define SOAP_TYPE_PointerToSOAP_ENV__Code (43)
+#define SOAP_TYPE_PointerToSOAP_ENV__Code (40)
 #endif
 
 /* char ** has binding name 'PointerTostring' for type 'xsd:string' */

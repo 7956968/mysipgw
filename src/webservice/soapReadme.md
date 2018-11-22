@@ -71,15 +71,13 @@ The table below lists the classes, structs and unions declared in [webservice_so
 <tr><td><code><a href="#ns2__start_play_back"> struct ns2__start_play_back </a></code></td><td> webservice_source.h:25 </td><td> yes </td></tr>
 <tr><td><code><a href="#ns2__stop_play_backResponse"> struct ns2__stop_play_backResponse </a></code></td><td> webservice_source.h:26 </td><td> yes </td></tr>
 <tr><td><code><a href="#ns2__stop_play_back"> struct ns2__stop_play_back </a></code></td><td> webservice_source.h:26 </td><td> yes </td></tr>
-<tr><td><code><a href="#ns2__pause_play_backResponse"> struct ns2__pause_play_backResponse </a></code></td><td> webservice_source.h:28 </td><td> yes </td></tr>
-<tr><td><code><a href="#ns2__pause_play_back"> struct ns2__pause_play_back </a></code></td><td> webservice_source.h:28 </td><td> yes </td></tr>
-<tr><td><code><a href="#ns2__restart_play_backResponse"> struct ns2__restart_play_backResponse </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
-<tr><td><code><a href="#ns2__restart_play_back"> struct ns2__restart_play_back </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
-<tr><td><code><a href="#SOAP_ENV__Header"> struct SOAP_ENV__Header </a></code></td><td> webservice_source.h:30 </td><td> yes </td></tr>
-<tr><td><code><a href="#SOAP_ENV__Code"> struct SOAP_ENV__Code </a></code></td><td> webservice_source.h:30 </td><td> yes </td></tr>
-<tr><td><code><a href="#SOAP_ENV__Detail"> struct SOAP_ENV__Detail </a></code></td><td> webservice_source.h:30 </td><td> yes </td></tr>
-<tr><td><code><a href="#SOAP_ENV__Reason"> struct SOAP_ENV__Reason </a></code></td><td> webservice_source.h:30 </td><td> yes </td></tr>
-<tr><td><code><a href="#SOAP_ENV__Fault"> struct SOAP_ENV__Fault </a></code></td><td> webservice_source.h:30 </td><td> yes </td></tr>
+<tr><td><code><a href="#ns2__call_lookupResponse"> struct ns2__call_lookupResponse </a></code></td><td> webservice_source.h:28 </td><td> yes </td></tr>
+<tr><td><code><a href="#ns2__call_lookup"> struct ns2__call_lookup </a></code></td><td> webservice_source.h:28 </td><td> yes </td></tr>
+<tr><td><code><a href="#SOAP_ENV__Header"> struct SOAP_ENV__Header </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
+<tr><td><code><a href="#SOAP_ENV__Code"> struct SOAP_ENV__Code </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
+<tr><td><code><a href="#SOAP_ENV__Detail"> struct SOAP_ENV__Detail </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
+<tr><td><code><a href="#SOAP_ENV__Reason"> struct SOAP_ENV__Reason </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
+<tr><td><code><a href="#SOAP_ENV__Fault"> struct SOAP_ENV__Fault </a></code></td><td> webservice_source.h:29 </td><td> yes </td></tr>
 </table>
 
 <a name="ns2__loginResponse"></a>
@@ -244,38 +242,20 @@ This struct is declared in [webservice_source.h](webservice_source.h) at line 26
 [![][1] To top](#)
 
 
-<a name="ns2__pause_play_backResponse"></a>
+<a name="ns2__call_lookupResponse"></a>
 
-### `struct ns2__pause_play_backResponse`
+### `struct ns2__call_lookupResponse`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 28, is serialized as XSD type *`ns2:pause-play-backResponse`* and is internally used as the operation response element *`<ns2:pause-play-backResponse>`* with the response parameters of service operation `ns2__pause_play_back()`.
-
-[![][1] To top](#)
-
-
-<a name="ns2__pause_play_back"></a>
-
-### `struct ns2__pause_play_back`
-
-This struct is declared in [webservice_source.h](webservice_source.h) at line 28, is serialized as XSD type *`ns2:pause-play-back`* and is internally used as the operation request element *`<ns2:pause-play-back>`* with the request parameters of service operation `ns2__pause_play_back()`.
+This struct is declared in [webservice_source.h](webservice_source.h) at line 28, is serialized as XSD type *`ns2:call-lookupResponse`* and is internally used as the operation response element *`<ns2:call-lookupResponse>`* with the response parameters of service operation `ns2__call_lookup()`.
 
 [![][1] To top](#)
 
 
-<a name="ns2__restart_play_backResponse"></a>
+<a name="ns2__call_lookup"></a>
 
-### `struct ns2__restart_play_backResponse`
+### `struct ns2__call_lookup`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is serialized as XSD type *`ns2:restart-play-backResponse`* and is internally used as the operation response element *`<ns2:restart-play-backResponse>`* with the response parameters of service operation `ns2__restart_play_back()`.
-
-[![][1] To top](#)
-
-
-<a name="ns2__restart_play_back"></a>
-
-### `struct ns2__restart_play_back`
-
-This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is serialized as XSD type *`ns2:restart-play-back`* and is internally used as the operation request element *`<ns2:restart-play-back>`* with the request parameters of service operation `ns2__restart_play_back()`.
+This struct is declared in [webservice_source.h](webservice_source.h) at line 28, is serialized as XSD type *`ns2:call-lookup`* and is internally used as the operation request element *`<ns2:call-lookup>`* with the request parameters of service operation `ns2__call_lookup()`.
 
 [![][1] To top](#)
 
@@ -284,7 +264,7 @@ This struct is declared in [webservice_source.h](webservice_source.h) at line 29
 
 ### `struct SOAP_ENV__Header`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 30, is the SOAP protocol *`<SOAP-ENV:Header>`* element with message-specific child elements that are mandatory to process when attributed with *`mustUnderstand="true"`*.  Headers are usually added and processed by plugins.  To remove the SOAP Header when sending or returning a message, set `soap->header = NULL`.  Use `soap_header(struct soap *soap)` to allocate a `struct SOAP_ENV__Header` which will be pointed to by `soap->header`, then initialize it with `soap_default_SOAP_ENV__Header(soap, soap->header)` and set one or more of its data members (if any):
+This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is the SOAP protocol *`<SOAP-ENV:Header>`* element with message-specific child elements that are mandatory to process when attributed with *`mustUnderstand="true"`*.  Headers are usually added and processed by plugins.  To remove the SOAP Header when sending or returning a message, set `soap->header = NULL`.  Use `soap_header(struct soap *soap)` to allocate a `struct SOAP_ENV__Header` which will be pointed to by `soap->header`, then initialize it with `soap_default_SOAP_ENV__Header(soap, soap->header)` and set one or more of its data members (if any):
 
 *No SOAP headers are applicable*
 
@@ -307,7 +287,7 @@ This struct will be auto-generated when it is not explicitly declared in an inte
 
 ### `struct SOAP_ENV__Code`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 30, is recursive, meaning it may (in)directly reference itself through its (base or derived class) members, and is the SOAP protocol *`<SOAP-ENV:Code>`* element.  This struct is for internal use and will be auto-generated when not explicitly declared.
+This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is recursive, meaning it may (in)directly reference itself through its (base or derived class) members, and is the SOAP protocol *`<SOAP-ENV:Code>`* element.  This struct is for internal use and will be auto-generated when not explicitly declared.
 
 [![][1] To top](#)
 
@@ -316,7 +296,7 @@ This struct is declared in [webservice_source.h](webservice_source.h) at line 30
 
 ### `struct SOAP_ENV__Detail`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 30, is the SOAP protocol *`<SOAP-ENV:Detail>`* element with details returned by a service that triggered the error.  Fault details are added and processed by plugins by setting the `detail` (for SOAP 1.1) or `SOAP_ENV__Detail` (for SOAP 1.2) member of `struct SOAP_ENV__Fault` and then setting one ore more of the detail members:
+This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is the SOAP protocol *`<SOAP-ENV:Detail>`* element with details returned by a service that triggered the error.  Fault details are added and processed by plugins by setting the `detail` (for SOAP 1.1) or `SOAP_ENV__Detail` (for SOAP 1.2) member of `struct SOAP_ENV__Fault` and then setting one ore more of the detail members:
 
 - `char *__any` catch-all XML in literal XML string, see also <code><a href="#_XML"> _XML </a></code>
 - `int __type` element *`<fault>`* serialized with C/C++ type `__type` = `SOAP_TYPE_Name`
@@ -347,7 +327,7 @@ This struct will be auto-generated when it is not explicitly declared in an inte
 
 ### `struct SOAP_ENV__Reason`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 30, is the SOAP protocol *`<SOAP-ENV:Reason>`* element.  This struct is for internal use and will be auto-generated when not explicitly declared.
+This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is the SOAP protocol *`<SOAP-ENV:Reason>`* element.  This struct is for internal use and will be auto-generated when not explicitly declared.
 
 [![][1] To top](#)
 
@@ -356,7 +336,7 @@ This struct is declared in [webservice_source.h](webservice_source.h) at line 30
 
 ### `struct SOAP_ENV__Fault`
 
-This struct is declared in [webservice_source.h](webservice_source.h) at line 30, is the SOAP protocol *`<SOAP-ENV:Fault>`* element with fault information and details returned by a service that triggered the error.  At the server side, a fault can be explicitly set within a service operation by calling and returning:
+This struct is declared in [webservice_source.h](webservice_source.h) at line 29, is the SOAP protocol *`<SOAP-ENV:Fault>`* element with fault information and details returned by a service that triggered the error.  At the server side, a fault can be explicitly set within a service operation by calling and returning:
 
 - `int soap_sender_fault(struct soap *soap, const char *faultstring, const char *XML)` return this error code when the sender is at fault (irrecoverable)
 - `int soap_receiver_fault(struct soap *soap, const char *faultstring, const char *XML)` return this error code when the receiver is at fault (recoverable, sender may retry)
@@ -476,10 +456,8 @@ The table below lists the serializable types by *Type*, binding *Name*, *Kind*, 
 <tr><td><code><a href="#SOAP_ENV__Detail"> struct SOAP_ENV__Detail </a></code></td><td><code> SOAP_ENV__Detail </code></td><td> struct </td><td>  </td></tr>
 <tr><td><code><a href="#SOAP_ENV__Code"> struct SOAP_ENV__Code </a></code></td><td><code> SOAP_ENV__Code </code></td><td> struct </td><td>  </td></tr>
 <tr><td><code><a href="#SOAP_ENV__Header"> struct SOAP_ENV__Header </a></code></td><td><code> SOAP_ENV__Header </code></td><td> struct </td><td>  </td></tr>
-<tr><td><code><a href="#ns2__restart_play_back"> struct ns2__restart_play_back </a></code></td><td><code> ns2__restart_play_back </code></td><td> struct </td><td> ns2:restart-play-back </td></tr>
-<tr><td><code><a href="#ns2__restart_play_backResponse"> struct ns2__restart_play_backResponse </a></code></td><td><code> ns2__restart_play_backResponse </code></td><td> struct </td><td> ns2:restart-play-backResponse </td></tr>
-<tr><td><code><a href="#ns2__pause_play_back"> struct ns2__pause_play_back </a></code></td><td><code> ns2__pause_play_back </code></td><td> struct </td><td> ns2:pause-play-back </td></tr>
-<tr><td><code><a href="#ns2__pause_play_backResponse"> struct ns2__pause_play_backResponse </a></code></td><td><code> ns2__pause_play_backResponse </code></td><td> struct </td><td> ns2:pause-play-backResponse </td></tr>
+<tr><td><code><a href="#ns2__call_lookup"> struct ns2__call_lookup </a></code></td><td><code> ns2__call_lookup </code></td><td> struct </td><td> ns2:call-lookup </td></tr>
+<tr><td><code><a href="#ns2__call_lookupResponse"> struct ns2__call_lookupResponse </a></code></td><td><code> ns2__call_lookupResponse </code></td><td> struct </td><td> ns2:call-lookupResponse </td></tr>
 <tr><td><code><a href="#ns2__stop_play_back"> struct ns2__stop_play_back </a></code></td><td><code> ns2__stop_play_back </code></td><td> struct </td><td> ns2:stop-play-back </td></tr>
 <tr><td><code><a href="#ns2__stop_play_backResponse"> struct ns2__stop_play_backResponse </a></code></td><td><code> ns2__stop_play_backResponse </code></td><td> struct </td><td> ns2:stop-play-backResponse </td></tr>
 <tr><td><code><a href="#ns2__start_play_back"> struct ns2__start_play_back </a></code></td><td><code> ns2__start_play_back </code></td><td> struct </td><td> ns2:start-play-back </td></tr>
@@ -600,17 +578,15 @@ This service class is declared in [soapsipgwService.h](soapsipgwService.h) and d
         /// Web service operation 'ptz-control' (returns SOAP_OK or error code)
         virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'start-real-play' (returns SOAP_OK or error code)
-        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
+        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **call_id) SOAP_PURE_VIRTUAL;
         /// Web service operation 'stop-real-play' (returns SOAP_OK or error code)
-        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
+        virtual int stop_real_play(char *user_id, char *call_id, char **result) SOAP_PURE_VIRTUAL;
         /// Web service operation 'start-play-back' (returns SOAP_OK or error code)
-        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
+        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **call_id) SOAP_PURE_VIRTUAL;
         /// Web service operation 'stop-play-back' (returns SOAP_OK or error code)
-        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
-        /// Web service operation 'pause-play-back' (returns SOAP_OK or error code)
-        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
-        /// Web service operation 'restart-play-back' (returns SOAP_OK or error code)
-        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
+        virtual int stop_play_back(char *user_id, char *call_id, char **result) SOAP_PURE_VIRTUAL;
+        /// Web service operation 'call-lookup' (returns SOAP_OK or error code)
+        virtual int call_lookup(char *user_id, char **result) SOAP_PURE_VIRTUAL;
     };
 
 Use the service request dispatcher to accept and process service requests:
@@ -629,7 +605,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
@@ -656,7 +632,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
@@ -683,7 +659,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
@@ -710,7 +686,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `directory_info_buf_out` set or return an error code:
@@ -737,7 +713,7 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
@@ -766,13 +742,13 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
-The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
+The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `call_id` set or return an error code:
 
         /// Web service operation 'start-real-play' (returns SOAP_OK or error code)
-        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
+        virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **call_id) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -781,9 +757,9 @@ where:
 - `char *target_realm` is optional
 - `char *media_recv_ip` is optional
 - `int media_recv_port` is required
-- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
+- `char **call_id` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
-This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
+This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `call_id` to the result, or return an error code
 
 [![][1] To top](#)
 
@@ -796,21 +772,18 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'stop-real-play' (returns SOAP_OK or error code)
-        virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
+        virtual int stop_real_play(char *user_id, char *call_id, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
 - `char *user_id` is optional
-- `char *target_dev_id` is optional
-- `char *target_realm` is optional
-- `char *media_recv_ip` is optional
-- `int media_recv_port` is required
+- `char *call_id` is optional
 - `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
@@ -826,13 +799,13 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
-The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
+The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `call_id` set or return an error code:
 
         /// Web service operation 'start-play-back' (returns SOAP_OK or error code)
-        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
+        virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **call_id) SOAP_PURE_VIRTUAL;
 
 where:
 
@@ -843,9 +816,9 @@ where:
 - `int media_recv_port` is required
 - `char *start_time` is optional
 - `char *end_time` is optional
-- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
+- `char **call_id` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
-This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
+This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `call_id` to the result, or return an error code
 
 [![][1] To top](#)
 
@@ -858,23 +831,18 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
         /// Web service operation 'stop-play-back' (returns SOAP_OK or error code)
-        virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) SOAP_PURE_VIRTUAL;
+        virtual int stop_play_back(char *user_id, char *call_id, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
 - `char *user_id` is optional
-- `char *target_dev_id` is optional
-- `char *target_realm` is optional
-- `char *media_recv_ip` is optional
-- `int media_recv_port` is required
-- `char *start_time` is optional
-- `char *end_time` is optional
+- `char *call_id` is optional
 - `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
@@ -882,7 +850,7 @@ This service method should be implemented as part of the service back-end code a
 [![][1] To top](#)
 
 
-### Service Operation `sipgwService::pause-play-back()`
+### Service Operation `sipgwService::call-lookup()`
 
 This service operation is declared in [webservice_source.h](webservice_source.h) at line 28 and has the following properties:
 
@@ -890,51 +858,17 @@ This service operation is declared in [webservice_source.h](webservice_source.h)
 - SOAP document style
 - SOAP literal
 - SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
+- Default service endpoint URL "http://bst_sipgw_server:9800"
 - Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
 
 The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
 
-        /// Web service operation 'pause-play-back' (returns SOAP_OK or error code)
-        virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
+        /// Web service operation 'call-lookup' (returns SOAP_OK or error code)
+        virtual int call_lookup(char *user_id, char **result) SOAP_PURE_VIRTUAL;
 
 where:
 
 - `char *user_id` is optional
-- `char *target_dev_id` is optional
-- `char *target_realm` is optional
-- `char *media_recv_ip` is optional
-- `int media_recv_port` is required
-- `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
-
-This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
-
-[![][1] To top](#)
-
-
-### Service Operation `sipgwService::restart-play-back()`
-
-This service operation is declared in [webservice_source.h](webservice_source.h) at line 29 and has the following properties:
-
-- SOAP 1.1 protocol
-- SOAP document style
-- SOAP literal
-- SOAP action ""
-- Default service endpoint URL "http://192.168.2.128:9800/SipGwSvr"
-- Operation namespace prefix `ns2` and URI "[urn:sipgw](#doc-namespaces)"
-
-The following service class method must be defined in the service back-end code and will be called by the service dispatcher `sipgwService::serve(soap)`, and should return `SOAP_OK` with the result value `result` set or return an error code:
-
-        /// Web service operation 'restart-play-back' (returns SOAP_OK or error code)
-        virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) SOAP_PURE_VIRTUAL;
-
-where:
-
-- `char *user_id` is optional
-- `char *target_dev_id` is optional
-- `char *target_realm` is optional
-- `char *media_recv_ip` is optional
-- `int media_recv_port` is required
 - `char **result` is the service operation response, which is a non-NULL pointer to a `char *` that the service operation should populate with the response data
 
 This service method should be implemented as part of the service back-end code and return `SOAP_OK` and set the last parameter `result` to the result, or return an error code
@@ -969,5 +903,5 @@ The table binds XML namespace prefixes (first column) to namespace URIs (second 
 
 --------------------------------------------------------------------------------
 
-_Generated on Wed Nov 21 2018 03:11:11 UTC by soapcpp2 v2.8.70 for webservice_source.h._
+_Generated on Thu Nov 22 2018 03:16:04 UTC by soapcpp2 v2.8.70 for webservice_source.h._
 _The gSOAP XML Web services tools are Copyright (C) Robert van Engelen, Genivia Inc. All Rights Reserved._

@@ -112,7 +112,7 @@
     <element name="start-real-playResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::result -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -121,10 +121,7 @@
       <complexType>
           <sequence>
             <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_port -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -154,7 +151,7 @@
     <element name="start-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::result -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -163,12 +160,7 @@
       <complexType>
           <sequence>
             <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_port -->
-            <element name="start-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::start_time -->
-            <element name="end-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::end_time -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -181,42 +173,18 @@
       </complexType>
     </element>
     <!-- operation request element -->
-    <element name="pause-play-back">
+    <element name="call-lookup">
       <complexType>
           <sequence>
-            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_port -->
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__call_lookup::user_id -->
           </sequence>
       </complexType>
     </element>
     <!-- operation response element -->
-    <element name="pause-play-backResponse">
+    <element name="call-lookupResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::result -->
-          </sequence>
-      </complexType>
-    </element>
-    <!-- operation request element -->
-    <element name="restart-play-back">
-      <complexType>
-          <sequence>
-            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_port -->
-          </sequence>
-      </complexType>
-    </element>
-    <!-- operation response element -->
-    <element name="restart-play-backResponse">
-      <complexType>
-          <sequence>
-            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__call_lookup::result -->
           </sequence>
       </complexType>
     </element>
