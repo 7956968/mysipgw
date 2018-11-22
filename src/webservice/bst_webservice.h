@@ -23,27 +23,25 @@ class CSipgwSvr : public sipgwService
     //inherit from parent class
 
     /// Web service operation 'login' (returns SOAP_OK or error code)
-    virtual int login(char *user_id, char *password, char **result) ;
+    virtual int login(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
     /// Web service operation 'logout' (returns SOAP_OK or error code)
-    virtual int logout(char *user_id, char *password, char **result) ;
+    virtual int logout(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
     /// Web service operation 'keepalive' (returns SOAP_OK or error code)
-    virtual int keepalive(char *user_id, char *password, char **result) ;
+    virtual int keepalive(char *user_id, char *password, char **result) SOAP_PURE_VIRTUAL;
     /// Web service operation 'get-directory-info' (returns SOAP_OK or error code)
-    virtual int get_directory_info(char *target_dev_id, char *target_realm, char **directory_info_buf_out) ;
+    virtual int get_directory_info(char *target_dev_id, char *target_realm, char **directory_info_buf_out) SOAP_PURE_VIRTUAL;
     /// Web service operation 'ptz-control' (returns SOAP_OK or error code)
-    virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result) ;
+    virtual int ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result) SOAP_PURE_VIRTUAL;
     /// Web service operation 'start-real-play' (returns SOAP_OK or error code)
-    virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) ;
+    virtual int start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **call_id) SOAP_PURE_VIRTUAL;
     /// Web service operation 'stop-real-play' (returns SOAP_OK or error code)
-    virtual int stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) ;
+    virtual int stop_real_play(char *user_id, char *call_id, char **result) SOAP_PURE_VIRTUAL;
     /// Web service operation 'start-play-back' (returns SOAP_OK or error code)
-    virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) ;
+    virtual int start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **call_id) SOAP_PURE_VIRTUAL;
     /// Web service operation 'stop-play-back' (returns SOAP_OK or error code)
-    virtual int stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result) ;
-    /// Web service operation 'pause-play-back' (returns SOAP_OK or error code)
-    virtual int pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) ;
-    /// Web service operation 'restart-play-back' (returns SOAP_OK or error code)
-    virtual int restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result) ;
+    virtual int stop_play_back(char *user_id, char *call_id, char **result) SOAP_PURE_VIRTUAL;
+    /// Web service operation 'call-lookup' (returns SOAP_OK or error code)
+    virtual int call_lookup(char *user_id, char **result) SOAP_PURE_VIRTUAL;
 };
 
 #endif

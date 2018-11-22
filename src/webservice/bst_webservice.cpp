@@ -75,6 +75,17 @@ CSipgwSvr::~CSipgwSvr()
 	destroy();
 }
 
+CSipgwSvr *CSipgwSvr::copy()
+{
+    CSipgwSvr *dup = SOAP_NEW_UNMANAGED(CSipgwSvr);
+    if (dup)
+    {
+        soap_done(dup->soap);
+        soap_copy_context(dup->soap, this->soap);
+    }
+    return dup;
+}
+
 int CSipgwSvr::startup()
 {
     soap->send_timeout = soap->recv_timeout = 5; /* 5 sec socket idle timeout */
@@ -122,7 +133,6 @@ int CSipgwSvr::keepalive(char *user_id, char *password, char **result)
 int CSipgwSvr::get_directory_info(char *target_dev_id, char *target_realm, char **directory_info_buf_out)
 {
 	*directory_info_buf_out = "haha";
-	sleep(3);
     return SOAP_OK;
 }
 int CSipgwSvr::ptz_control(char *target_dev_id, char *target_realm, int ptz, int ptz_speed, char **result)
@@ -130,7 +140,7 @@ int CSipgwSvr::ptz_control(char *target_dev_id, char *target_realm, int ptz, int
     return SOAP_OK;
 }
 
-int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
+int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **call_id)
 {
     start_real_play_message *p_message = new start_real_play_message();
 
@@ -143,7 +153,7 @@ int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_
 
     if(30 < strlen(user_id))
     {
-        *result = "user_id is too long, must less than 30.";
+        *call_id = "user_id is too long, must less than 30.";
         return SOAP_ERR;
     }
 
@@ -165,60 +175,26 @@ int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_
 
     LOG("webservice push start real play message to fifo.\n");
 
-    *result = p_message->m_call_id;
+    *call_id = p_message->m_call_id;
 
     return SOAP_OK;
 }
-int CSipgwSvr::stop_real_play(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
+int CSipgwSvr::stop_real_play(char *user_id, char *call_id, char **result)
 {
-#if 0
-		PLAY_MESSAGE_T message;
-		memcpy(message.device_id, target_dev_id, 20);
-		memcpy(message.realm, target_realm, 20);
-		memcpy(message.receive_ip, media_recv_ip, 16);
-		memcpy(message.user_id, user_id, 20);
-		message.receive_port = media_recv_port;
-		message.play_action = real_time_stop;
-
-		printf("webservice receive stop real play message.\n");
-		printf("message.device_id = %s\n", message.device_id);
-		printf("message.realm = %s\n", message.realm);
-		printf("message.receive_ip = %s\n",message.receive_ip);
-		printf("message.receive_port = %d\n", message.receive_port);
-		printf("message.user_id = %s\n", message.user_id);
-
-		CMyFifo<PLAY_MESSAGE_T>::get_instance()->push(message);
-
-		printf("webservice push stop real play message to fifo.\n");
-#endif
 		return SOAP_OK;
 }
 
-int CSipgwSvr::start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result)
+int CSipgwSvr::start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **call_id)
 {
     return SOAP_OK;
 }
-int CSipgwSvr::stop_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **result)
-{
-    return SOAP_OK;
-}
-
-int CSipgwSvr::pause_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
-{
-    return SOAP_OK;
-}
-int CSipgwSvr::restart_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char **result)
+int CSipgwSvr::stop_play_back(char *user_id, char *call_id, char **result)
 {
     return SOAP_OK;
 }
 
-CSipgwSvr * CSipgwSvr::copy()
+int CSipgwSvr::call_lookup(char *user_id, char **result)
 {
-	CSipgwSvr *dup = SOAP_NEW_UNMANAGED(CSipgwSvr);
-	if (dup)
-	{	
-		soap_done(dup->soap);
-		soap_copy_context(dup->soap, this->soap);
-	}
-	return dup;
+    return SOAP_OK;
 }
+
