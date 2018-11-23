@@ -48,7 +48,7 @@ void start_real_play_message::print_message_info()
 */
 stop_real_play_message::stop_real_play_message()
 {
-    m_message_type = start_real_play;
+    m_message_type = stop_real_play;
 
     memset(m_call_id, 0x00, 70 + 1);
     memset(m_user_id, 0x00, 50 + 1);

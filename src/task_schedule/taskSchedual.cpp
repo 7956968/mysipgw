@@ -37,7 +37,17 @@ void CTaskSchedual::diapatch_message(message_base *message)
         case start_real_play:
         {
             do_start_real_play(message);
+	    break;
         }
+	case stop_real_play:
+	{
+	    do_stop_real_play(message);
+	    break;
+	}
+	defalut:
+	{
+	    LOG("receive a unknow message.\n");
+	}
     }
 
 }
