@@ -39,7 +39,7 @@
     <element name="loginResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__login::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__login::result -->
           </sequence>
       </complexType>
     </element>
@@ -56,7 +56,7 @@
     <element name="logoutResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__logout::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__logout::result -->
           </sequence>
       </complexType>
     </element>
@@ -73,7 +73,7 @@
     <element name="keepaliveResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__keepalive::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__keepalive::result -->
           </sequence>
       </complexType>
     </element>
@@ -109,7 +109,7 @@
     <element name="ptz-controlResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__ptz_control::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__ptz_control::result -->
           </sequence>
       </complexType>
     </element>
@@ -129,7 +129,7 @@
     <element name="start-real-playResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_real_play::result -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_real_play::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -138,10 +138,7 @@
       <complexType>
           <sequence>
             <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::media_recv_port -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -149,7 +146,7 @@
     <element name="stop-real-playResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_real_play::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_real_play::result -->
           </sequence>
       </complexType>
     </element>
@@ -171,7 +168,7 @@
     <element name="start-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__start_play_back::result -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__start_play_back::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -180,12 +177,7 @@
       <complexType>
           <sequence>
             <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::media_recv_port -->
-            <element name="start-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::start_time -->
-            <element name="end-time" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::end_time -->
+            <element name="call-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::call_id -->
           </sequence>
       </complexType>
     </element>
@@ -193,47 +185,23 @@
     <element name="stop-play-backResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__stop_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__stop_play_back::result -->
           </sequence>
       </complexType>
     </element>
     <!-- operation request element -->
-    <element name="pause-play-back">
+    <element name="call-lookup">
       <complexType>
           <sequence>
-            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::media_recv_port -->
+            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__call_lookup::user_id -->
           </sequence>
       </complexType>
     </element>
     <!-- operation response element -->
-    <element name="pause-play-backResponse">
+    <element name="call-lookupResponse">
       <complexType>
           <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__pause_play_back::result -->
-          </sequence>
-      </complexType>
-    </element>
-    <!-- operation request element -->
-    <element name="restart-play-back">
-      <complexType>
-          <sequence>
-            <element name="user-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::user_id -->
-            <element name="target-dev-id" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_dev_id -->
-            <element name="target-realm" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::target_realm -->
-            <element name="media-recv-ip" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_ip -->
-            <element name="media-recv-port" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::media_recv_port -->
-          </sequence>
-      </complexType>
-    </element>
-    <!-- operation response element -->
-    <element name="restart-play-backResponse">
-      <complexType>
-          <sequence>
-            <element name="result" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns2__restart_play_back::result -->
+            <element name="result" type="xsd:string" minOccurs="0" maxOccurs="1"/><!-- ns2__call_lookup::result -->
           </sequence>
       </complexType>
     </element>
@@ -313,20 +281,12 @@
   <part name="Body" element="ns2:stop-play-backResponse"/>
 </message>
 
-<message name="pause-play-backRequest">
-  <part name="Body" element="ns2:pause-play-back"/><!-- ns2__pause_play_back::ns2__pause_play_back -->
+<message name="call-lookupRequest">
+  <part name="Body" element="ns2:call-lookup"/><!-- ns2__call_lookup::ns2__call_lookup -->
 </message>
 
-<message name="pause-play-backResponse">
-  <part name="Body" element="ns2:pause-play-backResponse"/>
-</message>
-
-<message name="restart-play-backRequest">
-  <part name="Body" element="ns2:restart-play-back"/><!-- ns2__restart_play_back::ns2__restart_play_back -->
-</message>
-
-<message name="restart-play-backResponse">
-  <part name="Body" element="ns2:restart-play-backResponse"/>
+<message name="call-lookupResponse">
+  <part name="Body" element="ns2:call-lookupResponse"/>
 </message>
 
 <portType name="sipgwPortType">
@@ -375,15 +335,10 @@
     <input message="tns:stop-play-backRequest"/>
     <output message="tns:stop-play-backResponse"/>
   </operation>
-  <operation name="pause-play-back">
-    <documentation>Service definition of function ns2__pause_play_back</documentation>
-    <input message="tns:pause-play-backRequest"/>
-    <output message="tns:pause-play-backResponse"/>
-  </operation>
-  <operation name="restart-play-back">
-    <documentation>Service definition of function ns2__restart_play_back</documentation>
-    <input message="tns:restart-play-backRequest"/>
-    <output message="tns:restart-play-backResponse"/>
+  <operation name="call-lookup">
+    <documentation>Service definition of function ns2__call_lookup</documentation>
+    <input message="tns:call-lookupRequest"/>
+    <output message="tns:call-lookupResponse"/>
   </operation>
 </portType>
 
@@ -470,16 +425,7 @@
           <SOAP:body use="literal" parts="Body"/>
     </output>
   </operation>
-  <operation name="pause-play-back">
-    <SOAP:operation soapAction=""/>
-    <input>
-          <SOAP:body use="literal" parts="Body"/>
-    </input>
-    <output>
-          <SOAP:body use="literal" parts="Body"/>
-    </output>
-  </operation>
-  <operation name="restart-play-back">
+  <operation name="call-lookup">
     <SOAP:operation soapAction=""/>
     <input>
           <SOAP:body use="literal" parts="Body"/>
@@ -493,7 +439,7 @@
 <service name="sipgw">
   <documentation>gSOAP 2.8.70 generated service definition</documentation>
   <port name="sipgw" binding="tns:sipgw">
-    <SOAP:address location="http://192.168.2.128:9800/SipGwSvr"/>
+    <SOAP:address location="http://bst_sipgw_server:9800"/>
   </port>
 </service>
 

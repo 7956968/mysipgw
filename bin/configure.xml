@@ -29,7 +29,7 @@
     <!-- sip_gw info -->
     <sipgw>
         <sipscheme>sip</sipscheme>
-        <ip>192.168.2.128</ip>
+        <ip>192.168.2.126</ip>
         <tcpport>5160</tcpport>
         <udpport>5160</udpport>
         <tlsport>5161</tlsport>
