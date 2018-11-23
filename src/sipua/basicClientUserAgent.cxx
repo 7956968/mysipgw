@@ -1078,6 +1078,8 @@ int BasicClientUserAgent::doInvite(char* callid, char* deviceId, char* realm, ch
     //         newCall->initiateCall(mCallTarget, mProfile);
     //     }
 
+    InfoLog(<< "sipua receive a invite message, call_id = " << callid);
+
     if (strlen(callid) <= 0)
     {
         // no callid.
@@ -1114,6 +1116,7 @@ int BasicClientUserAgent::doInvite(char* callid, char* deviceId, char* realm, ch
 
 int BasicClientUserAgent::doBye(char* callid)
 {
+    InfoLog(<< "sipua receive a bye message, call_id = " << callid);
     std::map<std::string, BasicClientCall *>::iterator i = mCallMap.find(callid);
 
     if (mCallMap.end() != i)
