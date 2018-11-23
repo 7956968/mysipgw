@@ -30,9 +30,9 @@
     <sipgw>
         <sipscheme>sip</sipscheme>
         <ip>192.168.2.126</ip>
-        <tcpport>5160</tcpport>
-        <udpport>5160</udpport>
-        <tlsport>5161</tlsport>
+        <tcpport>5060</tcpport>
+        <udpport>5060</udpport>
+        <tlsport>5061</tlsport>
         <id>34020000004000000001</id>
         <realm>3402000000</realm>
         <password>12345678a</password>
