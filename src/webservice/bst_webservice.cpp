@@ -193,7 +193,7 @@ int CSipgwSvr::stop_real_play(char *user_id, char *call_id, char **result)
 
     if (30 < strlen(user_id) || 70 < strlen(call_id))
     {
-        *call_id = "user_id or call_id is too long, user_id must less than 30, and call_id must less than 70.";
+        *result = "user_id or call_id is too long, user_id must less than 30, and call_id must less than 70.";
         return SOAP_ERR;
     }
 

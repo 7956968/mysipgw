@@ -71,7 +71,7 @@ void CTaskSchedual::do_stop_real_play(message_base *message)
         return;
     }
 
-    stop_real_play_message *p_message = static_cast<start_real_play_message *>(message);
+    stop_real_play_message *p_message = static_cast<stop_real_play_message *>(message);
     if (p_message)
     {
         LOG("task_schedual recv a stop_real_play_message from fifo. and will send it to sipua.\n")
