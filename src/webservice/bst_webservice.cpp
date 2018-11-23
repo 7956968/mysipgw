@@ -2,7 +2,7 @@
 #include "utils/myfifo.h"
 #include "inside_message/message.h"
 #include "dlogger/dlogger.h"
-#include "utils/tools"
+#include "utils/tools.h"
 
 using namespace dlogger;
 
@@ -93,7 +93,7 @@ int CSipgwSvr::startup()
     soap->send_timeout = soap->recv_timeout = 5; /* 5 sec socket idle timeout */
 	soap->transfer_timeout = 30; 
 
-    if(!get_ip((char*)"eth0", m_ip)
+    if(!get_ip((char*)"ens33", m_ip))
     {
         LOG("get server ip failure.\n");
         exit(-1);
