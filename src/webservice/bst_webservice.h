@@ -20,6 +20,8 @@ class CSipgwSvr : public sipgwService
     private:
     static rand_generator* m_rand_creator;
 
+    char m_ip[16];
+
     //inherit from parent class
 
     /// Web service operation 'login' (returns SOAP_OK or error code)
