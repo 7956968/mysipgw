@@ -45,4 +45,17 @@ class start_real_play_message : public message_base
     unsigned short m_media_recv_port;
 };
 
+class stop_real_play_message : public message_base
+{
+  public:
+    stop_real_play_message();
+    ~stop_real_play_message();
+
+    void print_message_info();
+
+  public:
+    char m_call_id[70 + 1];
+    char m_user_id[50 + 1];
+};
+
 #endif
