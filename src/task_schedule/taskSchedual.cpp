@@ -65,7 +65,23 @@ void CTaskSchedual::do_start_real_play(message_base *message)
 }
 void CTaskSchedual::do_stop_real_play(message_base *message)
 {
+    if (!message)
+    {
+        LOG("do_stop_real_play recv a bad message. \n");
+        return;
+    }
 
+    stop_real_play_message *p_message = static_cast<start_real_play_message *>(message);
+    if (p_message)
+    {
+        LOG("task_schedual recv a stop_real_play_message from fifo. and will send it to sipua.\n")
+        p_message->print_message_info();
+
+        //call sipua, send message;
+        BasicClientUserAgent::getInstance()->doBye(p_message->m_call_id);
+    }
+
+    delete message;
 }
 
 void CTaskSchedual::do_start_preview(message_base *message)

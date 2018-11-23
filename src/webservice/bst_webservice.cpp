@@ -152,18 +152,18 @@ int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_
 {
     start_real_play_message *p_message = new start_real_play_message();
 
+    if (30 < strlen(user_id))
+    {
+        *call_id = "user_id is too long, must less than 30.";
+        return SOAP_ERR;
+    }
+
     memcpy(p_message->m_dev_id, target_dev_id, 20);
     memcpy(p_message->m_real, target_realm, 20);
     memcpy(p_message->m_media_recv_ip, media_recv_ip, 16);
     memcpy(p_message->m_user_id, user_id, 20);
     p_message->m_media_recv_port = media_recv_port;
     p_message->m_message_type = (message_type_e)1;
-
-    if(30 < strlen(user_id))
-    {
-        *call_id = "user_id is too long, must less than 30.";
-        return SOAP_ERR;
-    }
 
     sprintf(p_message->m_call_id, "%s", user_id);
 	
@@ -189,7 +189,29 @@ int CSipgwSvr::start_real_play(char *user_id, char *target_dev_id, char *target_
 }
 int CSipgwSvr::stop_real_play(char *user_id, char *call_id, char **result)
 {
-		return SOAP_OK;
+    stop_real_play_message *p_message = new stop_real_play_message();
+
+    if (30 < strlen(user_id) || 70 < strlen(call_id))
+    {
+        *call_id = "user_id or call_id is too long, user_id must less than 30, and call_id must less than 70.";
+        return SOAP_ERR;
+    }
+
+    memcpy(p_message->m_call_id, call_id, strlen(call_id));
+    memcpy(p_message->m_user_id, user_id, 20);
+
+    LOG("\nwebservice receive stop real play message:\n"
+        "message.call_id = %s\n"
+        "message.user_id = %s\n",
+        p_message->m_call_id, p_message->m_user_id);
+
+    CMyFifo<message_base *>::get_instance()->push(p_message);
+
+    LOG("webservice push stop real play message to fifo.\n");
+
+    *result = "webservice push stop real play message to fifo.";
+
+    return SOAP_OK;
 }
 
 int CSipgwSvr::start_play_back(char *user_id, char *target_dev_id, char *target_realm, char *media_recv_ip, int media_recv_port, char *start_time, char *end_time, char **call_id)

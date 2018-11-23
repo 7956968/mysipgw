@@ -42,3 +42,28 @@ void start_real_play_message::print_message_info()
         m_media_recv_ip,
         m_media_recv_port);
 }
+
+/**
+ *  class stop_real_play_message
+*/
+stop_real_play_message::stop_real_play_message()
+{
+    m_message_type = start_real_play;
+
+    memset(m_call_id, 0x00, 70 + 1);
+    memset(m_user_id, 0x00, 50 + 1);
+}
+
+stop_real_play_message::~stop_real_play_message()
+{
+}
+
+void stop_real_play_message::print_message_info()
+{
+    LOG("message info : \n"
+        "message type : stop_real_play_message\n"
+        "m_call_id:%s\n"
+        "m_user_id:%s\n",
+        m_call_id,
+        m_user_id);
+}
